@@ -2,7 +2,7 @@ import React from 'react'
 
 function AroundYou() {
   return (
-    <div>AroundYou</div>
+    <div><h1>AroundYou</h1></div>
   )
 }
 
