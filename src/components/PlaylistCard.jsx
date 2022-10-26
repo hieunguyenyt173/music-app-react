@@ -2,9 +2,10 @@ import React from "react";
 
 function PlaylistCard() {
   return (
-    <div className="playlist-card">
+    <div className="playlist-card group">
       <div className="max-w-[306px] rounded-xl overflow-hidden relative">
         <img
+          className="group-hover:scale-110 transition-all"
           src="https://www.kri8thm.in/html/listen/theme/demo/images/background/horizontal/3.jpg"
           alt=""
         />

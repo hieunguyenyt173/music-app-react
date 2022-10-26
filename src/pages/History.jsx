@@ -1,8 +1,11 @@
 import React from 'react'
 
+import MusicPlayer from '../components/MusicPlayer'
 function History() {
   return (
-    <div>History</div>
+    <div>
+     
+    </div>
   )
 }
 

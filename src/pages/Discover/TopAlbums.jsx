@@ -1,13 +1,13 @@
 import React from 'react'
 import SongItem from '../../components/SongItem'
 
-function NewSongs() {
+function TopAlbums() {
   return (
     <div className=" mt-7">
         <p className="font-semibold text-xs uppercase">Trending to listen</p>
         <div className="flex justify-between items-center">
           <p className="heading text-[32px] font-bold">
-            New <span className=" text-sky-600">Songs</span>
+            Top <span className=" text-sky-600">Albums</span>
           </p>
           <a
             href="/"
@@ -32,4 +32,4 @@ function NewSongs() {
   )
 }
 
-export default NewSongs
+export default TopAlbums

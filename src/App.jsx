@@ -1,7 +1,7 @@
 import "./App.css";
 import { Link, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import Homepage from "./pages/Homepage";
+import Discover from "./pages/Discover";
 import AroundYou from "./pages/AroundYou";
 import ArtistDetails from "./pages/ArtistDetails";
 import SongDetails from "./pages/SongDetails";
@@ -11,12 +11,14 @@ import Favorites from "./pages/Favorites";
 import Playlist from "./pages/Playlist";
 import History from "./pages/History";
 
+
 function App() {
+  
   return (
     <div className="relative">
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Homepage />} />
+          <Route index element={<Discover />} />
           <Route path="/around-you" element={<AroundYou />} />
           <Route path="/top-charts" element={<TopCharts />} />
           <Route path="/top-artists" element={<TopArtists />} />
@@ -25,8 +27,10 @@ function App() {
           <Route path="/history" element={<History />} />
           <Route path="/artists/id" element={<ArtistDetails />} />
           <Route path="/songs/songId" element={<SongDetails />} />
+          
         </Route>
       </Routes>
+      
     </div>
   );
 }

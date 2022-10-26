@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-function VolumeBar() {
-  return (
+
+const VolumeBar = () => (
     <div>VolumeBar</div>
-  )
-}
+ 
+);
 
-export default VolumeBar
+export default VolumeBar;

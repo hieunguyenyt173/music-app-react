@@ -1,17 +1,14 @@
-import React from "react";
+import React from 'react'
 import { Pagination} from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import SongCard from "../../components/SongCard";
-function TopChartsHome() {
+import SongCard from '../../components/SongCard';
+function LiveRadio() {
   return (
-    
-      <div className=" mt-5">
-        <p className="font-semibold text-xs uppercase">Listen top charts</p>
+    <div className=" mt-5">
+        <p className="font-semibold text-xs uppercase">Listen live now</p>
         <div className="flex justify-between items-center mb-5">
           <p className="heading text-[32px] font-bold">
-            Top <span className=" text-sky-600">Charts</span>
+            Live <span className=" text-sky-600">Radios</span>
           </p>
           <a
             href="/"
@@ -25,7 +22,7 @@ function TopChartsHome() {
         spaceBetween={20}
         
         modules={[Pagination]}
-        className="topcharts"
+        className="live-radios"
       >
         <SwiperSlide><SongCard/></SwiperSlide>
         <SwiperSlide><SongCard/></SwiperSlide>
@@ -36,8 +33,7 @@ function TopChartsHome() {
         <SwiperSlide><SongCard/></SwiperSlide>
       </Swiper>
       </div>
-    
-  );
+  )
 }
 
-export default TopChartsHome;
+export default LiveRadio
