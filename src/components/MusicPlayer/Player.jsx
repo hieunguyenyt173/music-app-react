@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useRef } from "react";
 
-function Player() {
+function Player({ isPlaying, reapeat, activeSong }) {
+  const ref = useRef(null);
+  
+        if (ref.current) {
+          if(isPlaying) {
+            ref.current.play();
+          }
+          else {
+            ref.current.pause()
+          }
+         
+        }
+
   return (
-    <div>Player</div>
-  )
+    <>
+      <audio
+        src={activeSong?.hub?.actions[1]?.uri}
+        loop={reapeat}
+        ref={ref}
+      ></audio>
+    </>
+  );
 }
 
-export default Player
+export default Player;

@@ -26,7 +26,7 @@ const playerSlice = createSlice({
 
       state.currentIndex = action.payload.i;
       state.isActive = true;
-      console.log(action.payload?.data?.tracks?.hits)
+      
     },
 
     nextSong: (state, action) => {

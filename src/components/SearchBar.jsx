@@ -6,7 +6,7 @@ function SearchBar() {
      
       <div className="search-bar px-6 py-5 h-[320px] relative">
 
-      <div className="absolute top-3 left-5 right-5 z-20 flex justify-between items-center bg-[#196eed] rounded-md text-slate-100">
+      <div className="absolute top-3 left-5 right-5 z-20 flex justify-between items-center nimate-slideup bg-gradient-to-br from-white/10 to-[#196eed] backdrop-blur-lg rounded-md text-slate-100">
           <form action="" className="py-2 px-5 flex items-center w-full">
             <label htmlFor="searchInput">
               <i className="ri-search-2-line text-xl pr-2"></i>
