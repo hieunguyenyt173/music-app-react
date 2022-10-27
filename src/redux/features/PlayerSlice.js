@@ -30,11 +30,16 @@ const playerSlice = createSlice({
     },
 
     nextSong: (state, action) => {
+      state.activeSong = state.currentSongs[action.payload];
+      state.currentIndex = action.payload;
+      state.isActive = true;
       
     },
 
     prevSong: (state, action) => {
-      
+      state.activeSong = state.currentSongs[action.payload];
+      state.currentIndex = action.payload;
+      state.isActive = true;
     },
 
     playPause: (state, action) => {
