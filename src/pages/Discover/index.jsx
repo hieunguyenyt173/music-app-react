@@ -13,9 +13,10 @@ import {useDispatch, useSelector} from 'react-redux'
 function Homepage() {
   const {data, isFetching,error} = useGetTopChartsQuery();
   const dispatch = useDispatch()
-  const { activeSong, isPlaying } = useSelector((state) => state.player)
+  const { activeSong, isPlaying,currentSongs } = useSelector((state) => state.player)
   if(isFetching) return <Loader title="Loading ..."/>
   if(error) return <Error />
+ 
   return (
     <div className='lg:container mx-auto px-12 mb-10'>
     <TopChartsHome data={data} activeSong={activeSong} isPlaying={isPlaying}/>
