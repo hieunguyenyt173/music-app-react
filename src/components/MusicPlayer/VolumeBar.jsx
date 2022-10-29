@@ -1,9 +1,11 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { TbMicrophone2 } from 'react-icons/tb'
 function VolumeBar({min, max,onChange, value, setVolume}) {
+    const [showlyric, setShowLyric] = useState(false)
     
   return (
     <div className="hidden lg:flex flex-1 items-center justify-end">
+        <TbMicrophone2 className="text-lg mr-4" onClick={() => setShowLyric(true)}/>
         {value == 0 && <i className="ri-volume-mute-fill" onClick={(e) => setVolume(1)}></i>}
         {value > 0  && value <= 0.5 && <i className="ri-volume-down-fill" onClick={(e) => setVolume(0)}></i>}
         {value > 0.5 && value <= 1 && <i className="ri-volume-up-fill" onClick={(e) => setVolume(0)}></i>}

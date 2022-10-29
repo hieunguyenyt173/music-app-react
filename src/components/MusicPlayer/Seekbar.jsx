@@ -1,8 +1,8 @@
 import React from 'react'
-
+export const getTime = (time) => `${Math.floor(time / 60)}:${(`${Math.floor(time % 60)}`).slice(-2)}`;
 function Seekbar({min, max,value, onInput}) {
   
-  const getTime = (time) => `${Math.floor(time / 60)}:${(`${Math.floor(time % 60)}`).slice(-2)}`;
+ 
   return (
     <div className='flex justify-center items-center'>
       <p className='mr-2 text-xs'>{value === 0 ? "0:0" : getTime(value)}</p>

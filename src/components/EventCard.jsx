@@ -1,57 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
 
-function EventCard() {
+function EventCard({event}) {
+  const [follow, setFollow] = useState(false)
+  const handleFollow = () => {
+    if(!follow) {
+      alert("Đã quan tâm")
+    }
+    
+    setFollow((prev) => !prev)
+  }
   return (
-    <div className="event-card max-w-[306px]">
-      <div className="rounded-xl overflow-hidden">
+    <div className="event-card ">
+      <div className="rounded-xl overflow-hidden h-48 w-full">
         <img
-          src="https://www.kri8thm.in/html/listen/theme/demo/images/background/horizontal/1.jpg"
+        className="w-full h-full object-cover"
+          src={event.image}
           alt=""
         />
       </div>
       <div className="content px-3 py-2">
-        <div className="flex items-center">
-          <i className="ri-map-pin-fill fs-6 text-gray-400"></i>
-          <p className="text-[13px] font-medium text-gray-400 px-2">258 Goff Avenue, MI - USA</p>
+        <div className="">
+          <p className="text-[13px] font-medium text-gray-400">{event.type}</p>
         </div>
         <div>
           <div className="flex items-center space-x-2 text-base">
-            <h4 className="font-semibold text-slate-900">
-              New year 1st night with BendiQ Band
+            <h4 className="font-semibold text-slate-900 py-2">
+            {event.title}
             </h4>
           </div>
           <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <div className="mt-3 flex -space-x-2 overflow-hidden">
+            <div className="flex items-center mt-2">
+              <div className=" flex -space-x-2 overflow-hidden">
                 <img
-                  className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                  className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
                   src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                   alt=""
                 />
                 <img
-                  className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                  className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
                   src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                   alt=""
                 />
                 <img
-                  className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                  className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
                   src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
                   alt=""
                 />
               </div>
               <div className="mt-3 text-sm font-medium ml-1">
                 <a href="#" className="text-blue-500 text-xs font-medium">
-                  198 +
+                  {`${event.follower}+ `}
                 </a>
               </div>
             </div>
             <div className="">
-              <a
-                href=""
-                className=" text-[13px] font-medium text-blue-500 bg-blue-100 px-2 py-1 rounded-sm hover:bg-blue-600 hover:text-white"
+              <button
+                
+                className= {`text-[13px] font-medium text-blue-500 bg-blue-100 px-2 py-1 rounded-sm hover:bg-blue-600 hover:text-white`}
+                onClick={handleFollow}
               >
-                Join Event
-              </a>
+                {follow ? "Đã quan tâm" : "Quan tâm"}
+              </button>
             </div>
           </div>
         </div>

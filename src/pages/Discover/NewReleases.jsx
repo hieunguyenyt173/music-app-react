@@ -1,37 +1,44 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { Pagination} from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SongCard from '../../components/SongCard';
-function NewReleases() {
+function NewReleases({song, isPlaying, activeSong, data, i}) {
+  
   return (
     
       <div className=" mt-5">
-        <p className="font-semibold text-xs uppercase">Best to listen</p>
         <div className="flex justify-between items-center mb-5">
-          <p className="heading text-[32px] font-bold">
-            New <span className=" text-sky-600">Releases</span>
+          <p className="heading text-[32px] font-bold text-sky-600">
+            Mới Phát hành
           </p>
-          <a
-            href="/"
+          <Link
+            to="/nhac-moi"
             className="uppercase text-sm font-semibold underline text-sky-600 "
           >
-            View All
-          </a>
+            Tất cả
+          </Link>
         </div>
         <Swiper
         slidesPerView={5}
         spaceBetween={20}
         
         modules={[Pagination]}
-        className="topcharts"
+        className="top"
       >
-        <SwiperSlide><SongCard/></SwiperSlide>
-        <SwiperSlide><SongCard/></SwiperSlide>
-        <SwiperSlide><SongCard/></SwiperSlide>
-        <SwiperSlide><SongCard/></SwiperSlide>
-        <SwiperSlide><SongCard/></SwiperSlide>
-        <SwiperSlide><SongCard/></SwiperSlide>
-        <SwiperSlide><SongCard/></SwiperSlide>
+        {data.map((song, i) => (
+          <SwiperSlide key={i}>
+            <SongCard
+            i={i}
+            song={song}
+            isPlaying={isPlaying}
+            activeSong={activeSong}
+            data={data}
+            />
+          </SwiperSlide>
+        ))}
+        
+        
       </Swiper>
       </div>
     

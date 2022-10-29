@@ -1,6 +1,11 @@
 import React, { useEffect, useRef } from "react";
+import { useGetSongQuery } from "../../redux/services/zingApi";
+
+
 
 function Player({ isPlaying, reapeat, activeSong,volume,seekTime,onEnded,onTimeUpdate,onLoadedData }) {
+      const { data } = useGetSongQuery(activeSong?.encodeId)
+      const urlAudio = data?.data?.[128]  
   const ref = useRef(null);
     
         if (ref.current) {
@@ -27,7 +32,7 @@ function Player({ isPlaying, reapeat, activeSong,volume,seekTime,onEnded,onTimeU
   return (
     
       <audio
-        src={activeSong?.hub?.actions[1]?.uri}
+        src={urlAudio}
         loop={reapeat}
         ref={ref}
         onEnded={onEnded}

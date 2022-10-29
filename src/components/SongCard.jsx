@@ -4,7 +4,9 @@ import { useDispatch } from "react-redux";
 
 import { setActiveSong, playPause } from "../redux/features/playerSlice";
 import PlayPause from "./PlayPause";
-function SongCard({ song, isPlaying, activeSong, data, i }) {
+function SongCard({ song, isPlaying, activeSong, data, i}) {
+  
+
   const dispatch = useDispatch();
   const handlePauseClick = () => {
     dispatch(playPause(false))
@@ -22,7 +24,7 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
         <div className=" max-h-[240px] rounded-2xl overflow-hidden relative">
           <img
             className="group-hover:scale-110 transition-all group-hover:opacity-90"
-            src={song?.images.coverart}
+            src={song.thumbnailM}
             alt="song-img"
           />
           <span className="like-icon hidden absolute top-4 left-4 hover:scale-125">
@@ -44,7 +46,7 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
         </div>
         <div className="flex flex-col">
           <Link
-            to={`/songs/${song?.key}`}
+            to=""
             className="font-semibold text-sm mt-2 "
           >
             {song?.title}
@@ -52,12 +54,12 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
           <Link
             to={
               song?.artists
-                ? `/artists/${song?.artists[0]?.adamid}`
+                ? `/artists/${song?.artist?.alias}`
                 : `/top-artists`
             }
             className="text-[13px] text-gray-500 hover:underline pb-3"
           >
-            {song?.subtitle}
+            {song.artistsNames}
           </Link>
         </div>
       </div>
