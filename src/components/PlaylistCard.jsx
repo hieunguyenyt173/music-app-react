@@ -1,20 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function PlaylistCard() {
+function PlaylistCard({item}) {
   return (
-    <div className="playlist-card group">
-      <div className="max-w-[306px] rounded-xl overflow-hidden relative">
+    <Link to="/">
+      <div className="playlist-card group">
+      <div className="w-full rounded-xl overflow-hidden relative">
         <img
           className="group-hover:scale-110 transition-all"
-          src="https://www.kri8thm.in/html/listen/theme/demo/images/background/horizontal/3.jpg"
+          src={item?.banner}
           alt=""
         />
-        <div className="p-4 absolute bottom-0 left-0 text-white">
-          <p className="font-semibold">Solo Special</p>
-          <p className="text-sm">21 songs | 10 favorites</p>
-        </div>
       </div>
     </div>
+    </Link>
   );
 }
 

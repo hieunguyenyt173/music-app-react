@@ -19,35 +19,41 @@ function Sidebar() {
           <NavLink to="/" end>
           <div className="nav-item w-full flex items-center py-[10px] px-6">
             <i className="ri-home-5-line text-xl pr-3"></i>
-            <p>Discover</p>
+            <p>Khám phá</p>
           </div>
           </NavLink>
-          <NavLink to="around-you">
+          <NavLink to="nhac-moi">
           <div className="nav-item w-full flex items-center py-[10px] px-6">
             <i className="ri-disc-line text-xl pr-3"></i>
-            <p>Around You</p>
+            <p>Nhạc mới</p>
           </div>
           </NavLink>
           <NavLink to="top-charts">
           <div className="nav-item w-full flex items-center py-[10px] px-6">
             <i className="ri-album-line text-xl pr-3"></i>
-            <p>Top Charts</p>
+            <p>Thể loại</p>
           </div>
           </NavLink>
           <NavLink to="top-artists">
           <div className="nav-item w-full flex items-center py-[10px] px-6">
             <i className="ri-mic-line text-xl pr-3"></i>
-            <p>Top artists</p>
+            <p>Top 100</p>
           </div>
+            <NavLink to="mv">
+            <div className="nav-item w-full flex items-center py-[10px] px-6">
+              <i className="ri-history-line text-xl pr-3"></i>
+              <p>MV</p>
+            </div>
+            </NavLink>
           </NavLink>
         </div>
         <div>
-          <p className="text-sm text-slate-400 px-6 py-[10px]">Music</p>
+          <p className="text-sm text-slate-400 px-6 py-[10px]">Cá nhân</p>
           <div className="flex flex-col text-sm font-medium">
             <NavLink to="favorites">
             <div className="nav-item w-full flex items-center py-[10px] px-6">
               <i className="ri-heart-line text-xl pr-3"></i>
-              <p>Favorites</p>
+              <p>Yêu thích</p>
             </div>
             </NavLink>
             <NavLink to="playlist">
@@ -59,7 +65,7 @@ function Sidebar() {
             <NavLink to="history">
             <div className="nav-item w-full flex items-center py-[10px] px-6">
               <i className="ri-history-line text-xl pr-3"></i>
-              <p>History</p>
+              <p>Gần đây</p>
             </div>
             </NavLink>
           </div>

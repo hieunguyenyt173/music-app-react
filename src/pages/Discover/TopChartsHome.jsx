@@ -6,13 +6,15 @@ import "swiper/css/pagination";
 import {Link } from 'react-router-dom'
 import SongCard from "../../components/SongCard";
 function TopChartsHome({data, activeSong, isPlaying}) {
+    const topChartHome = data.slice(0, 10);
+  console.log(data)
   return (
     
       <div className=" mt-5">
-        <p className="font-semibold text-xs uppercase">Listen top charts</p>
+        
         <div className="flex justify-between items-center mb-5">
-          <p className="heading text-[32px] font-bold">
-            Top <span className=" text-sky-600">Charts</span>
+          <p className="heading text-[32px] font-bold text-sky-600">
+            Những bản nhạc hàng đầu
           </p>
           <Link
             to="/top-charts"
@@ -28,14 +30,14 @@ function TopChartsHome({data, activeSong, isPlaying}) {
         modules={[Pagination]}
         className="topcharts"
       >
-        {data.map((song, i) => (
-          <SwiperSlide key={song.key}>
+        {topChartHome.map((song, i) => (
+          <SwiperSlide key={i}>
             <SongCard
             song={song}
             i={i}
             isPlaying={isPlaying}
             activeSong={activeSong}
-            data={data}
+            data={topChartHome}
             />
             </SwiperSlide>
         ))}

@@ -10,22 +10,49 @@ import TopAlbums from './TopAlbums'
 import TopChartsHome from './TopChartsHome'
 import {useGetTopChartsQuery} from '../../redux/services/musicApp'
 import {useDispatch, useSelector} from 'react-redux'
+import { useGetCharthomeQuery, useGetPlayListQuery, useGetSongQuery } from '../../redux/services/zingApi'
+import { useInRouterContext } from 'react-router-dom'
+import ForWeekend from './ForWeekend'
 function Homepage() {
-  const {data, isFetching,error} = useGetTopChartsQuery();
+  const {data, isFetching,error} = useGetCharthomeQuery();
+  const { activeSong, isPlaying } = useSelector((state) => state.player)
+  const {data : dataPlaylist} = useGetPlayListQuery()
+  console.log(data)
   const dispatch = useDispatch()
-  const { activeSong, isPlaying,currentSongs } = useSelector((state) => state.player)
   if(isFetching) return <Loader title="Loading ..."/>
   if(error) return <Error />
- 
+  const newRelease = data.data.newRelease
+  const weekCharts = data.data.weekChart
+  const topChart = data.data.RTChart.items;
+  
   return (
     <div className='lg:container mx-auto px-12 mb-10'>
-    <TopChartsHome data={data} activeSong={activeSong} isPlaying={isPlaying}/>
-    <Events />
-    <NewReleases />
-    <FeaturedArtists />
-    <TopAlbums />
-    <BestPlaylist />
-    <LiveRadio/>
+    <TopChartsHome data={topChart} activeSong={activeSong} isPlaying={isPlaying}/>
+     <Events 
+     isPlaying={isPlaying}
+     activeSong={activeSong}
+     weekCharts={weekCharts}
+     />
+    <NewReleases 
+    data={newRelease} 
+    isPlaying={isPlaying}
+    activeSong={activeSong}
+    />
+    {/* <FeaturedArtists /> */}
+    <TopAlbums 
+    data={dataPlaylist}
+    />
+    <BestPlaylist 
+     isPlaying={isPlaying}
+     activeSong={activeSong}
+    />
+
+    <ForWeekend 
+    dataPlaylist={dataPlaylist}
+    isPlaying={isPlaying}
+    activeSong={activeSong}
+    />
+    {/* <LiveRadio/> */}
     </div>
   )
 }

@@ -2,7 +2,7 @@ import "./App.css";
 import { Link, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Discover from "./pages/Discover";
-import AroundYou from "./pages/AroundYou";
+import NewSongs from "./pages/NewSongs";
 import ArtistDetails from "./pages/ArtistDetails";
 import SongDetails from "./pages/SongDetails";
 import TopCharts from "./pages/TopCharts";
@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Discover />} />
-          <Route path="/around-you" element={<AroundYou />} />
+          <Route path="/nhac-moi" element={<NewSongs />} />
           <Route path="/top-charts" element={<TopCharts />} />
           <Route path="/top-artists" element={<TopArtists />} />
           <Route path="/favorites" element={<Favorites />} />
