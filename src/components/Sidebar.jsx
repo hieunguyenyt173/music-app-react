@@ -3,7 +3,7 @@ import {NavLink, Link} from 'react-router-dom'
 function Sidebar() {
   return (
     <>
-     <div className="min-w-[280px] bg-[#f5f7fa] h-screen fixed top-0 left-0 z-1000">
+     <div className="min-w-[200px] bg-[#f5f7fa] h-screen fixed top-0 left-0 z-1000">
         <div className="flex justify-between items-center px-4 pt-6 pb-12">
           <Link to="/">
           <img
