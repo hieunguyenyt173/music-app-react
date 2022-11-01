@@ -16,7 +16,7 @@ function ArtistCard({artist}) {
       <div className="text-center">
       <p className="text-sm font-medium mt-3">{artist.name}</p>
       </div>
-   
+      
     </Link>
     </div>
   );
