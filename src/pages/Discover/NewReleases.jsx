@@ -7,8 +7,8 @@ function NewReleases({song, isPlaying, activeSong, data, i}) {
   
   return (
     
-      <div className=" mt-5">
-        <div className="flex justify-between items-center mb-5">
+      <div className=" mt-7">
+        <div className="flex justify-between items-center mb-3">
           <p className="heading text-[32px] font-bold text-sky-600">
             Mới Phát hành
           </p>
@@ -20,13 +20,13 @@ function NewReleases({song, isPlaying, activeSong, data, i}) {
           </Link>
         </div>
         <Swiper
-        slidesPerView={5}
+        slidesPerView={6}
         spaceBetween={20}
         
         modules={[Pagination]}
         className="top"
       >
-        {data.map((song, i) => (
+        {data && data.map((song, i) => (
           <SwiperSlide key={i}>
             <SongCard
             i={i}

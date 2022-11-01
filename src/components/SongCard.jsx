@@ -24,7 +24,7 @@ function SongCard({ song, isPlaying, activeSong, data, i}) {
         <div className=" max-h-[240px] rounded-2xl overflow-hidden relative">
           <img
             className="group-hover:scale-110 transition-all group-hover:opacity-90"
-            src={song.thumbnailM}
+            src={song.thumbnail}
             alt="song-img"
           />
           <span className="like-icon hidden absolute top-4 left-4 hover:scale-125">
@@ -51,16 +51,23 @@ function SongCard({ song, isPlaying, activeSong, data, i}) {
           >
             {song?.title}
           </Link>
-          <Link
-            to={
-              song?.artists
-                ? `/artists/${song?.artist?.alias}`
-                : `/top-artists`
-            }
-            className="text-[13px] text-gray-500 hover:underline pb-3"
-          >
-            {song.artistsNames}
-          </Link>
+          <div className="">
+          {song.artists.map((artist,i) => (
+              <Link
+              to={
+                song?.artists
+                  ? `/artists/${song?.artist?.shortLink}`
+                  : `/top-artists`
+              }
+              className="text-[13px] text-gray-500 hover:underline pb-3 pr-1"
+              key={i}
+              >
+              {artist.name}
+              {song.artists.length > 1 && i === 0 ? "," : ""}
+            </Link>
+            
+          ))}
+          </div>
         </div>
       </div>
     </>

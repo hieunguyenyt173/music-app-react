@@ -1,21 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function ArtistCard() {
+function ArtistCard({artist}) {
   return (
-    <a href="#">
-        <div className="artist-card group">
+    <div className="artist-card group">
+    <Link to={`/artists/${artist.shortLink}`}>
+        
       <div className="w-32 h-32 rounded-full overflow-hidden mx-auto">
         <img
         className="group-hover:scale-110 transition-all"
-          src="https://www.kri8thm.in/html/listen/theme/demo/images/cover/large/6.jpg"
+          src={artist.imageUrl}
           alt=""
         />
       </div>
       <div className="text-center">
-      <p className="text-sm font-medium mt-3">Gerrina Linda</p>
+      <p className="text-sm font-medium mt-3">{artist.name}</p>
       </div>
+   
+    </Link>
     </div>
-    </a>
   );
 }
 

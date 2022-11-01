@@ -1,25 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import Error from '../components/Error';
-import Loader from '../components/Loader';
 import SongItem from '../components/SongItem';
-import { useGetCharthomeQuery } from '../redux/services/zingApi'
-
 function NewSongs() {
-  const {data, isFetching,error} = useGetCharthomeQuery();
-  const listNewSong = data?.data?.RTChart?.items;
+  
+  const NhacCuaTui = require("nhaccuatui-api-full");
+  const [listNewSong, setListNewSong] = useState()
+  // const tabs = [
+  //   { title: "VIỆT NAM", list:  "nhac-viet"},
+  //   { title: "ÂU MỸ", list:  "au-my"},
+  //   { title: "HÀN QUỐC", list:  "nhac-han"},
+  // ];
   const {isPlaying, activeSong} = useSelector((state) => state.player)
-  if(isFetching) return <Loader title="Loading ..."/>
-  if(error) return <Error />
+  
+  useEffect(() => {
 
-  console.log(listNewSong)
+    NhacCuaTui.explore({
+      type: "song",
+      key: "moi-hot",
+      page: 1,
+      pageSize: 50,
+    }).then((data) => setListNewSong(data?.data))
+  },[])
+
   return (
     <div className='lg:container mx-auto px-12 mb-10'>
        <p className="heading text-5xl font-bold text-sky-600">
            Nhạc mới
           </p>
         <div>
-          {listNewSong.map((song, i) => (
+          {listNewSong && listNewSong.map((song, i) => (
             <SongItem 
             key={i}
             song={song}

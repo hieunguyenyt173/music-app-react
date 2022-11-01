@@ -10,6 +10,8 @@ import TopArtists from "./pages/TopArtists";
 import Favorites from "./pages/Favorites";
 import Playlist from "./pages/Playlist";
 import History from "./pages/History";
+import Genres from "./pages/Genres";
+import TopicDetails from "./pages/TopicDetails";
 
 
 function App() {
@@ -20,7 +22,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Discover />} />
           <Route path="/nhac-moi" element={<NewSongs />} />
-          <Route path="/top-charts" element={<TopCharts />} />
+          <Route path="/the-loai" element={<Genres />} />
+          <Route path="/the-loai/:idTopic" element={<TopicDetails />} />
           <Route path="/top-artists" element={<TopArtists />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/playlist" element={<Playlist />} />

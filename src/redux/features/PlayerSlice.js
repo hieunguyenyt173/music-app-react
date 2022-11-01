@@ -47,10 +47,14 @@ const playerSlice = createSlice({
     },
     showPlaylist:(state, action) => {
       state.isShowPlaylist = action.payload
+    },
+
+    showLyric:(state, action) => {
+      state.isShowLyric = action.payload
     }
   },
 });
 
-export const { setActiveSong, nextSong, prevSong, playPause, selectGenreListId, showPlaylist } = playerSlice.actions;
+export const { setActiveSong, nextSong, prevSong, playPause, selectGenreListId, showPlaylist, showLyric } = playerSlice.actions;
 
 export default playerSlice.reducer;

@@ -7,8 +7,9 @@ import Footer from "../Footer";
 import { useSelector } from "react-redux";
 import MusicPlayer from "../MusicPlayer";
 import PlaylistModal from "../PlaylistModal";
+import LyricModal from "../LyricModal";
 function Layout() {
-  const { activeSong,isShowPlaylist } = useSelector((state) => state.player);
+  const { activeSong,isShowPlaylist, isShowLyric } = useSelector((state) => state.player);
   console.log(isShowPlaylist)
   return (
     <>
@@ -20,11 +21,12 @@ function Layout() {
           
         </div>
         {activeSong?.title && (
-            <div className=" w-full fixed h-24 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-[#196eed] backdrop-blur-lg rounded-t-xl z-[1000]">
+            <div className=" w-full fixed h-20 bottom-0 left-0 right-0 flex animate-slideup bg-[#97b8eb] backdrop-blur-lg  z-[1000] border border-[0.5px] border-[#649ef5]">
               <MusicPlayer />
             </div>
           )}
         {isShowPlaylist && <PlaylistModal/>}
+        {isShowLyric && <LyricModal/>}
         <Footer />
       </div>
     </>

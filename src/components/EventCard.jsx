@@ -10,10 +10,10 @@ function EventCard({event}) {
     setFollow((prev) => !prev)
   }
   return (
-    <div className="event-card ">
+    <div className="event-card group">
       <div className="rounded-xl overflow-hidden h-48 w-full">
         <img
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover group-hover:scale-105 duration-200"
           src={event.image}
           alt=""
         />

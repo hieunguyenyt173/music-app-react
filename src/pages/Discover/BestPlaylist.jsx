@@ -8,8 +8,8 @@ function BestPlaylist() {
   const banner = data?.data?.items[0]?.items
   
   return (
-    <div className=" mt-5">
-        <div className="flex justify-between items-center mb-5">
+    <div className=" mt-7">
+        <div className="flex justify-between items-center mb-3">
           <p className="heading text-[32px] font-bold text-sky-600">
            Playlist nổi bật
           </p>

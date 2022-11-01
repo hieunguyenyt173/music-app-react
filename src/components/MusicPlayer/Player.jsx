@@ -1,11 +1,20 @@
-import React, { useEffect, useRef } from "react";
-import { useGetSongQuery } from "../../redux/services/zingApi";
+import React, { useEffect, useRef, useState } from "react";
+
 
 
 
 function Player({ isPlaying, reapeat, activeSong,volume,seekTime,onEnded,onTimeUpdate,onLoadedData }) {
-      const { data } = useGetSongQuery(activeSong?.encodeId)
-      const urlAudio = data?.data?.[128]  
+  const [urlAudio ,setUrlAudio] = useState()
+      const { getSong } = require("nhaccuatui-api-full");
+     
+       useEffect(() => {
+        (async () => {
+          const data = await getSong(activeSong.key || activeSong.songKey);
+          setUrlAudio(data?.song?.streamUrls[0]?.streamUrl)
+        })();
+       },[activeSong.key || activeSong.songKey])
+      
+     
   const ref = useRef(null);
     
         if (ref.current) {
@@ -32,7 +41,7 @@ function Player({ isPlaying, reapeat, activeSong,volume,seekTime,onEnded,onTimeU
   return (
     
       <audio
-        src={urlAudio}
+        src={urlAudio ? urlAudio : ""}
         loop={reapeat}
         ref={ref}
         onEnded={onEnded}

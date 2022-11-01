@@ -2,18 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { Pagination} from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import ArtistCard from '../../components/ArtistCard';
-function FeaturedArtists({artistTrending}) {
-  
+import PlaylistCard from '../../components/PlaylistCard';
+function Top100Home({data}) {
   return (
     <div className=" mt-7">
-        
         <div className="flex justify-between items-center mb-3">
           <p className="heading text-[32px] font-bold text-sky-600">
-          Nghệ sỹ nổi bật
+           Top 100
           </p>
           <Link
-            to="/artists"
+            to="/top100"
             className="uppercase text-sm font-semibold underline text-sky-600 "
           >
             Tất cả
@@ -24,15 +22,16 @@ function FeaturedArtists({artistTrending}) {
         spaceBetween={20}
         
         modules={[Pagination]}
-        className="topArtist"
+        className="top"
       >
-          {artistTrending && artistTrending.map((artist,i) => (
-              <SwiperSlide key={i}>
-                <ArtistCard
-                artist={artist}
-                />
-                </SwiperSlide>
-          ))}
+        {data && data.map((playlist, i) => (
+          <SwiperSlide key={i}>
+           <PlaylistCard 
+           data={data}
+           playlist={playlist}
+           />
+          </SwiperSlide>
+        ))}
         
         
       </Swiper>
@@ -40,4 +39,4 @@ function FeaturedArtists({artistTrending}) {
   )
 }
 
-export default FeaturedArtists
+export default Top100Home
