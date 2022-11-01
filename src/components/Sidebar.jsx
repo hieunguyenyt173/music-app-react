@@ -5,7 +5,7 @@ function Sidebar() {
     <>
      <div className="min-w-[200px] bg-[#f5f7fa] h-screen fixed top-0 left-0 z-1000">
         <div className="flex justify-between items-center px-4 pt-6 pb-12">
-          <Link to="/">
+          <Link to="k-music.herokuapp.com">
           <img
             src="https://www.kri8thm.in/html/listen/theme/demo/images/logos/logo.svg"
             alt="logo"
