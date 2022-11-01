@@ -23,7 +23,7 @@ function Homepage() {
   // if(error) return <Error />
   const NhacCuaTui = require("nhaccuatui-api-full");
     useEffect(() => {
-      NhacCuaTui.getHome().then((data) => console.log(JSON.stringify(data)));
+      NhacCuaTui.getHome().then((data) => setDataHome(data));
       NhacCuaTui.getTrendingArtists().then((data) => setDataArtistList(data))
       
     },[])
