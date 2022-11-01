@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="relative">
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/k-music.herokuapp.com" element={<Layout />}>
           <Route index element={<Discover />} />
           <Route path="/nhac-moi" element={<NewSongs />} />
           <Route path="/the-loai" element={<Genres />} />
