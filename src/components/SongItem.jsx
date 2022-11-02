@@ -50,7 +50,7 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
               <Link
               to={
                 song?.artists
-                  ? `/artists/${song?.artist?.shortLink}`
+                  ? `/nghe-sy/${artist?.artistId}`
                   : `/top-artists`
               }
               className="text-[13px] text-gray-500 hover:underline pb-3 pr-1"

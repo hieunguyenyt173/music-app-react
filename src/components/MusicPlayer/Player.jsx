@@ -8,10 +8,8 @@ function Player({ isPlaying, reapeat, activeSong,volume,seekTime,onEnded,onTimeU
       const { getSong } = require("nhaccuatui-api-full");
      
        useEffect(() => {
-        (async () => {
-          const data = await getSong(activeSong.key || activeSong.songKey);
-          setUrlAudio(data?.song?.streamUrls[0]?.streamUrl)
-        })();
+        getSong(activeSong.key || activeSong.songKey).then((data) => setUrlAudio(data?.song?.streamUrls[0]?.streamUrl))
+        
        },[activeSong.key || activeSong.songKey])
       
      
@@ -41,7 +39,7 @@ function Player({ isPlaying, reapeat, activeSong,volume,seekTime,onEnded,onTimeU
   return (
     
       <audio
-        src={urlAudio ? urlAudio : ""}
+        src={urlAudio}
         loop={reapeat}
         ref={ref}
         onEnded={onEnded}
@@ -53,3 +51,5 @@ function Player({ isPlaying, reapeat, activeSong,volume,seekTime,onEnded,onTimeU
 }
 
 export default Player;
+
+

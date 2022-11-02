@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 export const ItemGenres = ({topic}) => {
     return (
        <Link to={`/the-loai/${topic.key}`}>
-        <div className='duration-300 overflow-hidden ease-linear' >
-            <img className='hover:scale-105' src={topic?.coverImageURL} alt="" />
+        <div className=' overflow-hidden rounded-lg' >
+            <img className='hover:scale-105 duration-200 ease-linear' src={topic?.coverImageURL} alt="" />
         </div>
        </Link>
     )
@@ -47,8 +47,8 @@ function Genres() {
                 Tất cả thể loại
             </p>
             <div className='grid grid-cols-3 gap-5'> 
-            {listAllTopic && listAllTopic?.topic?.slice(1).map((topic) => (
-                <ItemGenres topic={topic}/>
+            {listAllTopic && listAllTopic?.topic?.slice(1).map((topic,i) => (
+                <ItemGenres key={i} topic={topic}/>
             ))}
             </div>
            </div>

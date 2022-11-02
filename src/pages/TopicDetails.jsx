@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 
 export function PlaylistCard({ playlist }) {
   return (
-    <Link to={`/the-loai/idTopic/${playlist?.key}`}>
+    <Link to={`/playlists/${playlist?.key}`}>
       <div className="playlist-card group">
         <div className="w-full rounded-xl overflow-hidden relative">
           <img

@@ -6,7 +6,6 @@ import "swiper/css/pagination";
 import {Link } from 'react-router-dom'
 import SongCard from "../../components/SongCard";
 function TopChartsHome({data, activeSong, isPlaying}) {
-    
   
   return (
     
@@ -16,12 +15,7 @@ function TopChartsHome({data, activeSong, isPlaying}) {
           <p className="heading text-[32px] font-bold text-sky-600">
             Những bản nhạc hàng đầu
           </p>
-          <Link
-            to="/top-charts"
-            className="uppercase text-sm font-semibold underline text-sky-600 "
-          >
-            View All
-          </Link>
+          
         </div>
         <Swiper
         slidesPerView={5}

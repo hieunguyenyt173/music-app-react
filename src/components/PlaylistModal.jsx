@@ -67,14 +67,14 @@ import { playPause, setActiveSong } from "../redux/features/playerSlice";
   )
 }
 function PlaylistModal() {
-  const { isPlaying, activeSong, currentSongs } = useSelector(
+  const { isPlaying, activeSong, currentSongs, isShowPlaylist } = useSelector(
     (state) => state.player
   );
-  const dispatch = useDispatch();
-   
-  
+
   return (
-    <div className="fixed top-0 right-0 bottom-20 z-50 bg-gradient-to-br bg-[#97b8eb] backdrop-blur-lg w-80 overflow-hidden">
+    <div className={`fixed top-0  bottom-20 z-50 bg-gradient-to-br bg-[#97b8eb] backdrop-blur-lg w-80 overflow-hidden duration-500
+      ${isShowPlaylist ? "right-0" : "-right-80"}
+    `}>
       <div className="border-b border-gray-400 flex justify-between items-center">
         <p className="uppercase p-3 text-sm font-semibold">
           Danh sách phát
@@ -87,7 +87,7 @@ function PlaylistModal() {
         </div>
         <p className="font-semibold text-sm mt-2">{activeSong?.title}</p>
         <div className="flex">
-          {activeSong?.artists.map((artist,i) => (
+          {[] || activeSong?.artists.map((artist,i) => (
               <p
               className="text-[13px] text-gray-500 hover:underline pb-3 pr-1"
               key={i}
@@ -108,6 +108,7 @@ function PlaylistModal() {
         <div className="overflow-y-auto h-[360px]">
           {currentSongs && currentSongs.map((song, i) => (
             <ItemPlaylist
+                key={i}
                 activeSong ={activeSong}
                 isPlaying ={isPlaying}
                 i = {i}

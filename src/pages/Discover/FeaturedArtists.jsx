@@ -13,7 +13,7 @@ function FeaturedArtists({artistTrending}) {
           Nghệ sỹ nổi bật
           </p>
           <Link
-            to="/artists"
+            to="/nghe-sy"
             className="uppercase text-sm font-semibold underline text-sky-600 "
           >
             Tất cả

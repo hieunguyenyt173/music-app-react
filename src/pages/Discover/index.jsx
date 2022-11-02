@@ -18,12 +18,12 @@ function Homepage() {
   const [dataHome, setDataHome] = useState();
   const [dataArtistList, setDataArtistList] = useState();
   const [dataPlaylist, setDataPlaylist] = useState();
-  // if(isFetching) return <Loader title="Loading ..."/>
-  // if(error) return <Error />
+
   const NhacCuaTui = require("nhaccuatui-api-full");
   useEffect(() => {
     NhacCuaTui.getHome().then((data) => setDataHome(data));
     NhacCuaTui.getTrendingArtists().then((data) => setDataArtistList(data));
+    NhacCuaTui.getTopicDetail("wrarbiszn").then((data) => setDataPlaylist(data?.topic?.playlist));
   }, []);
   const newRelease = dataHome?.newRelease?.song;
   const artistTrending = dataArtistList?.artistTrending;
@@ -31,7 +31,6 @@ function Homepage() {
   const banner = dataHome?.showcase;
   const topChart = dataHome?.song;
   const videoHot = dataHome?.video;
-  //  console.log(dataPlaylist)
   return (
     <div className="lg:container mx-auto px-12 mb-10">
       <Banner data={banner} />
@@ -48,13 +47,9 @@ function Homepage() {
         activeSong={activeSong}
       />
       <FeaturedArtists artistTrending={artistTrending} />
-      {/* <TopAlbums 
-    data={""}
-    /> */}
-      {/* <BestPlaylist 
-     isPlaying={isPlaying}
-     activeSong={activeSong}
-    /> */}
+      <TopAlbums 
+      data={dataPlaylist}
+      />
       <Top100Home data={top100Home} />
       <VideoHot data={videoHot} />
     </div>

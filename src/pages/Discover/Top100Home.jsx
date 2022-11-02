@@ -10,12 +10,7 @@ function Top100Home({data}) {
           <p className="heading text-[32px] font-bold text-sky-600">
            Top 100
           </p>
-          <Link
-            to="/top100"
-            className="uppercase text-sm font-semibold underline text-sky-600 "
-          >
-            Tất cả
-          </Link>
+         
         </div>
         <Swiper
         slidesPerView={6}

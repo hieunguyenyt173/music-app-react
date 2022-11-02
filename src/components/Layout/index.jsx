@@ -10,7 +10,7 @@ import PlaylistModal from "../PlaylistModal";
 import LyricModal from "../LyricModal";
 function Layout() {
   const { activeSong,isShowPlaylist, isShowLyric } = useSelector((state) => state.player);
-  console.log(isShowPlaylist)
+ 
   return (
     <>
       <Sidebar />
@@ -25,8 +25,8 @@ function Layout() {
               <MusicPlayer />
             </div>
           )}
-        {isShowPlaylist && <PlaylistModal/>}
-        {isShowLyric && <LyricModal/>}
+        <PlaylistModal/>
+        <LyricModal/>
         <Footer />
       </div>
     </>

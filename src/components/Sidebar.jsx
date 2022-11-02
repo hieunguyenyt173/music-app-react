@@ -34,18 +34,19 @@ function Sidebar() {
             <p>Thể loại</p>
           </div>
           </NavLink>
-          <NavLink to="top-artists">
+          <NavLink to="top-albums">
           <div className="nav-item w-full flex items-center py-[10px] px-6">
             <i className="ri-mic-line text-xl pr-3"></i>
-            <p>Top 100</p>
+            <p>Top Albums</p>
           </div>
-            <NavLink to="mv">
+            
+          </NavLink>
+          <NavLink to="mv">
             <div className="nav-item w-full flex items-center py-[10px] px-6">
               <i className="ri-history-line text-xl pr-3"></i>
               <p>MV</p>
             </div>
             </NavLink>
-          </NavLink>
         </div>
         <div>
           <p className="text-sm text-slate-400 px-6 py-[10px]">Cá nhân</p>

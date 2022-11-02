@@ -56,8 +56,8 @@ function SongCard({ song, isPlaying, activeSong, data, i}) {
               <Link
               to={
                 song?.artists
-                  ? `/artists/${song?.artist?.shortLink}`
-                  : `/top-artists`
+                  ? `/nghe-sy/${artist?.artistId}`
+                  : `/nghe-sy`
               }
               className="text-[13px] text-gray-500 hover:underline pb-3 pr-1"
               key={i}
