@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export const VideoItem = ({ video }) => {
   return (
     <div className="flex-col group ">
-      <Link to={`/videos/${video.key}`}>
+      
         <div className="relative rounded-xl overflow-hidden">
+        <Link to={`/videos/${video.key}`}>
           <img
             className="group-hover:scale-105 duration-200"
             src={video?.thumbnail}
             alt=""
           />
+          </Link>
           <div className="hidden w-12 h-12 rounded-full overflow-hidden bg-slate-100 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] group-hover:block hover:scale-125 duration-150">
             <i className="ri-play-fill icon-play text-2xl absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"></i>
           </div>
@@ -38,7 +39,7 @@ export const VideoItem = ({ video }) => {
             ))}
           </div>
         </div>
-      </Link>
+      
     </div>
   );
 };

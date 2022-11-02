@@ -7,7 +7,7 @@ import { playPause, setActiveSong } from "../redux/features/playerSlice";
 function PlaylistDetails() {
   const NhacCuaTui = require("nhaccuatui-api-full");
   const dispatch = useDispatch()
-  const {isPlaying, activeSong} = useSelector((state) => state.player)
+  const {isPlaying, activeSong, data} = useSelector((state) => state.player)
   const [playlist, setPlaylist] = useState();
   const { idPlaylist } = useParams();
   const [play,setPlay] = useState(false)
@@ -18,6 +18,8 @@ function PlaylistDetails() {
       setPlaylist(data?.playlist)  
     );
   }, [idPlaylist]);
+
+  console.log(listSong)
   
   const handlePlayPlaylist = () => {
     dispatch(playPause(true))
@@ -30,10 +32,12 @@ function PlaylistDetails() {
   }
   return (
     <div className="lg:container mx-auto px-12 mb-10">
-      <p className="heading text-[32px] font-bold text-sky-600 mb-3">Playlist</p>
+      <p className="heading text-[32px] font-bold text-sky-600 mb-3 ">Playlist</p>
       <div className="flex">
         <div className="w-[400px] h-[400px] text-center">
+          <div className={`${isPlaying ? "rounded-full overflow-hidden animate-[spin_6s_linear_infinite] " : ""}`}>
           <img src={playlist?.thumbnail} alt="" />
+          </div>
           <p className="my-2 ">{playlist?.title}</p>
           <p className="text-xs text-gray-500">
             Cập nhật : {playlist?.dateModify}
@@ -55,7 +59,7 @@ function PlaylistDetails() {
                 </Link>
               ))}
           </div>
-          {play ? <div className="bg-blue-600 text-white px-4 py-2 rounded-xl flex justify-center items-center cursor-pointer hover:bg-blue-700" onClick={handlePausePlaylist}>
+          {play && isPlaying? <div className="bg-blue-600 text-white px-4 py-2 rounded-xl flex justify-center items-center cursor-pointer hover:bg-blue-700" onClick={handlePausePlaylist}>
             <p>Dừng phát</p>
             <i className="ri-pause-line text-xl px-2"></i>
           </div> 

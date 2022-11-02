@@ -24,7 +24,7 @@ function NewSongs() {
 
   return (
     <div className='lg:container mx-auto px-12 mb-10'>
-       <p className="heading text-5xl font-bold text-sky-600">
+       <p className="heading text-5xl font-bold text-sky-600 pb-3">
            Nhạc mới
           </p>
         <div>

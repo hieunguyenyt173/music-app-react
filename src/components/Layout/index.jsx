@@ -14,9 +14,9 @@ function Layout() {
   return (
     <>
       <Sidebar />
-      <div className="ml-[200px] relative">
+      <div className="ml-[200px] relative main">
         <SearchBar />
-        <div className="-mt-16 relative z-30">
+        <div className="-mt-20 relative z-30">
           <Outlet />
           
         </div>

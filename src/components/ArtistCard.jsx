@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function ArtistCard({artist}) {
-  console.log(artist)
+ 
   return (
     <div className="artist-card group">
     <Link to={`/nghe-sy/${artist.shortLink}`}>

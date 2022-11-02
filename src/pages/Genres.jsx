@@ -18,7 +18,7 @@ function Genres() {
     useEffect(() => {
         NhacCuaTui.getTopics().then((data) => setListAllTopic(data));
     },[])
-    console.log(listAllTopic)
+   
     return (
         <div className='lg:container mx-auto px-12 mb-10'>
            <div>
@@ -26,8 +26,8 @@ function Genres() {
                 Đang hot
             </p>
             <div className='grid grid-cols-3 gap-4'> 
-            {listAllTopic && listAllTopic?.topic?.slice(8,14).map((topic) => (
-                <ItemGenres topic={topic}/>
+            {listAllTopic && listAllTopic?.topic?.slice(8,14).map((topic, i) => (
+                <ItemGenres key={i} topic={topic}/>
             ))}
             </div>
            </div>
@@ -36,8 +36,8 @@ function Genres() {
                 Quốc gia
             </p>
             <div className='grid grid-cols-3 gap-4'> 
-            {listAllTopic && listAllTopic?.topic?.slice(1,7).map((topic) => (
-                <ItemGenres topic={topic}/>
+            {listAllTopic && listAllTopic?.topic?.slice(1,7).map((topic, i) => (
+                <ItemGenres key={i} topic={topic}/>
             ))}
             </div>
            </div>
