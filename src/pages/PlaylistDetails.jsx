@@ -19,7 +19,7 @@ function PlaylistDetails() {
     );
   }, [idPlaylist]);
 
-  console.log(listSong)
+  
   
   const handlePlayPlaylist = () => {
     dispatch(playPause(true))

@@ -12,10 +12,10 @@ export const VideoItem = ({ video }) => {
             src={video?.thumbnail}
             alt=""
           />
-          </Link>
           <div className="hidden w-12 h-12 rounded-full overflow-hidden bg-slate-100 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] group-hover:block hover:scale-125 duration-150">
             <i className="ri-play-fill icon-play text-2xl absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"></i>
           </div>
+          </Link>
           <p className="absolute bottom-0 right-0 p-2 bg-slate-600 text-sm text-white bg-gray-400">
             {video?.duration}
           </p>
