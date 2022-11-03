@@ -1,23 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { setActiveSong, playPause } from "../redux/features/playerSlice";
+import { setActiveSong, playPause, likeList, setLikeIcon, setRecentlyList } from "../redux/features/playerSlice";
 import PlayPause from "./PlayPause";
 function SongCard({ song, isPlaying, activeSong, data, i}) {
-  
+  const {isLike, listFavorites} = useSelector((state) => state.player)
+  const [like,setLike] = useState(false)
 
   const dispatch = useDispatch();
   const handlePauseClick = () => {
     dispatch(playPause(false))
   };
   const handlePlayClick = () => {
-     
+       dispatch(setRecentlyList(song))
       dispatch(setActiveSong({song, data, i}))
       dispatch(playPause(true))
       
   };
-  
+  const handleLike = () => {
+    setLike((prev) => !prev)
+    dispatch(setLikeIcon(!like))
+    dispatch(likeList(song))
+  }
+
+ 
   return (
     <>
       <div className="song-card max-w-[240px group">
@@ -27,8 +34,9 @@ function SongCard({ song, isPlaying, activeSong, data, i}) {
             src={song.thumbnail}
             alt="song-img"
           />
-          <span className="like-icon hidden absolute top-4 left-4 hover:scale-125">
-            <i className="ri-heart-fill text-slate-100 text-2xl opacity-60"></i>
+          <span className="like-icon absolute top-4 left-4 hover:scale-125 hover:text-red-600">
+            
+            <i className={`ri-heart-fill  text-2xl  ${listFavorites.find(songfavor => songfavor === song) ? "text-red-600 block" : "text-slate-100 opacity-75"}`} onClick={handleLike}></i>
           </span>
           <div
             className={`play-button  hover:scale-110 w-12 h-12 rounded-full overflow-hidden bg-slate-100 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] ${isPlaying &&

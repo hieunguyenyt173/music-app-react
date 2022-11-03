@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { setActiveSong, playPause } from "../redux/features/playerSlice";
+import { setActiveSong, playPause, likeList } from "../redux/features/playerSlice";
 import PlayPause from "./PlayPause";
 import { getTime } from "./MusicPlayer/Seekbar";
 function SongItem({ activeSong, isPlaying, i, data, song }) {
-
+  const [like, setLike] = useState(false)
   const dispatch = useDispatch();
   
   const handlePause = () => {
@@ -17,6 +17,11 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
     dispatch(setActiveSong({ song, data, i }));
     dispatch(playPause(true));
   };
+
+  const handleLike = () => {
+    setLike((prev) => !prev)
+    dispatch(likeList(song))
+  }
   return (
     <div className="song-item flex items-center justify-between hover:bg-[#f5f7fa] px-3 py-2 rounded-r-lg">
       <div className="flex items-center">
@@ -65,7 +70,7 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
         </div>
       </div>
       <div className="flex items-center">
-        <i className="ri-heart-line heart-empty text-2xl"></i>
+      <i className={`  text-2xl  ${like ? "text-red-600 block ri-heart-fill" : "ri-heart-line"}`} onClick={handleLike}></i>
 
         <p className="text-sm px-3">{song.duration ? song.duration : ""}</p>
         <i className="ri-more-fill text-2xl"></i>

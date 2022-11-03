@@ -14,7 +14,7 @@ import HotTopic from "./HotTopic";
 import Banner from "./Banner";
 import VideoHot from "./VideoHot";
 function Homepage() {
-  const { activeSong, isPlaying } = useSelector((state) => state.player);
+  const { activeSong, isPlaying, listFavorites } = useSelector((state) => state.player);
   const [dataHome, setDataHome] = useState();
   const [dataArtistList, setDataArtistList] = useState();
   const [dataPlaylist, setDataPlaylist] = useState();
@@ -31,6 +31,7 @@ function Homepage() {
   const banner = dataHome?.showcase;
   const topChart = dataHome?.song;
   const videoHot = dataHome?.video;
+
   return (
     <div className="lg:container mx-auto px-12 mb-10">
       <Banner data={banner} />
