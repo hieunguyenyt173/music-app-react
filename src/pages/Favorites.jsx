@@ -71,7 +71,7 @@ export const SongItemFavorite = ({ activeSong, isPlaying, i, data, song }) => {
       </div>
     </div>
     <div className="flex items-center">
-       <i class="ri-heart-fill text-2xl text-red-600"></i>
+       <i className="ri-heart-fill text-2xl text-red-600"></i>
       <p className="text-sm px-3">{song.duration ? song.duration : ""}</p>
       <i className="ri-more-fill text-2xl"></i>
       <i className="ri-close-circle-line text-2xl text-red-600 ml-3 cursor-pointer" onClick={() => handleRemoveLike(i)}></i>
@@ -83,7 +83,7 @@ export const SongItemFavorite = ({ activeSong, isPlaying, i, data, song }) => {
 function Favorites() {
   const NhacCuaTui = require("nhaccuatui-api-full");
   const {isPlaying, activeSong} = useSelector((state) => state.player)
-  const listFavorites = JSON.parse(localStorage.getItem("listFavorite"))
+  const listFavorites = JSON.parse(localStorage.getItem("listFavorite")).songFavorites
   
   return (
     <div className='lg:container mx-auto px-12 mb-10'>

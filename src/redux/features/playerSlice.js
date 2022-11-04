@@ -10,9 +10,14 @@ const initialState = {
   isShowPlaylist: false,
   isShowLyric:false,
   recentlyList: JSON.parse(localStorage.getItem("recentlyList")) || [],
-  listFavorites : JSON.parse(localStorage.getItem("listFavorite")) || [],
+  listFavorites : JSON.parse(localStorage.getItem("listFavorite")) || {
+    songFavorites: [],
+    videoFavorites:[],
+    playlist: []
+  },
   isLike : false
 };
+
 const playerSlice = createSlice({
   name: 'player',
   initialState,
@@ -52,23 +57,33 @@ const playerSlice = createSlice({
       state.isShowLyric = action.payload
     },
     likeList: (state, action) => {
-      state.listFavorites.push(action.payload)
-      localStorage.setItem("listFavorite", JSON.stringify(state.listFavorites))
+      
+      state.listFavorites.songFavorites.push(action.payload.song)
+      // state.listFavorites.playlist.push(action.payload.playlist)
     },
     removeLike : (state, action) => {
-      state.listFavorites.splice(action.payload, 1)
+      state.listFavorites.songFavorites.splice(action.payload, 1)
       localStorage.setItem("listFavorite", JSON.stringify(state.listFavorites))
     },
     setLikeIcon: (state,action) => {
       state.isLike = action.payload;
     },
     setRecentlyList: (state, action) => {
-      state.recentlyList.push(action.payload)
+      
+        state.recentlyList.push(action.payload)
+      
+      
+      localStorage.setItem("recentlyList", JSON.stringify(state.recentlyList))
+    },
+    removeHistory: (state, action) => {
+
+      state.recentlyList.splice(action.payload, 1)
       localStorage.setItem("recentlyList", JSON.stringify(state.recentlyList))
     }
   },
 });
 
-export const { setActiveSong, nextSong, prevSong, playPause, selectGenreListId, showPlaylist, showLyric, likeList, removeLike, setLikeIcon , setRecentlyList} = playerSlice.actions;
+
+export const { setActiveSong, nextSong, prevSong, playPause, selectGenreListId, showPlaylist, showLyric, likeList, removeLike, setLikeIcon , setRecentlyList, removeHistory} = playerSlice.actions;
 
 export default playerSlice.reducer;

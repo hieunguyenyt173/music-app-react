@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import SongItem from '../components/SongItem'
-import { playPause, setActiveSong } from "../redux/features/playerSlice";
+import { likeList, playPause, setActiveSong } from "../redux/features/playerSlice";
 function PlaylistDetails() {
   const NhacCuaTui = require("nhaccuatui-api-full");
   const dispatch = useDispatch()
-  const {isPlaying, activeSong, data} = useSelector((state) => state.player)
+  const {isPlaying, activeSong, listFavorites} = useSelector((state) => state.player)
   const [playlist, setPlaylist] = useState();
   const { idPlaylist } = useParams();
   const [play,setPlay] = useState(false)
-  
+  const [like,setLike] = useState(false)
   const listSong = playlist?.songs
   useEffect(() => {
     NhacCuaTui.getPlaylistDetail(idPlaylist).then((data) =>
@@ -30,6 +30,12 @@ function PlaylistDetails() {
     dispatch(playPause(false))
     setPlay(false)
   }
+
+  const handleLike = () => {
+    setLike((prev) => !prev)
+    
+  }
+  console.log(playlist)
   return (
     <div className="lg:container mx-auto px-12 mb-10">
       <p className="heading text-[32px] font-bold text-sky-600 mb-3 ">Playlist</p>
@@ -69,7 +75,10 @@ function PlaylistDetails() {
             <i className="ri-play-line text-xl px-2"></i>
           </div>
           }
-         
+         <div className="flex my-3 justify-center">
+            <i className={` text-2xl   px-2 ${!listFavorites.playlist.find((item) => item === playlist) ? "text-slate-100 opacity-75 ri-heart-line" : "text-red-600 block ri-heart-fill"}`} onClick={handleLike}></i>
+            <i className=" ri-more-fill text-2xl px-2"></i>
+         </div>
         </div>
         <div className="ml-8 w-full">
           <div className="flex items-center mb-5">

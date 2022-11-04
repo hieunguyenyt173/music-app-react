@@ -2,11 +2,10 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PlayPause from '../components/PlayPause';
-import { playPause, removeLike, setActiveSong } from '../redux/features/playerSlice';
+import { playPause, removeHistory, setActiveSong } from '../redux/features/playerSlice';
 
 
 export const SongItemRecently = ({ activeSong, isPlaying, i, data, song }) => {
-  const [like, setLike] = useState(true)
   const dispatch = useDispatch();
   
   const handlePause = () => {
@@ -19,9 +18,8 @@ export const SongItemRecently = ({ activeSong, isPlaying, i, data, song }) => {
     dispatch(playPause(true));
   };
 
-   const handleRemoveLike = () => {
-    setLike((prev) => !prev)
-    dispatch(removeLike(i))
+   const handleRemove = (i) => {
+    dispatch(removeHistory(i))
    }
 
   return (
@@ -75,7 +73,7 @@ export const SongItemRecently = ({ activeSong, isPlaying, i, data, song }) => {
 
       <p className="text-sm px-3">{song.duration ? song.duration : ""}</p>
       <i className="ri-more-fill text-2xl"></i>
-      <i className="ri-close-circle-line text-red-600 text-2xl ml-3 cursor-pointer" onClick={() => handleRemoveLike(i)}></i>
+      <i className="ri-close-circle-line text-red-600 text-2xl ml-3 cursor-pointer" onClick={() => handleRemove(i)}></i>
     </div>
   </div>
   )
@@ -83,7 +81,6 @@ export const SongItemRecently = ({ activeSong, isPlaying, i, data, song }) => {
 
 function History() {
 
-  const NhacCuaTui = require("nhaccuatui-api-full");
   const {isPlaying, activeSong} = useSelector((state) => state.player)
   const  recentlyList = JSON.parse(localStorage.getItem("recentlyList"))
   return (

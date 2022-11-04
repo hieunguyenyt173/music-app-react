@@ -9,7 +9,7 @@ import MusicPlayer from "../MusicPlayer";
 import PlaylistModal from "../PlaylistModal";
 import LyricModal from "../LyricModal";
 function Layout() {
-  const { activeSong,isShowPlaylist, isShowLyric } = useSelector((state) => state.player);
+  const { activeSong } = useSelector((state) => state.player);
  
   return (
     <>
