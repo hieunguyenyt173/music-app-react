@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { setActiveSong, playPause, likeList } from "../redux/features/playerSlice";
+import { setActiveSong, playPause, likeList, setSongRecently, removeLike } from "../redux/features/playerSlice";
 import PlayPause from "./PlayPause";
 import { getTime } from "./MusicPlayer/Seekbar";
 function SongItem({ activeSong, isPlaying, i, data, song }) {
-  const [like, setLike] = useState(false)
+  const listFavorites = JSON.parse(localStorage.getItem("listFavorite"))
   const dispatch = useDispatch();
-  
+  const songRecently = JSON.parse(localStorage.getItem("songRecently"))
   const handlePause = () => {
     dispatch(playPause(false));
     
@@ -16,11 +16,31 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
    
     dispatch(setActiveSong({ song, data, i }));
     dispatch(playPause(true));
+    if(songRecently === null) {
+      dispatch(setSongRecently(song))
+      
+    }
+    else  if(!songRecently.find((item) => item.title === song.title)) {
+      dispatch(setSongRecently(song))
+    }  
+    else {
+      return;
+    }
   };
 
   const handleLike = () => {
-    setLike((prev) => !prev)
     dispatch(likeList(song))
+  }
+
+  const handleRemoveLike = () => {
+    if(listFavorites) {
+      listFavorites.length > 0 && listFavorites.map((songFavor,index) => {
+        if(songFavor.title === song.title) {
+          dispatch(removeLike(index))
+        }
+      })
+    }
+    
   }
   return (
     <div className="song-item flex items-center justify-between hover:bg-[#f5f7fa] px-3 py-2 rounded-r-lg">
@@ -70,7 +90,10 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
         </div>
       </div>
       <div className="flex items-center">
-      <i className={`  text-2xl  ${like ? "text-red-600 block ri-heart-fill" : "ri-heart-line"}`} onClick={handleLike}></i>
+      { !listFavorites || !listFavorites.find((item) => item.title === song.title) ? <i className="ri-heart-line  text-2xl" onClick={handleLike}></i>
+            :
+            <i className="ri-heart-fill  text-2xl  text-red-600 block" onClick={handleRemoveLike}></i>
+            }
 
         <p className="text-sm px-3">{song.duration ? song.duration : ""}</p>
         <i className="ri-more-fill text-2xl"></i>

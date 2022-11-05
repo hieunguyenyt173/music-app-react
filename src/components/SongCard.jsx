@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setActiveSong, playPause, likeList, setLikeIcon, setRecentlyList, removeLike } from "../redux/features/playerSlice";
+import { setActiveSong, playPause, likeList, removeLike, setSongRecently } from "../redux/features/playerSlice";
 import PlayPause from "./PlayPause";
 function SongCard({ song, isPlaying, activeSong, data, i}) {
-  const { listFavorites,recentlyList} = useSelector((state) => state.player)
-  const [like,setLike] = useState(false)
+  const songRecently = JSON.parse(localStorage.getItem("songRecently"))
+  const listFavorites = JSON.parse(localStorage.getItem("listFavorite"))
   const dispatch = useDispatch();
   const handlePauseClick = () => {
     dispatch(playPause(false))
@@ -14,28 +14,34 @@ function SongCard({ song, isPlaying, activeSong, data, i}) {
   const handlePlayClick = () => {
     dispatch(setActiveSong({song, data, i}))
     dispatch(playPause(true))
-    if(recentlyList.find((item) => item === song)) {
+    if(songRecently === null) {
+      dispatch(setSongRecently(song))
+      
+    }
+    else  if(!songRecently.find((item) => item.title === song.title)) {
+      dispatch(setSongRecently(song))
+    }  
+    else {
       return;
     }
-    else{
-      dispatch(setRecentlyList(song))
-    }
-       
+     
+     
       
   };
   const handleLike = () => {
-    setLike((prev) => !prev)
-      if(like) {
-        dispatch(likeList({song}))
-      }
-      // if(!like) {
-      // dispatch(removeLike(i))
-      // }
     
+    dispatch(likeList(song))
+  }
+  const handleRemoveLike = () => {
+    if(listFavorites) {
+      listFavorites.length > 0 && listFavorites.map((songFavor,index) => {
+        if(songFavor.title === song.title) {
+          dispatch(removeLike(index))
+        }
+      })
+    }
     
   }
-  console.log(listFavorites.songFavorites)
-  console.log(like)
   return (
     <>
       <div className="song-card max-w-[240px group">
@@ -46,8 +52,12 @@ function SongCard({ song, isPlaying, activeSong, data, i}) {
             alt="song-img"
           />
           <span className="like-icon absolute top-4 left-4 hover:scale-125 hover:text-red-600">
+            { !listFavorites || !listFavorites.find((item) => item.title === song.title) ? <i className="ri-heart-fill  text-2xl   text-slate-100 opacity-75" onClick={handleLike}></i>
+            :
+            <i className="ri-heart-fill  text-2xl  text-red-600 block" onClick={handleRemoveLike}></i>
+            }
             
-            <i className={`ri-heart-fill  text-2xl  ${!like && !listFavorites.songFavorites.find((item) => item.title === song.title) ? "text-slate-100 opacity-75" : "text-red-600 block"}`} onClick={handleLike}></i>
+            
           </span>
           <div
             className={`play-button  hover:scale-110 w-12 h-12 rounded-full overflow-hidden bg-slate-100 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] ${isPlaying &&

@@ -9,13 +9,16 @@ const initialState = {
   activeSong: {},
   isShowPlaylist: false,
   isShowLyric:false,
-  recentlyList: JSON.parse(localStorage.getItem("recentlyList")) || [],
-  listFavorites : JSON.parse(localStorage.getItem("listFavorite")) || {
-    songFavorites: [],
-    videoFavorites:[],
-    playlist: []
-  },
-  isLike : false
+  listFavorites :  {
+    songFavorites: JSON.parse(localStorage.getItem("listFavorite")) || [],
+    videoFavorites: JSON.parse(localStorage.getItem("listVideoLike")) || [],
+    playlist: JSON.parse(localStorage.getItem("listPlaylistLike")) || []
+  }  ,
+  recentlyList : {
+    songRecently: JSON.parse(localStorage.getItem("songRecently")) || [],
+    videoRecently: JSON.parse(localStorage.getItem("videoRecently")) || [],
+    playlistRecently: JSON.parse(localStorage.getItem("playlistRecently")) || [],
+  }
 };
 
 const playerSlice = createSlice({
@@ -58,32 +61,56 @@ const playerSlice = createSlice({
     },
     likeList: (state, action) => {
       
-      state.listFavorites.songFavorites.push(action.payload.song)
-      // state.listFavorites.playlist.push(action.payload.playlist)
+      state.listFavorites.songFavorites.push(action.payload)
+      localStorage.setItem("listFavorite", JSON.stringify(state.listFavorites.songFavorites))
     },
     removeLike : (state, action) => {
       state.listFavorites.songFavorites.splice(action.payload, 1)
-      localStorage.setItem("listFavorite", JSON.stringify(state.listFavorites))
+      localStorage.setItem("listFavorite", JSON.stringify(state.listFavorites.songFavorites))
     },
-    setLikeIcon: (state,action) => {
-      state.isLike = action.payload;
+    setLikePlaylist: (state, action) => {
+      state.listFavorites.playlist.push(action.payload)
+      localStorage.setItem("listPlaylistLike", JSON.stringify(state.listFavorites.playlist))
     },
-    setRecentlyList: (state, action) => {
-      
-        state.recentlyList.push(action.payload)
-      
-      
-      localStorage.setItem("recentlyList", JSON.stringify(state.recentlyList))
+    removeLikePlaylist : (state, action) => {
+      state.listFavorites.playlist.splice(action.payload, 1)
+      localStorage.setItem("listPlaylistLike", JSON.stringify(state.listFavorites.playlist))
     },
-    removeHistory: (state, action) => {
+    setLikeVideo: (state,action) => {
+      state.listFavorites.videoFavorites.push(action.payload)
+      localStorage.setItem("listVideoLike", JSON.stringify(state.listFavorites.videoFavorites))
+    },
+    removeLikeVideo: (state, action) => {
+      state.listFavorites.videoFavorites.splice(action.payload, 1)
+      localStorage.setItem("listVideoLike", JSON.stringify(state.listFavorites.videoFavorites))
+    },
 
-      state.recentlyList.splice(action.payload, 1)
-      localStorage.setItem("recentlyList", JSON.stringify(state.recentlyList))
-    }
+    setSongRecently: (state, action) => {
+      
+        state.recentlyList.songRecently.push(action.payload)
+      localStorage.setItem("songRecently", JSON.stringify(state.recentlyList.songRecently))
+    },
+    removeSongRecently: (state, action) => {
+
+      state.recentlyList.songRecently.splice(action.payload, 1)
+      localStorage.setItem("songRecently", JSON.stringify(state.recentlyList.songRecently))
+    },
+    setvideoRecently : (state, action ) => {
+      
+      state.recentlyList.videoRecently.push(action.payload)
+      localStorage.setItem("videoRecently", JSON.stringify(state.recentlyList.videoRecently))
+    },
+   
+    setplaylistRecently : (state, action ) => {
+      state.recentlyList.playlistRecently.push(action.payload)
+      localStorage.setItem("playlistRecently", JSON.stringify(state.recentlyList.playlistRecently))
+    },
+   
   },
 });
 
 
-export const { setActiveSong, nextSong, prevSong, playPause, selectGenreListId, showPlaylist, showLyric, likeList, removeLike, setLikeIcon , setRecentlyList, removeHistory} = playerSlice.actions;
+export const { setActiveSong, nextSong, prevSong, playPause, selectGenreListId, showPlaylist, showLyric, likeList, removeLike, setLikeIcon , setRecentlyList, removeHistory,setLikePlaylist,
+  removeLikePlaylist, setLikeVideo,removeLikeVideo , setSongRecently, removeSongRecently, setvideoRecently, setplaylistRecently} = playerSlice.actions;
 
 export default playerSlice.reducer;

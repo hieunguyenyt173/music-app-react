@@ -104,7 +104,6 @@ function PlaylistModal() {
       Playlist
       </div>
       <div className="p-3 ">
-       
         <div className="overflow-y-auto h-[360px]">
           {currentSongs && currentSongs.map((song, i) => (
             <ItemPlaylist

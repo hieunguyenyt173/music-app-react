@@ -1,7 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { setvideoRecently } from "../redux/features/playerSlice";
 
 export const VideoItem = ({ video }) => {
+  const dispatch = useDispatch()
+  const videoRecently = JSON.parse(localStorage.getItem("videoRecently"))
+  const handlePlayVideo = () => {
+    if(videoRecently === null) {
+      dispatch(setvideoRecently(video))
+      
+    }
+    else  if(!videoRecently.find((item) => item.title === video.title)) {
+      dispatch(setvideoRecently(video))
+    }  
+    else {
+      return;
+    }
+  }
+  
   return (
     <div className="flex-col group ">
       
@@ -13,7 +30,7 @@ export const VideoItem = ({ video }) => {
             alt=""
           />
           <div className="hidden w-12 h-12 rounded-full overflow-hidden bg-slate-100 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] group-hover:block hover:scale-125 duration-150">
-            <i className="ri-play-fill icon-play text-2xl absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"></i>
+            <i className="ri-play-fill icon-play text-2xl absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]" onClick={handlePlayVideo}></i>
           </div>
           </Link>
           <p className="absolute bottom-0 right-0 p-2 bg-slate-600 text-sm text-white bg-gray-400">

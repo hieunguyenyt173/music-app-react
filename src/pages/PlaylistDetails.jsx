@@ -3,16 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import SongItem from '../components/SongItem'
-import { likeList, playPause, setActiveSong } from "../redux/features/playerSlice";
+import { likeList, playPause, removeLikePlaylist, setActiveSong, setLikePlaylist, setplaylistRecently } from "../redux/features/playerSlice";
 function PlaylistDetails() {
   const NhacCuaTui = require("nhaccuatui-api-full");
   const dispatch = useDispatch()
-  const {isPlaying, activeSong, listFavorites} = useSelector((state) => state.player)
+  const {isPlaying, activeSong} = useSelector((state) => state.player)
   const [playlist, setPlaylist] = useState();
   const { idPlaylist } = useParams();
   const [play,setPlay] = useState(false)
-  const [like,setLike] = useState(false)
   const listSong = playlist?.songs
+  const listPlaylistLike = JSON.parse(localStorage.getItem("listPlaylistLike"))
+  const  playlistRecently = JSON.parse(localStorage.getItem("songRecently"))
   useEffect(() => {
     NhacCuaTui.getPlaylistDetail(idPlaylist).then((data) =>
       setPlaylist(data?.playlist)  
@@ -21,10 +22,21 @@ function PlaylistDetails() {
 
   
   
+
   const handlePlayPlaylist = () => {
     dispatch(playPause(true))
     setPlay((prev) => !prev)
     dispatch(setActiveSong({song : listSong[0], i : 0, data: listSong}))
+    if(playlistRecently === null) {
+      dispatch(setplaylistRecently(playlist))
+      
+    }
+    else  if(!playlistRecently.find((item) => item.title === playlist.title)) {
+      dispatch(setplaylistRecently(playlist))
+    }  
+    else {
+      return;
+    }
   }
   const handlePausePlaylist = () => {
     dispatch(playPause(false))
@@ -32,10 +44,19 @@ function PlaylistDetails() {
   }
 
   const handleLike = () => {
-    setLike((prev) => !prev)
+    dispatch(setLikePlaylist(playlist))
     
   }
-  console.log(playlist)
+  const handleRemoveLike = () => {
+    if(listPlaylistLike) {
+      listPlaylistLike.length > 0 && listPlaylistLike.map((playlistF,index) => {
+        if(playlistF?.title === playlist?.title) {
+          dispatch(removeLikePlaylist(index))
+        }
+      })
+    }
+  }
+  console.log(listPlaylistLike)
   return (
     <div className="lg:container mx-auto px-12 mb-10">
       <p className="heading text-[32px] font-bold text-sky-600 mb-3 ">Playlist</p>
@@ -76,7 +97,11 @@ function PlaylistDetails() {
           </div>
           }
          <div className="flex my-3 justify-center">
-            <i className={` text-2xl   px-2 ${!listFavorites.playlist.find((item) => item === playlist) ? "text-slate-100 opacity-75 ri-heart-line" : "text-red-600 block ri-heart-fill"}`} onClick={handleLike}></i>
+         { !listPlaylistLike || !listPlaylistLike.find((item) => item?.title === playlist?.title) ? <i className="ri-heart-line  text-2xl " onClick={handleLike}></i>
+            :
+            <i className="ri-heart-fill  text-2xl  text-red-600 block" onClick={handleRemoveLike}></i>
+          }
+            
             <i className=" ri-more-fill text-2xl px-2"></i>
          </div>
         </div>

@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PlayPause from '../components/PlayPause';
 import { playPause, removeLike, setActiveSong } from '../redux/features/playerSlice';
+import { TopAlbumItem } from './TopAlbums';
+import { VideoItem } from './TopMV';
 
 export const SongItemFavorite = ({ activeSong, isPlaying, i, data, song }) => {
-  const [like, setLike] = useState(true)
   const dispatch = useDispatch();
-  
+  const listFavorites = JSON.parse(localStorage.getItem("listFavorite"))
   const handlePause = () => {
     dispatch(playPause(false));
     
@@ -19,8 +20,13 @@ export const SongItemFavorite = ({ activeSong, isPlaying, i, data, song }) => {
   };
 
    const handleRemoveLike = () => {
-    setLike((prev) => !prev)
-    dispatch(removeLike(i))
+    if(listFavorites) {
+      listFavorites.length > 0 && listFavorites.map((songFavor,index) => {
+        if(songFavor.title === song.title) {
+          dispatch(removeLike(index))
+        }
+      })
+    }
    }
   
   return (
@@ -81,10 +87,10 @@ export const SongItemFavorite = ({ activeSong, isPlaying, i, data, song }) => {
 }
 
 function Favorites() {
-  const NhacCuaTui = require("nhaccuatui-api-full");
   const {isPlaying, activeSong} = useSelector((state) => state.player)
-  const listFavorites = JSON.parse(localStorage.getItem("listFavorite")).songFavorites
-  
+  const listFavorites = JSON.parse(localStorage.getItem("listFavorite"))
+  const listPlaylistLike = JSON.parse(localStorage.getItem("listPlaylistLike"))
+  const listVideoLike = JSON.parse(localStorage.getItem("listVideoLike"))
   return (
     <div className='lg:container mx-auto px-12 mb-10'>
        <p className="heading text-[32px] font-bold text-sky-600 pb-3">
@@ -93,7 +99,9 @@ function Favorites() {
           
           <div>
         {
-        listFavorites ? 
+        !listFavorites || listFavorites.length === 0 ? 
+        <p>Chưa có bài hát yêu thích</p> 
+        :
         listFavorites.map((song, i) => (
           <SongItemFavorite 
           key={i}
@@ -104,8 +112,8 @@ function Favorites() {
           i ={i}
           />
         ))  
-        :
-        <p>Chưa có bài hát yêu thích</p> 
+        
+
         }
           </div>
           
@@ -114,17 +122,35 @@ function Favorites() {
         <p className="heading text-[32px] font-bold text-sky-600 pb-3">
            Video yêu thích
           </p>
-          <div>
-            <p>Chưa có video yêu thích</p>
-          </div>
+          <div className="grid grid-cols-3 gap-5">
+              {
+              !listVideoLike || listVideoLike.length === 0 ? 
+              <p>Chưa có album yêu thích</p> 
+              :
+            
+              listVideoLike.map((video, i) => (
+                  <VideoItem key={i} i={i} video={video} />
+                ))}
+            </div>
         </div>
         <div className='mt-7'>
         <p className="heading text-[32px] font-bold text-sky-600 pb-3">
            Album yêu thích
           </p>
-          <div>
-            <p>Chưa có album yêu thích</p>
+          <div className="flex justify-center">
+          <div className="">
+            <div className="grid grid-cols-5 gap-5">
+              {
+              !listPlaylistLike || listPlaylistLike.length === 0 ? 
+              <p>Chưa có album yêu thích</p> 
+              :
+            
+              listPlaylistLike.map((playlist, i) => (
+                  <TopAlbumItem key={i} i={i} playlist={playlist} />
+                ))}
+            </div>
           </div>
+        </div>
         </div>
     </div>
   )

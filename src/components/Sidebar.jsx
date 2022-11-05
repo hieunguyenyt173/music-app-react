@@ -57,7 +57,7 @@ function Sidebar() {
               <p>Yêu thích</p>
             </div>
             </NavLink>
-            <NavLink to="playlist">
+            <NavLink to="playlist-user">
             <div className="nav-item w-full flex items-center py-[10px] px-6">
               <i className="ri-play-list-line text-xl pr-3"></i>
               <p>Playlist</p>

@@ -14,6 +14,7 @@ import TopMV from "./pages/TopMV";
 import PlaylistDetails from "./pages/PlaylistDetails";
 import TopAlbums from "./pages/TopAlbums";
 import MvDetails from "./pages/MvDetails";
+import PlaylistUser from "./pages/PlaylistUser";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/history" element={<History />} />
           <Route path="/nghe-sy/:artistId" element={<ArtistDetails />} />
           <Route path="/songs/songId" element={<SongDetails />} />
+          <Route path="/playlist-user" element={<PlaylistUser />} />
           
         </Route>
       </Routes>

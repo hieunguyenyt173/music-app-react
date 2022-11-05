@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PlayPause from '../components/PlayPause';
-import { playPause, removeHistory, setActiveSong } from '../redux/features/playerSlice';
+import { playPause, removeHistory, removeSongRecently, setActiveSong } from '../redux/features/playerSlice';
+import { TopAlbumItem } from './TopAlbums';
+import { VideoItem } from './TopMV';
 
 
 export const SongItemRecently = ({ activeSong, isPlaying, i, data, song }) => {
   const dispatch = useDispatch();
-  
+  const  songRecently = JSON.parse(localStorage.getItem("songRecently"))
   const handlePause = () => {
     dispatch(playPause(false));
     
@@ -19,7 +21,13 @@ export const SongItemRecently = ({ activeSong, isPlaying, i, data, song }) => {
   };
 
    const handleRemove = (i) => {
-    dispatch(removeHistory(i))
+    if(songRecently) {
+      songRecently.length > 0 && songRecently.map((songFavor,index) => {
+        if(songFavor.title === song.title) {
+          dispatch(removeSongRecently(index))
+        }
+      })
+    }
    }
 
   return (
@@ -82,7 +90,9 @@ export const SongItemRecently = ({ activeSong, isPlaying, i, data, song }) => {
 function History() {
 
   const {isPlaying, activeSong} = useSelector((state) => state.player)
-  const  recentlyList = JSON.parse(localStorage.getItem("recentlyList"))
+  const  songRecently = JSON.parse(localStorage.getItem("songRecently"))
+  const  videoRecently = JSON.parse(localStorage.getItem("videoRecently"))
+  const  playlistRecently = JSON.parse(localStorage.getItem("playlistRecently"))
   return (
     <div className='lg:container mx-auto px-12 mb-10'>
        <p className="heading text-[32px] font-bold text-sky-600 pb-3">
@@ -91,12 +101,12 @@ function History() {
           
           <div>
         {
-        recentlyList ? 
-        recentlyList.map((song, i) => (
+        songRecently ? 
+        songRecently.map((song, i) => (
           <SongItemRecently
           key={i}
           song={song}
-          data={recentlyList}
+          data={songRecently}
           isPlaying={isPlaying}
           activeSong={activeSong}
           i ={i}
@@ -112,17 +122,31 @@ function History() {
         <p className="heading text-[32px] font-bold text-sky-600 pb-3">
            Video gần đây
           </p>
-          <div>
-            <p>Chưa có video yêu thích</p>
-          </div>
+          <div className="grid grid-cols-3 gap-5">
+              {
+              !videoRecently || videoRecently.length === 0 ? 
+              <p>Chưa có album yêu thích</p> 
+              :
+            
+              videoRecently.map((video, i) => (
+                  <VideoItem key={i} i={i} video={video} />
+                ))}
+            </div>
         </div>
         <div className='mt-7'>
         <p className="heading text-[32px] font-bold text-sky-600 pb-3">
            Album gần đây
           </p>
-          <div>
-            <p>Chưa có album yêu thích</p>
-          </div>
+          <div className="grid grid-cols-5 gap-5">
+              {
+              !playlistRecently || playlistRecently.length === 0 ? 
+              <p>Chưa có album yêu thích</p> 
+              :
+            
+              playlistRecently.map((playlist, i) => (
+                  <TopAlbumItem key={i} i={i} playlist={playlist} />
+                ))}
+            </div>
         </div>
     </div>
   )
