@@ -18,7 +18,9 @@ const initialState = {
     songRecently: JSON.parse(localStorage.getItem("songRecently")) || [],
     videoRecently: JSON.parse(localStorage.getItem("videoRecently")) || [],
     playlistRecently: JSON.parse(localStorage.getItem("playlistRecently")) || [],
-  }
+  },
+  playlistUser : JSON.parse(localStorage.getItem("playlistUser")) || [],
+
 };
 
 const playerSlice = createSlice({
@@ -105,12 +107,25 @@ const playerSlice = createSlice({
       state.recentlyList.playlistRecently.push(action.payload)
       localStorage.setItem("playlistRecently", JSON.stringify(state.recentlyList.playlistRecently))
     },
-   
+    addPlaylistUser : (state, action) => {
+      state.playlistUser.push(action.payload)
+      localStorage.setItem("playlistUser", JSON.stringify(state.playlistUser))
+    },
+    addSongUser : (state, action) => {
+     
+      state.playlistUser.map((playlistUser) => {
+        if(playlistUser.title === action.payload.playlist.title) {
+          playlistUser.songs.push(action.payload.song)
+          
+        }
+      })
+      localStorage.setItem("playlistUser", JSON.stringify(state.playlistUser))
+    }
   },
 });
 
 
 export const { setActiveSong, nextSong, prevSong, playPause, selectGenreListId, showPlaylist, showLyric, likeList, removeLike, setLikeIcon , setRecentlyList, removeHistory,setLikePlaylist,
-  removeLikePlaylist, setLikeVideo,removeLikeVideo , setSongRecently, removeSongRecently, setvideoRecently, setplaylistRecently} = playerSlice.actions;
+  removeLikePlaylist, setLikeVideo,removeLikeVideo , setSongRecently, removeSongRecently, setvideoRecently, setplaylistRecently, addPlaylistUser, addSongUser} = playerSlice.actions;
 
 export default playerSlice.reducer;
