@@ -18,7 +18,6 @@ function Homepage() {
   const [dataHome, setDataHome] = useState();
   const [dataArtistList, setDataArtistList] = useState();
   const [dataPlaylist, setDataPlaylist] = useState();
-
   const NhacCuaTui = require("nhaccuatui-api-full");
   useEffect(() => {
     NhacCuaTui.getHome().then((data) => setDataHome(data));
