@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom'
-import { playPause } from '../redux/features/playerSlice';
+import { playPause, removeLikeVideo, setLikeVideo } from '../redux/features/playerSlice';
 
 
 
@@ -21,6 +21,7 @@ function MvDetails() {
     const [video, setVideo] = useState()
     const dispatch = useDispatch();
     const {isPlaying} = useSelector((state) => state.player)
+    const listVideoLike = JSON.parse(localStorage.getItem("listVideoLike"))
     if(isPlaying) {
         dispatch(playPause(false))
     }
@@ -31,13 +32,29 @@ function MvDetails() {
         ref.current.play();
        }
     },[videoId])
+
+    const handleLike = () => {
+    
+      dispatch(setLikeVideo(video))
+    }
+    const handleRemoveLike = () => {
+      if(listVideoLike) {
+        listVideoLike.length > 0 && listVideoLike.map((songFavor,index) => {
+          if(songFavor.title === video.title) {
+            dispatch(removeLikeVideo(index))
+          }
+        })
+      }
+      
+    }
   return (
     <div className='flex container mx-auto px-12'>
        <div className="flex-col w-full">
         <div className='flex items-center'>
             <video 
-            className='w-full bg-black'
+            className='w-full bg-black min-h-[600px]'
             controls
+            
             ref={ref}
             src={video?.streamUrls[0]?.streamUrl}>
             
@@ -49,7 +66,7 @@ function MvDetails() {
             </div>
             <div className="flex-col mx-3">
             <p className='font-semibold text-md'>{video?.title}</p>
-            <div className="">
+            <div className="flex">
           {video && video?.artists.map((artist,i) => (
               <Link
               to={
@@ -65,8 +82,18 @@ function MvDetails() {
             </Link>
             
           ))}
+         
           </div>
+         
             </div>
+            <div className="flex my-3 mx-5">
+         { !listVideoLike || !listVideoLike.find((item) => item?.title === video?.title) ? <i className="ri-heart-line  text-2xl " onClick={handleLike}></i>
+            :
+            <i className="ri-heart-fill  text-2xl  text-red-600 block" onClick={handleRemoveLike}></i>
+          }
+            
+            <i className=" ri-more-fill text-2xl px-2"></i>
+         </div>
         </div>
        </div>
        <div className='w-[400px] px-5'>

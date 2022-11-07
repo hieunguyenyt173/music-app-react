@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+
 import { Link } from "react-router-dom";
 
+
 export const TopAlbumItem = ({ playlist }) => {
+ 
   return (
     <Link to={`/playlists/${playlist?.key}`}>
       <div className="playlist-card group">

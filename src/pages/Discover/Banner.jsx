@@ -18,7 +18,9 @@ function Banner({data}) {
      {data && data.map((img, i) => (
         <SwiperSlide key={i}>
         <Link to={`/playlists/${img.key}`}>
-        <img src={img.imageUrl} alt="" />
+        <div className=''>
+        <img className='max-h-[500px] w-full object-cover' src={img.imageUrl} alt="" />
+        </div>
         </Link>
         </SwiperSlide>
      ))}
