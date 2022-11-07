@@ -12,9 +12,9 @@ function ArtistDetails() {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const [type, setType] = useState(0);
   const tabs = [
-    { title: "BÀI HÁT", path: "song" },
-    { title: "PLAYLIST", path: "playlist" },
-    { title: "MV", path: "mv" },
+    { title: "BÀI HÁT"},
+    { title: "PLAYLIST"},
+    { title: "MV"},
   ];
   useEffect(() => {
     getArtistDetail(artistId).then((data) => setData(data));

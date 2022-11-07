@@ -137,7 +137,7 @@ function Favorites() {
         <p className="heading text-[32px] font-bold text-sky-600 pb-3">
            Album yêu thích
           </p>
-          <div className="flex justify-center">
+          <div className="flex">
           <div className="">
             <div className="grid grid-cols-5 gap-5">
               {

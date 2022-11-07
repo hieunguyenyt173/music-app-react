@@ -43,7 +43,7 @@ function Sidebar() {
           </NavLink>
           <NavLink to="mv">
             <div className="nav-item w-full flex items-center py-[10px] px-6">
-              <i className="ri-history-line text-xl pr-3"></i>
+              <i className="ri-movie-line text-xl pr-3"></i>
               <p>MV</p>
             </div>
             </NavLink>
