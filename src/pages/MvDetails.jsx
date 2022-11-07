@@ -48,7 +48,8 @@ function MvDetails() {
       
     }
   return (
-    <div className='flex container mx-auto px-12'>
+    <div className='container mx-auto px-12'>
+      <p className="heading text-[32px] font-bold text-sky-600 mb-3 ">MV</p>
        <div className="flex-col w-full">
         <div className='flex items-center'>
             <video 
@@ -96,8 +97,8 @@ function MvDetails() {
          </div>
         </div>
        </div>
-       <div className='w-[400px] px-5'>
-        <p  className='border-b-[0.5px] border-gray-500 pb-2' >
+       <div className='px-5'>
+        <p  className='border-b-[0.5px] border-gray-500 pb-2 heading text-[32px] font-bold text-sky-600 mb-3' >
             Danh sách phát
         </p>
         <div>
