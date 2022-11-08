@@ -1,17 +1,18 @@
 import React from 'react'
 import {NavLink, Link} from 'react-router-dom'
+import {logomusic} from '../assets/index'
 function Sidebar() {
   return (
     <>
      <div className="min-w-[200px] bg-[#f5f7fa] h-screen fixed top-0 left-0 z-1000">
-        <div className="flex justify-between items-center px-4 pt-6 pb-12">
+        <div className="flex justify-between items-center px-4 pt-6 pb-12 max-w-[200px]">
           <Link to="/">
           <img
-            src="https://www.kri8thm.in/html/listen/theme/demo/images/logos/logo.svg"
+            src={logomusic}
             alt="logo"
           />
           </Link>
-          <div className="menubar">
+          <div className="menubar ml-2">
             <i className="ri-menu-3-line text-2xl"></i>
           </div>
         </div>

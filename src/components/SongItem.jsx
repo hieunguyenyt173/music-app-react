@@ -106,7 +106,7 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
             }
 
         <p className="text-sm px-3">{song.duration ? song.duration : ""}</p>
-        <i className="ri-more-fill text-2xl cursor-pointer" onClick={handleAddToPlaylistUser}></i>
+        <i className="ri-menu-add-line text-2xl cursor-pointer" onClick={handleAddToPlaylistUser}></i>
         {isShow && 
         <div className="absolute bg-[#f5f7fa] top-0 right-8 w-[120px] z-50 border-[0.5px]">
         <p className="text-center text-xs font-medium py-1 border-b text-red-500">Playlist</p>

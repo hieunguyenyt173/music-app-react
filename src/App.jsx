@@ -23,7 +23,7 @@ import Register from "./components/Register";
 function App() {
   
   return (
-    <div className="relative">
+    <div className="relative min-h-screen">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Discover />} />
