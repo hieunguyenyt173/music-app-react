@@ -120,12 +120,16 @@ const playerSlice = createSlice({
         }
       })
       localStorage.setItem("playlistUser", JSON.stringify(state.playlistUser))
+    },
+    removeUserPlaylist : (state, action) => {
+      state.playlistUser.splice(action.payload.i,1)
+      localStorage.setItem("playlistUser", JSON.stringify(state.playlistUser))
     }
   },
 });
 
 
 export const { setActiveSong, nextSong, prevSong, playPause, selectGenreListId, showPlaylist, showLyric, likeList, removeLike, setLikeIcon , setRecentlyList, removeHistory,setLikePlaylist,
-  removeLikePlaylist, setLikeVideo,removeLikeVideo , setSongRecently, removeSongRecently, setvideoRecently, setplaylistRecently, addPlaylistUser, addSongUser} = playerSlice.actions;
+  removeLikePlaylist, setLikeVideo,removeLikeVideo , setSongRecently, removeSongRecently, setvideoRecently, setplaylistRecently, addPlaylistUser, addSongUser, removeUserPlaylist} = playerSlice.actions;
 
 export default playerSlice.reducer;

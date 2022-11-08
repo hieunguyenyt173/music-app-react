@@ -14,13 +14,12 @@ function PlaylistUserDetails() {
   const listPlaylistLike = JSON.parse(localStorage.getItem("listPlaylistLike"))
   const  playlistRecently = JSON.parse(localStorage.getItem("songRecently"))
   const  playlistUser = JSON.parse(localStorage.getItem("playlistUser"))
-  
-  const  playlist =  playlistUser.filter((playlist) => playlist?.key === +idUser)
-  const listSong = playlist[0].songs
-  console.log(playlist[0])
+  const  playlist =  playlistUser.find((playlist) => playlist?.key === +idUser)
+  const listSong = playlist?.songs
+  console.log(playlist)
   console.log(playlistUser)
   console.log(listSong)
-  console.log(playlist[0].thumbnailB)
+  console.log(playlist.thumbnailB)
   const handlePlayPlaylist = () => {
     if(listSong.length > 0) {
       dispatch(playPause(true))
@@ -60,16 +59,14 @@ function PlaylistUserDetails() {
       })
     }
   }
-  const handleRemoveUserPlaylist = () => {
-
-  }
+  
   return (
     <div className="lg:container mx-auto px-12 mb-10">
       <p className="heading text-[32px] font-bold text-sky-600 mb-3 ">Playlist</p>
       <div className="flex">
         <div className="w-[400px] h-[400px] text-center">
           <div className={`${isPlaying ? "rounded-full overflow-hidden animate-[spin_6s_linear_infinite] " : ""}`}>
-          <img src={listSong.length > 0 ? listSong[0]?.thumbnail : playlist[0].thumbnailB} alt="" />
+          <img src={listSong.length > 0 ? listSong[0]?.thumbnail : playlist.thumbnailB} alt="" />
           </div>
           <p className="my-5 ">{playlist[0]?.title}</p>
           
@@ -89,7 +86,7 @@ function PlaylistUserDetails() {
             <i className="ri-heart-fill  text-2xl  text-red-600 block cursor-pointer" onClick={handleRemoveLike}></i>
           }
             
-            <i className=" ri-delete-bin-line text-2xl px-2 cursor-pointer" onClick={handleRemoveUserPlaylist}></i>
+            
          </div>
         </div>
         <div className="ml-8 w-full">

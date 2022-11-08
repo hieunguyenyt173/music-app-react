@@ -12,7 +12,7 @@ function LyricModal() {
         getLyric(activeSong.key).then((data) => setLyric(data));
       },[activeSong.key])
       const lyricTitle = lyric?.lyric?.lyric
-      console.log(lyricTitle?.replace("<br />" , " <br/> "))
+      
       return (
         <div className={`fixed top-0  bottom-20 z-50 bg-gradient-to-br bg-[#97b8eb] backdrop-blur-lg w-[500px] overflow-hidden duration-500
           ${isShowLyric ? "right-0" : " right-[-500px]"}
@@ -50,7 +50,7 @@ function LyricModal() {
           <div className="p-3 ">
            
             <div className="overflow-y-auto h-[360px] px-5">
-             <p>{!lyricTitle ?  "Không có lời bài hát" : lyricTitle}</p>
+             <p>{!lyricTitle ?  "Không có lời bài hát" : lyricTitle.replaceAll("<br />", "\r")}</p>
             </div>
           </div>
         </div>

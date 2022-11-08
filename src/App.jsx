@@ -1,5 +1,5 @@
 import "./App.css";
-import { Link, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Discover from "./pages/Discover";
 import NewSongs from "./pages/NewSongs";
@@ -16,6 +16,8 @@ import TopAlbums from "./pages/TopAlbums";
 import MvDetails from "./pages/MvDetails";
 import PlaylistUser from "./pages/PlaylistUser";
 import PlaylistUserDetails from "./pages/PlaylistUserDetails";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 
 function App() {
@@ -38,7 +40,8 @@ function App() {
           <Route path="/songs/:songId" element={<SongDetails />} />
           <Route path="/playlist-user" element={<PlaylistUser />} />
           <Route path="/playlist-user/:idUser" element={<PlaylistUserDetails />} />
-          
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Route>
       </Routes>
       

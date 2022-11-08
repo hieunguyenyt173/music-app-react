@@ -19,6 +19,7 @@ function Homepage() {
   const [dataArtistList, setDataArtistList] = useState();
   const [dataPlaylist, setDataPlaylist] = useState();
   const NhacCuaTui = require("nhaccuatui-api-full");
+ 
   useEffect(() => {
     NhacCuaTui.getHome().then((data) => setDataHome(data));
     NhacCuaTui.getTrendingArtists().then((data) => setDataArtistList(data));
@@ -30,7 +31,7 @@ function Homepage() {
   const banner = dataHome?.showcase;
   const topChart = dataHome?.song;
   const videoHot = dataHome?.video;
-
+  
   return (
     <div className="lg:container mx-auto px-12 mb-10">
       <Banner data={banner} />

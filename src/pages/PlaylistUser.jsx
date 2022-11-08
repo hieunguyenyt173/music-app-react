@@ -1,27 +1,35 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addPlaylistUser } from '../redux/features/playerSlice';
+import { addPlaylistUser, removeUserPlaylist } from '../redux/features/playerSlice';
 
 
-export const  PlaylistUserItem = ({playlist}) => {
-  console.log(playlist)
+export const  PlaylistUserItem = ({playlist,i}) => {
+  const dispatch = useDispatch()
+ const handleRemoveUserPlaylist = () => {
+       
+        dispatch(removeUserPlaylist( i))
+   }
+  
   return (
-    <Link to={`/playlist-user/${playlist?.key}`}>
-      <div className="playlist-card group">
+    <div className="playlist-card group">
         <div className="w-full rounded-xl overflow-hidden relative">
+        <Link to={`/playlist-user/${playlist?.key}`}>
           <img
             className="group-hover:scale-110 transition-all"
-            src={playlist?.songs.length != 0 ? playlist?.songs[0].thumbnail : playlist?.thumbnailB}
+            src={playlist?.songs.length > 0 ? playlist?.songs[0].thumbnail : playlist?.thumbnailB}
             alt=""
           />
           <div className="hidden w-12 h-12 rounded-full overflow-hidden bg-slate-100 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] group-hover:block hover:scale-125 duration-150">
             <i className="ri-play-fill icon-play text-2xl absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"></i>
           </div>
+    </Link>
+          <span className='like-icon absolute top-4 left-4 hover:scale-125 hover:text-red-600'>
+          <i className=" ri-delete-bin-line text-2xl px-2 cursor-pointer" onClick={handleRemoveUserPlaylist}></i>
+          </span>
         </div>
         <p className="font-semibold text-sm mt-2">{playlist.title}</p>
       </div>
-    </Link>
   );
 }
 function PlaylistUser() {
@@ -42,7 +50,7 @@ function PlaylistUser() {
     dispatch(addPlaylistUser(newPlaylist))
     setIsShowModal(false)
    }
-   console.log(playlistUser)
+   
   
   return (
     <div className='lg:container mx-auto px-12 mb-10 min-h-[650px] relative'>
@@ -54,7 +62,7 @@ function PlaylistUser() {
             <input type="text" 
             value={value}
             onChange={e => setValue(e.target.value)}
-            className='w-full px-3 py-2 rounded-lg bg-transparent placeholder:text-slate-500 border border-[0.5px] contrast-more:border-slate-400'
+            className='w-full px-3 py-2 rounded-lg bg-transparent placeholder:text-slate-500 border border-[0.5px] contrast-more:border-slate-400 focus:outline-none'
             placeholder='Nhập tên playlist'/>
            <div className='w-full'>
            <button className='px-4 py-2 bg-sky-600 text-slate-200 rounded-lg mt-5 block mx-auto hover:bg-sky-700' onClick={handleAddPlaylist}>
@@ -66,10 +74,11 @@ function PlaylistUser() {
            Playlist
           </p>
           <div className='grid grid-cols-5 gap-5'>
-                {playlistUser && playlistUser.map((playlist, i) => (
+                {playlistUser.length > 0 && playlistUser.map((playlist, i) => (
                   <PlaylistUserItem 
                   key={i}
                   playlist={playlist}
+                  i={i}
                   />
                 ))}
                 
