@@ -31,7 +31,7 @@ function Homepage() {
   const banner = dataHome?.showcase;
   const topChart = dataHome?.song;
   const videoHot = dataHome?.video;
-  
+  console.log(dataHome)
   return (
     <div className="lg:container mx-auto px-12 mb-10">
       <Banner data={banner} />

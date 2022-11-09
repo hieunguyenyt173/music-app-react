@@ -12,7 +12,7 @@ function VideoHot({data}) {
         Video hot
       </p>
       <Link
-        to="/video"
+        to="/mv"
         className="uppercase text-sm font-semibold underline text-sky-600 "
       >
         Tất cả
