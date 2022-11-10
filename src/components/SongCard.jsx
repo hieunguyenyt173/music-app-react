@@ -48,7 +48,8 @@ function SongCard({ song, isPlaying, activeSong, data, i}) {
         <div className=" max-h-[240px] rounded-2xl overflow-hidden relative">
           <img
             className="group-hover:scale-110 transition-all group-hover:opacity-90"
-            src={song.thumbnail}
+            src={song.thumbnailM
+            }
             alt="song-img"
           />
           <span className="like-icon absolute top-4 left-4 hover:scale-125 hover:text-red-600">
@@ -85,7 +86,7 @@ function SongCard({ song, isPlaying, activeSong, data, i}) {
               <Link
               to={
                 song?.artists
-                  ? `/nghe-sy/${artist?.artistId}`
+                  ? `/nghe-sy/${artist?.id}`
                   : `/nghe-sy`
               }
               className="text-[13px] text-gray-500 hover:underline pb-3 pr-1"

@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import isEmpty from 'validator/lib/isEmpty'
+import { useGetUserQuery } from "../redux/services/userApi";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../redux/features/authSlice";
 function Login() {
     const [userName, setUsername] = useState("")
     const [password, setPassword] =  useState("")
     const [validationMsg, setValidationMsg] = useState({})
-
+    const navigate = useNavigate()
+    const {data} = useGetUserQuery() 
+    const dispatch = useDispatch()
+    const { user } = useSelector((state) => state.user)
+    console.log(user)
     const validate = () => {
       const msg = {}
       if(isEmpty(userName)) {
@@ -20,7 +28,13 @@ function Login() {
     const onSubmitLogin = () => {
         const isValid = validate();
         if(!isValid) return;
-
+      const userAuth = data?.find((user) => user?.userName === userName && user?.password === password)
+      if(!userAuth) {
+        alert("Tài khoản hoặc mật khẩu không chính xác")
+      }
+      
+      dispatch(login(userAuth))
+      navigate("/")
     }
   return (
     <div className="min-h-[600px] flex items-center">

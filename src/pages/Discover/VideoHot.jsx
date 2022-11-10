@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 
 function VideoHot({data}) {
-    const listVideo = data?.slice(0,3)
+    const listVideo = data?.slice(4,7)
     
   return (
     <div className=" mt-7">
@@ -24,10 +24,10 @@ function VideoHot({data}) {
             {listVideo && listVideo.map((video, i) => (
                 
                 <div className='rounded-lg overflow-hidden hover:scale-105 duration-200 relative group' key={i} >
-                    <Link to={`/videos/${video.key}`}>
-                    <img src={video.thumbnail} alt="" />
+                    <Link to={`/videos/${video.encodeId}`}>
+                    <img className='w-full h-full object-cover' src={video.thumbnailM} alt="" />
                     </Link>
-                    <Link to={`/videos/${video.key}`}>
+                    <Link to={`/videos/${video.encodeId}`}>
                     <div className='hidden w-12 h-12 rounded-full overflow-hidden bg-slate-100 group-hover:block hover:scale-110 duration-150 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]'>
                         <i className="ri-play-fill icon-play text-2xl absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"></i>
                     </div>

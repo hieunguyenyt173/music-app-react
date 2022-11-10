@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const AlbumItem = ({item}) => {
   
   return (
-    <Link to={`/playlists/${item.key}`}>
+    <Link to={`/playlists/${item.encodeId}`}>
       <div className="flex group p-3 hover:bg-[#f5f7fa] rounded-md">
       <div className="relative flex z-[3]">
       <div className="h-24 w-24">
@@ -35,7 +35,7 @@ function TopAlbums({data}) {
     <div className=" mt-7">
       <div className="flex justify-between items-center text-sky-600">
         <p className="heading text-[32px] font-bold">
-          Albums mới phát hành
+          Top 100
         </p>
         <Link
           to="/top-albums"

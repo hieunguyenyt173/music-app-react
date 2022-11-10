@@ -10,6 +10,8 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
   const songRecently = JSON.parse(localStorage.getItem("songRecently"))
   const {playlistUser} = useSelector((state) => state.player)
   const [isShow,setIsShow] = useState(false)
+
+  const getTime = (time) => `${Math.floor(time / 60)}:${(`${Math.floor(time % 60)}`).slice(-2)}`;
   const handlePause = () => {
     dispatch(playPause(false));
     
@@ -85,7 +87,7 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
               <Link
               to={
                 song?.artists
-                  ? `/nghe-sy/${artist?.artistId}`
+                  ? `/nghe-sy/${artist?.id}`
                   : `/top-artists`
               }
               className="text-[13px] text-gray-500 hover:underline pb-3 pr-1"
@@ -105,7 +107,7 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
             <i className="ri-heart-fill  text-2xl cursor-pointer text-red-600 block" onClick={handleRemoveLike}></i>
             }
 
-        <p className="text-sm px-3">{song.duration ? song.duration : ""}</p>
+        <p className="text-sm px-3">{song.duration ? getTime(song.duration) : ""}</p>
         <i className="ri-menu-add-line text-2xl cursor-pointer" onClick={handleAddToPlaylistUser}></i>
         {isShow && 
         <div className="absolute bg-[#f5f7fa] top-0 right-8 w-[120px] z-50 border-[0.5px]">

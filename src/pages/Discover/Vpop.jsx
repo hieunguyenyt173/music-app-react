@@ -1,37 +1,40 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { Pagination} from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import PlaylistCard from '../../components/PlaylistCard';
-import { useGetPlayListQuery } from '../../redux/services/zingApi';
-function BestPlaylist() {
-  const {data} = useGetPlayListQuery()
-  const banner = data?.data?.items[0]?.items
-  
+import SongCard from '../../components/SongCard';
+function Vpop({data, isPlaying, activeSong}) {
   return (
     <div className=" mt-7">
         <div className="flex justify-between items-center mb-3">
           <p className="heading text-[32px] font-bold text-sky-600">
-           Playlist nổi bật
+            Vpops
           </p>
+          
         </div>
         <Swiper
-        slidesPerView={3}
+        slidesPerView={6}
         spaceBetween={20}
         
         modules={[Pagination]}
-        className="best-playlist"
+        className="top"
       >
-        {banner?.map((item,i) => (
+        {data && data.map((song, i) => (
           <SwiperSlide key={i}>
-            <PlaylistCard
-              item={item}
+            <SongCard
+            i={i}
+            song={song}
+            isPlaying={isPlaying}
+            activeSong={activeSong}
+            data={data}
             />
-            </SwiperSlide>
+          </SwiperSlide>
         ))}
+        
         
       </Swiper>
       </div>
   )
 }
 
-export default BestPlaylist
+export default Vpop

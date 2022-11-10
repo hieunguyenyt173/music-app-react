@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { Pagination} from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ArtistCard from '../../components/ArtistCard';
-function FeaturedArtists({artistTrending}) {
-  
+import {artists} from '../../assets/constants'
+function FeaturedArtists() {
+  const artistTrending = artists;
   return (
     <div className=" mt-7">
         
@@ -12,12 +13,7 @@ function FeaturedArtists({artistTrending}) {
           <p className="heading text-[32px] font-bold text-sky-600">
           Nghệ sỹ nổi bật
           </p>
-          <Link
-            to="/nghe-sy"
-            className="uppercase text-sm font-semibold underline text-sky-600 "
-          >
-            Tất cả
-          </Link>
+          
         </div>
         <Swiper
         slidesPerView={6}

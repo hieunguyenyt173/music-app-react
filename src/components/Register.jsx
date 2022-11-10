@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import isEmpty from "validator/lib/isEmpty";
+import { useAddUserMutation } from "../redux/services/userApi";
+
 function Register() {
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
     const [validationMsg,setValidationMsg] = useState({})
+    const [addUser] = useAddUserMutation()
   const validate = () => {
     const msg = {}
     if(isEmpty(userName)) {
@@ -28,7 +31,12 @@ function Register() {
   const onSubmit = () => {
       const isValid = validate();
       if(!isValid) return;
-
+      const data = {
+        userName,
+        password
+      }
+      alert("Đăng kí thành công")
+      addUser(data)
   }
   return (
     <div className="min-h-[600px] flex items-center">

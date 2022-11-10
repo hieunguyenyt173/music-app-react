@@ -83,7 +83,7 @@ function PlaylistModal() {
       <div className="p-5 ">
         <div className="mx-auto">
         <div className="">
-        <img src={activeSong.thumbnail} alt="" />
+        <img className="mx-auto" src={activeSong.thumbnailM} alt="" />
         </div>
         <p className="font-semibold text-sm mt-2">{activeSong?.title}</p>
         <div className="flex">
@@ -104,7 +104,7 @@ function PlaylistModal() {
       Playlist
       </div>
       <div className="p-3 ">
-        <div className="overflow-y-auto h-[360px]">
+        <div className="overflow-y-auto h-[500px]">
           {currentSongs && currentSongs.map((song, i) => (
             <ItemPlaylist
                 key={i}

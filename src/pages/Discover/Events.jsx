@@ -8,26 +8,22 @@ import { events } from "../../assets/constants";
 
 
 
-function Events({ activeSong, isPlaying }) {
-   const NhacCuaTui = require("nhaccuatui-api-full");
+function Events({ activeSong, isPlaying, data }) {
+    const weekchartVN = data?.vn?.items.slice(0,5)
+    const weekchartUs = data?.us?.items.slice(0,5)
+    const weekchartKorea = data?.korea?.items.slice(0,5)
   
   const tabs = [
-    { title: "VIỆT NAM", list:  "nhac-viet"},
-    { title: "US-UK", list:  "au-my"},
-    { title: "K-POP", list:  "nhac-han"},
+    { title: "VIỆT NAM", list:  weekchartVN},
+    { title: "US-UK", list:  weekchartUs},
+    { title: "K-POP", list:  weekchartKorea},
   ];
   const [type, setType] = useState(0);
   const [listWeekChart, setListWeekChart] = useState([]);
-
+      
   
     useEffect(() => {
-      NhacCuaTui.getChart({
-        category: tabs[type].list,
-        time: {
-          week: 42,
-          year: 2022,
-        },
-      }).then((data) => setListWeekChart(data?.ranking?.song))
+      setListWeekChart(tabs[type].list)
     
   },[type]);
 

@@ -1,57 +1,86 @@
 import React, { useEffect, useState } from "react";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
-import BestPlaylist from "./BestPlaylist";
+
 import Events from "./Events";
 import FeaturedArtists from "./FeaturedArtists";
 
 import NewReleases from "./NewReleases";
 import TopAlbums from "./TopAlbums";
 import TopChartsHome from "./TopChartsHome";
-import { useDispatch, useSelector } from "react-redux";
-import Top100Home from "./Top100Home";
-import HotTopic from "./HotTopic";
+import { useSelector } from "react-redux";
+
+
 import Banner from "./Banner";
 import VideoHot from "./VideoHot";
+import {
+  useGetChartHomeQuery,
+  useGetChartQuery,
+  useGetListMvHomeQuery,
+  useGetTop100Query,
+} from "../../redux/services/zingApi";
+import Vpop from "./Vpop";
+import RelatedSong from "./RelatedSong";
 function Homepage() {
-  const { activeSong, isPlaying, listFavorites } = useSelector((state) => state.player);
+  const { activeSong, isPlaying, listFavorites } = useSelector(
+    (state) => state.player
+  );
   const [dataHome, setDataHome] = useState();
   const [dataArtistList, setDataArtistList] = useState();
   const [dataPlaylist, setDataPlaylist] = useState();
-  const NhacCuaTui = require("nhaccuatui-api-full");
- 
-  useEffect(() => {
-    NhacCuaTui.getHome().then((data) => setDataHome(data));
-    NhacCuaTui.getTrendingArtists().then((data) => setDataArtistList(data));
-    NhacCuaTui.getTopicDetail("wrarbiszn").then((data) => setDataPlaylist(data?.topic?.playlist));
-  }, []);
-  const newRelease = dataHome?.newRelease?.song;
-  const artistTrending = dataArtistList?.artistTrending;
-  const top100Home = dataHome?.top100;
-  const banner = dataHome?.showcase;
-  const topChart = dataHome?.song;
-  const videoHot = dataHome?.video;
-  console.log(dataHome)
+  // const NhacCuaTui = require("nhaccuatui-api-full");
+  const { data, isFetching, isError } = useGetChartHomeQuery();
+  const { data: chartpage } = useGetChartQuery();
+  const {data: top100} = useGetTop100Query();
+  const {data:mv} = useGetListMvHomeQuery()
+  if (isFetching) {
+    return <Loader title={"Loading..."} />;
+  }
+  if (isError) {
+    return <Error />;
+  }
+  console.log(mv);
+
+  
+  const newRelease = data?.data?.newRelease;
+  const topchart = data?.data?.RTChart?.items.slice(0, 10);
+  const weekChart = data?.data?.weekChart;
+  const banner = chartpage?.data?.items[0]?.items;
+  const vpop = chartpage?.data?.items[3]?.items?.vPop
+  const videoHot = mv?.data?.items;
+  const relatedSong = chartpage?.data?.items[3]?.items?.others
+  const top100Home = top100?.data[0]?.items.slice(0,6)
+  console.log(top100)
   return (
     <div className="lg:container mx-auto px-12 mb-10">
       <Banner data={banner} />
-      <HotTopic data={dataHome?.topic} />
+      <Vpop
+       data={vpop}
+       activeSong={activeSong}
+       isPlaying={isPlaying}
+      />
       <TopChartsHome
-        data={topChart}
+        data={topchart}
         activeSong={activeSong}
         isPlaying={isPlaying}
       />
-      <Events isPlaying={isPlaying} activeSong={activeSong} />
+      <Events 
+      data={weekChart}
+      isPlaying={isPlaying} 
+      activeSong={activeSong} />
       <NewReleases
         data={newRelease}
         isPlaying={isPlaying}
         activeSong={activeSong}
       />
-      <FeaturedArtists artistTrending={artistTrending} />
-      <TopAlbums 
-      data={dataPlaylist}
+      <FeaturedArtists artistTrending={[]} />
+      <RelatedSong 
+        data={relatedSong}
+        isPlaying={isPlaying}
+        activeSong={activeSong}
       />
-      <Top100Home data={top100Home} />
+      <TopAlbums data={top100Home} />
+      
       <VideoHot data={videoHot} />
     </div>
   );

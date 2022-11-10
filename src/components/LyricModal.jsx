@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import {  useSelector } from 'react-redux';
+import { useGetLyricQuery } from '../redux/services/zingApi';
 
 function LyricModal() {
     const {  activeSong, isShowLyric } = useSelector(
         (state) => state.player
       );
       const [lyric, setLyric] = useState("")
-      const {getLyric} = require("nhaccuatui-api-full");
+     
+      const {data} = useGetLyricQuery(activeSong?.encodeId)
+      console.log(data)
       
-      useEffect(() => {
-        getLyric(activeSong.key).then((data) => setLyric(data));
-      },[activeSong.key])
       const lyricTitle = lyric?.lyric?.lyric
       
       return (
@@ -27,7 +27,7 @@ function LyricModal() {
             <div className="w-72 h-72 mx-auto">
             <img 
             className='w-full h-full object-cover'
-            src={activeSong.thumbnail} alt="" />
+            src={activeSong.thumbnailM} alt="" />
             </div>
             <p className="font-semibold text-sm mt-2 text-center">{activeSong?.title}</p>
             <div className="flex justify-center">

@@ -1,26 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
+import Loader from '../components/Loader';
 import SongItem from '../components/SongItem';
+import { useGetNewReleaseChartQuery } from '../redux/services/zingApi';
 function NewSongs() {
-  
-  const NhacCuaTui = require("nhaccuatui-api-full");
-  const [listNewSong, setListNewSong] = useState()
-  // const tabs = [
-  //   { title: "VIỆT NAM", list:  "nhac-viet"},
-  //   { title: "ÂU MỸ", list:  "au-my"},
-  //   { title: "HÀN QUỐC", list:  "nhac-han"},
-  // ];
+  const {data, isFetching} = useGetNewReleaseChartQuery()
   const {isPlaying, activeSong} = useSelector((state) => state.player)
-  
-  useEffect(() => {
-
-    NhacCuaTui.explore({
-      type: "song",
-      key: "moi-hot",
-      page: 1,
-      pageSize: 50,
-    }).then((data) => setListNewSong(data?.data))
-  },[])
+  const listNewSong = data?.data?.items
+  if(isFetching) {
+    return <Loader title={"Loading..."} />
+  }
 
   return (
     <div className='lg:container mx-auto px-12 mb-10'>
