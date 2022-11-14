@@ -87,7 +87,7 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
               <Link
               to={
                 song?.artists
-                  ? `/nghe-sy/${artist?.id}`
+                  ? `/nghe-sy/${artist?.alias}`
                   : `/top-artists`
               }
               className="text-[13px] text-gray-500 hover:underline pb-3 pr-1"

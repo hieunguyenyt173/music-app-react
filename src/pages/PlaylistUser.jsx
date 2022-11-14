@@ -10,7 +10,7 @@ export const  PlaylistUserItem = ({playlist,i}) => {
        
         dispatch(removeUserPlaylist( i))
    }
-  
+  console.log(playlist?.songs[0].thumbnailM)
   return (
     <div className="playlist-card group">
         <div className="w-full rounded-xl overflow-hidden relative">

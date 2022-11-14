@@ -66,7 +66,7 @@ function PlaylistUserDetails() {
       <div className="flex">
         <div className="w-[400px] h-[400px] text-center">
           <div className={`${isPlaying ? "rounded-full overflow-hidden animate-[spin_6s_linear_infinite] " : ""}`}>
-          <img src={listSong.length > 0 ? listSong[0]?.thumbnail : playlist.thumbnailB} alt="" />
+          <img src={listSong.length > 0 ? listSong[0]?.thumbnailM : playlist.thumbnailB} alt="" className="w-full h-full object-cover"/>
           </div>
           <p className="my-5 ">{playlist[0]?.title}</p>
           

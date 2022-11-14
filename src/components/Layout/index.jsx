@@ -21,7 +21,7 @@ function Layout() {
           
         </div>
         {activeSong?.title && (
-            <div className=" w-full fixed h-20 bottom-0 left-0 right-0 flex animate-slideup bg-[#97b8eb] backdrop-blur-lg  z-[1000] border border-[0.5px] border-[#649ef5]">
+            <div className=" w-full fixed h-20 bottom-0 left-0 right-0 flex animate-slideup bg-[#97b8eb] z-[1000]  border-[0.5px] border-[#649ef5] backdrop-blur-lg ">
               <MusicPlayer />
             </div>
           )}
