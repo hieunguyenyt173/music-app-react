@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom'
 import { playPause, removeLikeVideo, setLikeVideo } from '../redux/features/playerSlice';
+import { useGetMvDetailsQuery } from '../redux/services/zingApi';
 
 
 
@@ -16,8 +17,9 @@ export const VideoListItem = () => {
 
 
 function MvDetails() {
-    const NhacCuaTui = require("nhaccuatui-api-full");
-    const {videoId} = useParams()
+  const {videoId} = useParams()
+  const {data , isFetching} = useGetMvDetailsQuery(videoId)
+    console.log(data)
     const [video, setVideo] = useState()
     const dispatch = useDispatch();
     const {isPlaying} = useSelector((state) => state.player)
@@ -25,13 +27,11 @@ function MvDetails() {
     if(isPlaying) {
         dispatch(playPause(false))
     }
+    console.log(data?.data?.streaming?.mp4?.["720p"])
     const ref = useRef(null)
-    useEffect(() => {
-        NhacCuaTui.getVideoDetail(videoId).then((data) => setVideo(data?.video))
-       if(ref) {
-        ref.current.play();
-       }
-    },[videoId])
+    // if(ref) {
+    //   ref.current.play();
+    //  }
 
     const handleLike = () => {
     
@@ -57,18 +57,18 @@ function MvDetails() {
             controls
             
             ref={ref}
-            src={video?.streamUrls[0]?.streamUrl}>
+            src={data?.data?.streaming?.mp4?.["720p"]}>
             
             </video>
         </div>
        <div className='flex items-center py-5'>
             <div className='w-10 h-10 rounded-full overflow-hidden'>
-                <img src={video?.artists[0]?.imageUrl} alt="" />
+                <img src={data?.data?.artist?.thumbnail} alt="" />
             </div>
             <div className="flex-col mx-3">
-            <p className='font-semibold text-md'>{video?.title}</p>
+            <p className='font-semibold text-md'>{data?.data?.title}</p>
             <div className="flex">
-          {video && video?.artists.map((artist,i) => (
+          {video?.artists.map((artist,i) => (
               <Link
               to={
                 video?.artists

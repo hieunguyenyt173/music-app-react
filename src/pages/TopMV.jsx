@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { getTime } from "../components/MusicPlayer/Seekbar";
 import { setvideoRecently } from "../redux/features/playerSlice";
+import { useGetListMvHomeQuery } from "../redux/services/zingApi";
 
 export const VideoItem = ({ video }) => {
+
   const dispatch = useDispatch()
   const videoRecently = JSON.parse(localStorage.getItem("videoRecently"))
   const handlePlayVideo = () => {
@@ -23,18 +26,18 @@ export const VideoItem = ({ video }) => {
     <div className="flex-col group ">
       
         <div className="relative rounded-xl overflow-hidden">
-        <Link to={`/videos/${video.key}`}>
+        <Link to={`/videos/${video.encodeId}`}>
           <img
             className="group-hover:scale-105 duration-200"
-            src={video?.thumbnail}
+            src={video?.thumbnailM}
             alt=""
           />
           <div className="hidden w-12 h-12 rounded-full overflow-hidden bg-slate-100 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] group-hover:block hover:scale-125 duration-150">
             <i className="ri-play-fill icon-play text-2xl absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]" onClick={handlePlayVideo}></i>
           </div>
           </Link>
-          <p className="absolute bottom-0 right-0 p-2 bg-slate-600 text-sm text-white bg-gray-400">
-            {video?.duration}
+          <p className="absolute bottom-0 right-0 p-2 backdrop-blur-2xl text-sm text-white ">
+            {getTime(video?.duration)}
           </p>
         </div>
         <div className="">
@@ -62,24 +65,22 @@ export const VideoItem = ({ video }) => {
 };
 
 function TopMV() {
-  const NhacCuaTui = require("nhaccuatui-api-full");
   const [type, setType] = useState(0);
+  const {data:vn} = useGetListMvHomeQuery('IWZ9Z08I',"1", "20")
+  const {data: us} = useGetListMvHomeQuery('IWZ9Z08O',"1", "20")
+  const {data: korea} = useGetListMvHomeQuery('IWZ9Z08W',"1", "20")
   const [listVideo, setListVideo] = useState([]);
   const tabs = [
-    { title: "Mới và Hot", key: "moi-hot" },
-    { title: "Việt Nam", key: "nhac-tre" },
-    { title: "Âu Mỹ", key: "au-my" },
-    { title: "Hàn Quốc", key: "thieu-nhi" },
+    { title: "Việt Nam", key: vn?.data?.items },
+    { title: "Âu Mỹ", key : us?.data?.items },
+    { title: "Hàn Quốc", key: korea?.data?.items },
   ];
   useEffect(() => {
-    NhacCuaTui.explore({
-      type: "mv",
-      key: tabs[type].key,
-      page: 1,
-      pageSize: 30,
-    }).then((data) => setListVideo(data?.data));
-  }, [tabs[type].key]);
-
+   
+    setListVideo(tabs[type]?.key)
+  },[type])
+  
+  console.log(listVideo)
   return (
     <div className="lg:container mx-auto px-12 mb-10">
       <div>

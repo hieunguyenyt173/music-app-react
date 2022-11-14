@@ -44,7 +44,7 @@ import { playPause, setActiveSong } from "../redux/features/playerSlice";
             {song?.title}
           </Link>
           <div className="">
-          {song.artists.map((artist,i) => (
+          {song.artists && song.artists.map((artist,i) => (
               <Link
               to={
                 song?.artists

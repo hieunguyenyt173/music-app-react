@@ -14,11 +14,14 @@ export const zingApi = createApi({
       getSong : builder.query({ query: (songId) => `/api/song?id=${songId}` }),
       getLyric: builder.query({ query : (songId) => `/api/lyric?id=${songId}`}),
       getNewReleaseChart : builder.query({ query: () => '/api/newreleasechart' }),
-      getListMvHome : builder.query({ query : () => `/api/listmv?id=IWZ9Z08I&page=1&count=10`}),
+      getListMvHome : builder.query({ query : (songId, page, count) => `/api/listmv?id=${songId}&page=${page}&count={count}`}),
+      getPlaylistDetail : builder.query({ query : (playlistId) => `/api/detailplaylist?id=${playlistId}`}),
+      getArtistDetail : builder.query({ query : (alias) => `/api/artist?name=${alias}`}),
+      getMvDetails : builder.query({ query : (id) =>  `/api/video?id=${id}`}),
     }),
   
     
   });
+  export const { useGetChartHomeQuery, useGetChartQuery,useGetMvDetailsQuery, useGetSongQuery, useGetTop100Query, useGetLyricQuery, useGetNewReleaseChartQuery, useGetListMvHomeQuery,useGetPlaylistDetailQuery, useGetArtistDetailQuery } = zingApi;
   
-  export const { useGetChartHomeQuery, useGetChartQuery,useGetSongQuery, useGetTop100Query, useGetLyricQuery, useGetNewReleaseChartQuery, useGetListMvHomeQuery} = zingApi;
-  
+   

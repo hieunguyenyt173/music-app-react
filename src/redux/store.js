@@ -5,11 +5,17 @@ import { userApi } from "./services/userApi";
 import { zingApi } from "./services/zingApi";
 export const store = configureStore({
   reducer: {
-    [userApi.reducerPath]: userApi.reducer,
     [zingApi.reducerPath]: zingApi.reducer,
     player: playerReducer,
     user : userReducer,
   },
-  middleware : (getDefaultMiddleware) => getDefaultMiddleware().concat(zingApi.middleware)
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware({
+    thunk: {
+      extraArgument: zingApi,
+    },
+    serializableCheck: false,
+  }),
+  // middleware : (getDefaultMiddleware) => getDefaultMiddleware().concat(zingApi.middleware)
   
 });

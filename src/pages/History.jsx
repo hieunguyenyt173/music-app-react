@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getTime } from '../components/MusicPlayer/Seekbar';
 import PlayPause from '../components/PlayPause';
 import { playPause, removeHistory, removeSongRecently, setActiveSong } from '../redux/features/playerSlice';
 import { TopAlbumItem } from './TopAlbums';
@@ -79,7 +80,7 @@ export const SongItemRecently = ({ activeSong, isPlaying, i, data, song }) => {
     </div>
     <div className="flex items-center">
 
-      <p className="text-sm px-3">{song.duration ? song.duration : ""}</p>
+      <p className="text-sm px-3">{song.duration ? getTime(song.duration) : ""}</p>
       <i className="ri-more-fill text-2xl"></i>
       <i className="ri-close-circle-line text-red-600 text-2xl ml-3 cursor-pointer" onClick={() => handleRemove(i)}></i>
     </div>

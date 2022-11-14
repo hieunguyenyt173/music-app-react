@@ -5,10 +5,15 @@ import SongItem from "../components/SongItem";
 import SongCard from "../components/SongCard";
 import PlaylistCard from "../components/PlaylistCard";
 import { VideoItem } from "./TopMV";
+import { useGetArtistDetailQuery } from "../redux/services/zingApi";
+import Loader from '../components/Loader'
+import ArtistCard from "../components/ArtistCard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper";
 function ArtistDetails() {
   const { artistId } = useParams();
-  const [data, setData] = useState();
-  const { getArtistDetail } = require("nhaccuatui-api-full");
+  
+ const {data, isFetching} = useGetArtistDetailQuery(artistId)
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const [type, setType] = useState(0);
   const tabs = [
@@ -16,33 +21,29 @@ function ArtistDetails() {
     { title: "PLAYLIST"},
     { title: "MV"},
   ];
-  useEffect(() => {
-    getArtistDetail(artistId).then((data) => setData(data));
-  }, []);
   
-  const artistInfo = data?.artist;
-  const hotSong = data?.song?.song?.slice(0, 5);
+  
+  const hotSong = data?.data?.sections[0]?.items?.slice(0, 5);
   console.log(data)
+  
   return (
     <div className="lg:container mx-auto px-12 mb-10">
-      <div className="mb-10">
+      {isFetching ? <Loader /> : 
+      <>
+       <div className="mb-10">
         <div className="flex justify-between ">
           <div className="w-2/5 flex-col justify-center items-center">
             <p className="heading text-[32px] font-bold text-sky-600 text-center">
-              {artistInfo?.name}
+              {data?.data?.name}
             </p>
             <div className="w-56 h-56 rounded-full overflow-hidden my-3 mx-auto">
-              <img src={artistInfo?.imageUrl} alt="" />
+              <img src={data?.data?.thumbnailM} alt="" />
             </div>
-            <div className="flex mt-3 justify-center">
-              {artistInfo?.role.map((item, i) => (
-                <div
-                  className="bg-sky-500 text-xs px-2 py-2 mr-2 rounded-lg backdrop-blur-lg"
-                  key={i}
-                >
-                  {item}
-                </div>
-              ))}
+            <div className="flex-col mt-3 justify-center text-center">
+             <p className="text-sm  "> Tên thật : {data?.data?.realname}</p>
+             <p className="text-sm  mt-2"> Sinh nhật : {data?.data?.birthday}</p>
+             <p className="text-xs  mt-2 leading-5">{data?.data?.sortBiography}</p>
+             
             </div>
           </div>
           <div className="w-3/5">
@@ -86,38 +87,75 @@ function ArtistDetails() {
         <div>
           <p className=" text-3xl mb-3 font-semibold text-sky-600">Bài hát</p>
           <div className="grid grid-cols-6 gap-5 mb-7">
-          {data?.song?.song.map((song, i) => (
+          {data?.data?.sections[0]?.items.map((song, i) => (
             <SongCard 
+            key={i}
             song={song}
             i={i}
             isPlaying={isPlaying}
             activeSong={activeSong}
-            data={data?.song?.song}
+            data={data?.data?.sections[0]?.items}
             /> 
           ))}
           </div>
           <p className=" text-3xl mb-3 font-semibold text-sky-600">Xuất hiện trong</p>
         <div className="grid grid-cols-6 gap-5 mb-7">
-        {data?.songNearly.map((song, i) => (
-           <SongCard 
-           song={song}
-           i={i}
-           isPlaying={isPlaying}
-           activeSong={activeSong}
-           data={data?.song?.song}
+        {data?.data?.sections[5]?.items.map((playlist, i) => (
+           <PlaylistCard 
+           key={i}
+           playlist={playlist}
+           data={data?.data?.sections[5]?.items}
            /> 
         ))}
       </div>
+         <p className=" text-3xl mb-3 font-semibold text-sky-600">Bạn có thể thích</p>
+        
+         <Swiper
+        slidesPerView={5}
+        spaceBetween={20}
+        
+        modules={[Pagination]}
+        className="topArtist"
+      >
+          {data?.data?.sections[6]?.items.map((artist,i) => (
+              <SwiperSlide key={i}>
+                <ArtistCard
+                artist={artist}
+                />
+                </SwiperSlide>
+          ))}
+        
+        
+      </Swiper>
         </div>
+        
         
         } 
       {type === 1 && 
       <div>
-        <p className=" text-3xl mb-3 font-semibold text-sky-600">Playlist</p>
+        <p className=" text-3xl mb-3 font-semibold text-sky-600">Album</p>
           <div className="grid grid-cols-5 gap-5 mb-7">
-          {data?.playlist?.playlist.map((playlist, i) => (
+          {data?.data?.sections[2]?.items.map((playlist, i) => (
             <PlaylistCard 
-            data={data?.playlist?.playlist}
+            data={[]}
+            playlist={playlist}
+            />
+          ))}
+          </div>
+          <p className=" text-3xl mb-3 font-semibold text-sky-600">Single & EP</p>
+          <div className="grid grid-cols-5 gap-5 mb-7">
+          {data?.data?.sections[1]?.items.map((playlist, i) => (
+            <PlaylistCard 
+            data={[]}
+            playlist={playlist}
+            />
+          ))}
+          </div>
+          <p className=" text-3xl mb-3 font-semibold text-sky-600">Tuyển tập</p>
+          <div className="grid grid-cols-5 gap-5 mb-7">
+          {data?.data?.sections[4]?.items.map((playlist, i) => (
+            <PlaylistCard 
+            data={[]}
             playlist={playlist}
             />
           ))}
@@ -127,13 +165,15 @@ function ArtistDetails() {
        {type === 2 && 
       <div>
         <p className=" text-3xl mb-3 font-semibold text-sky-600">MV</p>
-          <div className="grid grid-cols-5 gap-5 mb-7">
-          {data?.video?.video.map((video, i) => (
+          <div className="grid grid-cols-3 gap-5 mb-7">
+          {data?.data?.sections[3]?.items.map((video, i) => (
              <VideoItem key={i} i={i} video={video} />
           ))}
           </div>
       </div>
+      }</>
       }
+     
       
     </div>
   );

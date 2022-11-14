@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function PlaylistCard({playlist}) {
   return (
-    <Link to={`/playlists/${playlist?.key}`}>
+    <Link to={`/playlists/${playlist?.encodeId}`}>
       <div className="playlist-card group">
       <div className="w-full rounded-xl overflow-hidden relative">
         <img

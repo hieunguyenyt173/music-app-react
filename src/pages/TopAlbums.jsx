@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
-
+import Loader from "../components/Loader";
+import { useGetTop100Query } from "../redux/services/zingApi";
 
 export const TopAlbumItem = ({ playlist }) => {
  
   return (
-    <Link to={`/playlists/${playlist?.key}`}>
+    <Link to={`/playlists/${playlist?.encodeId}`}>
       <div className="playlist-card group">
         <div className="w-full rounded-xl overflow-hidden relative">
           <img
             className="group-hover:scale-110 transition-all"
-            src={playlist?.thumbnail}
+            src={playlist?.thumbnailM}
             alt=""
           />
           <div className="hidden w-12 h-12 rounded-full overflow-hidden bg-slate-100 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] group-hover:block hover:scale-125 duration-150">
@@ -25,25 +26,27 @@ export const TopAlbumItem = ({ playlist }) => {
 };
 
 const TopAlbums = () => {
-  const NhacCuaTui = require("nhaccuatui-api-full");
+  const {data, isFetching} = useGetTop100Query()
+  
   const [type, setType] = useState(0);
   const [listPlaylist, setListPlaylist] = useState([]);
+  const hotPlaylist = data?.data?.[0]?.items
+  const playlistVn = data?.data?.[1]?.items
+  const playlistUs = data?.data?.[3]?.items
+  const playlistAsian = data?.data?.[2]?.items
   const tabs = [
-    { title: "Mới và Hot", key: "moi-hot" },
-    { title: "Việt Nam", key: "nhac-tre" },
-    { title: "Âu Mỹ", key: "au-my" },
-    { title: "Thiếu nhi", key: "thieu-nhi" },
+    { title: "Nổi bật", path: hotPlaylist },
+    { title: "Việt Nam", path: playlistVn },
+    { title: "Âu Mỹ", path:playlistUs },
+    { title: "Châu Á", path: playlistAsian },
   ];
   useEffect(() => {
-    NhacCuaTui.explore({
-      type: "playlist",
-      key: tabs[type].key,
-      page: 1,
-      pageSize: 30,
-    }).then((data) => setListPlaylist(data?.data));
-  }, [tabs[type].key]);
+    setListPlaylist(tabs[type].path)
+  }, [tabs[type].path]);
 
- 
+ if(isFetching) {
+  return <Loader title={"Loading..."} />
+ }
   return (
     <div className="lg:container mx-auto px-12 mb-10">
       <div>

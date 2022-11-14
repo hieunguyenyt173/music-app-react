@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getTime } from '../components/MusicPlayer/Seekbar';
 import PlayPause from '../components/PlayPause';
 import { playPause, removeLike, setActiveSong } from '../redux/features/playerSlice';
 import { TopAlbumItem } from './TopAlbums';
@@ -28,7 +29,6 @@ export const SongItemFavorite = ({ activeSong, isPlaying, i, data, song }) => {
       })
     }
    }
-  
   return (
     <div className="song-item flex items-center justify-between hover:bg-[#f5f7fa] px-3 py-2 rounded-r-lg">
     <div className="flex items-center">
@@ -78,7 +78,7 @@ export const SongItemFavorite = ({ activeSong, isPlaying, i, data, song }) => {
     </div>
     <div className="flex items-center">
        <i className="ri-heart-fill text-2xl text-red-600"></i>
-      <p className="text-sm px-3">{song.duration ? song.duration : ""}</p>
+      <p className="text-sm px-3">{song.duration ? getTime(song.duration) : ""}</p>
       <i className="ri-more-fill text-2xl"></i>
       <i className="ri-close-circle-line text-2xl text-red-600 ml-3 cursor-pointer" onClick={() => handleRemoveLike(i)}></i>
     </div>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { setActiveSong, playPause, likeList, setSongRecently, removeLike, addSongUser } from "../redux/features/playerSlice";
 import PlayPause from "./PlayPause";
 import { getTime } from "./MusicPlayer/Seekbar";
+
 function SongItem({ activeSong, isPlaying, i, data, song }) {
   const listFavorites = JSON.parse(localStorage.getItem("listFavorite"))
   const dispatch = useDispatch();
@@ -11,7 +12,6 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
   const {playlistUser} = useSelector((state) => state.player)
   const [isShow,setIsShow] = useState(false)
 
-  const getTime = (time) => `${Math.floor(time / 60)}:${(`${Math.floor(time % 60)}`).slice(-2)}`;
   const handlePause = () => {
     dispatch(playPause(false));
     
@@ -83,7 +83,7 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
             {song?.title}
           </Link>
           <div className="">
-          {song.artists.map((artist,i) => (
+          {song.artists && song.artists.map((artist,i) => (
               <Link
               to={
                 song?.artists

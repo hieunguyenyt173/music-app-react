@@ -9,7 +9,7 @@ function LyricModal() {
       const [lyric, setLyric] = useState("")
      
       const {data} = useGetLyricQuery(activeSong?.encodeId)
-      console.log(data)
+     
       
       const lyricTitle = lyric?.lyric?.lyric
       

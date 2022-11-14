@@ -32,7 +32,7 @@ function Homepage() {
   const { data, isFetching, isError } = useGetChartHomeQuery();
   const { data: chartpage } = useGetChartQuery();
   const {data: top100} = useGetTop100Query();
-  const {data:mv} = useGetListMvHomeQuery()
+  const {data:mv} = useGetListMvHomeQuery("IWZ9Z08I","1","15")
   if (isFetching) {
     return <Loader title={"Loading..."} />;
   }

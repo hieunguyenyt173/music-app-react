@@ -2,10 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function ArtistCard({artist}) {
- 
   return (
     <div className="artist-card group">
-    <Link to={`/nghe-sy/${artist.shortLink}`}>
+    <Link to={`/nghe-sy/${artist.alias}`}>
         
       <div className="w-32 h-32 rounded-full overflow-hidden mx-auto">
         <img
