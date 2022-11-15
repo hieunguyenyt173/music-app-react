@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../redux/features/authSlice";
 function SearchBar() {
   const [isShow, setIsShow] = useState(false);
-  const userLogin = JSON.parse(localStorage.getItem("user"));
+  const {user} = useSelector((state) => state.user)
   const dispatch = useDispatch();
   const navigate = useNavigate()
   
@@ -28,10 +28,10 @@ function SearchBar() {
               placeholder="Search..."
             />
           </form>
-          {userLogin.id ? (
+          {user.id ? (
             <div className="flex items-center px-3 relative">
               <span className="px-2 text-sm font-medium">
-                {userLogin?.userName}
+                {user?.userName}
               </span>
               <div className="w-7 h-7 rounded-full overflow-hidden">
                 <img
