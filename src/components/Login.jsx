@@ -31,7 +31,9 @@ function Login() {
       const userAuth = data?.find((user) => user?.userName === userName && user?.password === password)
       if(!userAuth) {
         alert("Tài khoản hoặc mật khẩu không chính xác")
+        return;
       }
+      
       
       dispatch(login(userAuth))
       navigate("/")

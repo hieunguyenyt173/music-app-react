@@ -22,7 +22,7 @@ function PlaylistDetails() {
   const {data,isFetching} = useGetPlaylistDetailQuery(idPlaylist)
   const listSong = data?.data?.song?.items
   const playlist = data?.data
-  
+  console.log(playlist)
   const handlePlayPlaylist = () => {
     if(listSong) {
       dispatch(playPause(true))
@@ -68,7 +68,7 @@ function PlaylistDetails() {
       {isFetching ? <Loader /> : 
       <div className="flex">
       <div className="w-[400px] h-[400px] text-center">
-        <div className={`${isPlaying ? "rounded-full overflow-hidden animate-[spin_6s_linear_infinite] " : ""}`}>
+        <div className={`${isPlaying && playlist ? "rounded-full overflow-hidden animate-[spin_6s_linear_infinite] " : ""}`}>
         <img src={playlist?.thumbnailM || "https://photo-zmp3.zmdcdn.me/album_default.png"} alt="" />
         </div>
         <p className="my-2 ">{playlist?.title}</p>
@@ -81,7 +81,7 @@ function PlaylistDetails() {
               <Link
                 to={
                   playlist?.artists
-                    ? `/artists/${playlist?.artist?.shortLink}`
+                    ? `/artists/${playlist?.artist?.alias}`
                     : `/top-artists`
                 }
                 className="text-[13px] text-gray-500 hover:underline pb-3 pr-1"

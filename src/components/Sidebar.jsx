@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import {NavLink, Link} from 'react-router-dom'
 import {logomusic} from '../assets/index'
 function Sidebar() {
+  const [isAdmin, setIsAdmin] = useState(false)
+  const {user} = useSelector((state) => state.user)
+  console.log(user)
   return (
     <>
      <div className="min-w-[200px] bg-[#f5f7fa] h-screen fixed top-0 left-0 z-1000">
@@ -49,7 +53,29 @@ function Sidebar() {
             </div>
             </NavLink>
         </div>
+        {user.id === 1997 && 
         <div>
+           <p className="text-sm text-slate-400 px-6 py-[10px]">Admin</p>
+           <div className="flex flex-col text-sm font-medium">
+           <NavLink to="/danh-sach-user">
+            <div className="nav-item w-full flex items-center py-[10px] px-6">
+              <i className="ri-list-settings-line text-xl pr-3"></i>
+              <p>Danh sách user</p>
+            </div>
+            </NavLink>
+            <NavLink to="/them-user">
+            <div className="nav-item w-full flex items-center py-[10px] px-6">
+              <i className="ri-user-add-line text-xl pr-3"></i>
+              <p>Tạo user</p>
+            </div>
+            </NavLink >
+           </div>
+           
+        </div>
+        }
+        {
+          user.id &&
+          <div>
           <p className="text-sm text-slate-400 px-6 py-[10px]">Cá nhân</p>
           <div className="flex flex-col text-sm font-medium">
             <NavLink to="favorites">
@@ -72,6 +98,7 @@ function Sidebar() {
             </NavLink>
           </div>
         </div>
+        }
       </div>
     </>
   )

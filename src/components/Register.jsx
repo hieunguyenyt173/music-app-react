@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import isEmpty from "validator/lib/isEmpty";
 import { useAddUserMutation } from "../redux/services/userApi";
 
@@ -7,6 +8,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
     const [validationMsg,setValidationMsg] = useState({})
+    const navigate = useNavigate()
     const [addUser] = useAddUserMutation()
   const validate = () => {
     const msg = {}
@@ -32,11 +34,14 @@ function Register() {
       const isValid = validate();
       if(!isValid) return;
       const data = {
+        id: Math.floor(Math.random() * 10000),
         userName,
         password
       }
       alert("Đăng kí thành công")
+      
       addUser(data)
+      // navigate("/")
   }
   return (
     <div className="min-h-[600px] flex items-center">

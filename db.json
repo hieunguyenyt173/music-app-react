@@ -1,12 +1,29 @@
 {
-    "users" : [
-        {
-            "userName" : "hieunguyen",
-            "password" : "1234"
-        },
-        {
-            "userName" : "hieunguyen1234",
-            "password" : "1234"
-        }
-    ]
+  "users": [
+    {
+      "id": 1997,
+      "userName": "admin",
+      "password": "admin"
+    },
+    {
+      "id": 1,
+      "userName": "hieunguyen",
+      "password": "1234"
+    },
+    {
+      "id": 2,
+      "userName": "hieunguyen1234",
+      "password": "1234"
+    },
+    {
+      "userName": "abc",
+      "password": "123",
+      "id": "gjmUeaz"
+    },
+    {
+      "id": 3536,
+      "userName": "anhhieu",
+      "password": "123"
+    }
+  ]
 }
