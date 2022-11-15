@@ -9,7 +9,7 @@ function ArtistCard({artist}) {
       <div className="w-32 h-32 rounded-full overflow-hidden mx-auto">
         <img
         className="group-hover:scale-110 transition-all"
-          src={artist.thumbnailM}
+          src={artist.thumbnail}
           alt=""
         />
       </div>
