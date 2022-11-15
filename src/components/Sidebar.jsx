@@ -5,7 +5,7 @@ import {logomusic} from '../assets/index'
 function Sidebar() {
   const [isAdmin, setIsAdmin] = useState(false)
   const {user} = useSelector((state) => state.user)
-  console.log(user)
+ 
   return (
     <>
      <div className="min-w-[200px] bg-[#f5f7fa] h-screen fixed top-0 left-0 z-1000">
