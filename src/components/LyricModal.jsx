@@ -14,7 +14,7 @@ function LyricModal() {
       const lyricTitle = lyric?.lyric?.lyric
       
       return (
-        <div className={`fixed top-0  bottom-20 z-50 bg-gradient-to-br bg-[#97b8eb] backdrop-blur-lg w-[500px] overflow-hidden duration-500
+        <div className={`fixed top-0  bottom-20 z-50 bg-gradient-to-br bg-[#97b8eb] backdrop-blur-lg w-[500px] overflow-hidden duration-300
           ${isShowLyric ? "right-0" : " right-[-500px]"}
         `}>
           <div className="border-b border-gray-400 flex justify-between items-center">

@@ -3,27 +3,205 @@
     {
       "id": 1997,
       "userName": "admin",
-      "password": "admin"
+      "password": "admin",
+      "account": "admin",
+      "createAt": "20/10/2022",
+      "info": {
+        "fullname": "Nguyễn Văn Hiếu",
+        "gender": "Nam",
+        "email": "hieunguyenyt173@gmail.com",
+        "address": "Hà Đông, Hà Nội",
+        "phone": "012345678"
+      },
+      "personallist": [
+        {
+          "songFavorites": [],
+          "videoFavorites": [],
+          "playlist": []
+        },
+        {
+          "songRecently": [],
+          "videoRecently": [],
+          "playlistRecently": []
+        },
+        {
+          "playlistUser": []
+        }
+      ]
     },
     {
-      "id": 1,
-      "userName": "hieunguyen",
-      "password": "1234"
+      "id": 1170,
+      "userName": "anhtu123",
+      "password": "anhtu",
+      "account": "user",
+      "createAt": "Tuesday, Nov 15, 2022",
+      "info": {
+        "fullname": "",
+        "gender": "",
+        "email": "",
+        "address": "",
+        "phone": ""
+      },
+      "personallist": [
+        {
+          "songFavorites": [],
+          "videoFavorites": [],
+          "playlist": []
+        },
+        {
+          "songRecently": [],
+          "videoRecently": [],
+          "playlistRecently": []
+        },
+        {
+          "playlistUser": []
+        }
+      ]
     },
     {
-      "id": 2,
-      "userName": "hieunguyen1234",
-      "password": "1234"
+      "id": 4067,
+      "userName": "hieunguyen123",
+      "password": "hieu123",
+      "account": "user",
+      "createAt": "Tuesday, Nov 15, 2022",
+      "info": {
+        "fullname": "",
+        "gender": "",
+        "email": "",
+        "address": "",
+        "phone": ""
+      },
+      "personallist": [
+        {
+          "songFavorites": [],
+          "videoFavorites": [],
+          "playlist": []
+        },
+        {
+          "songRecently": [],
+          "videoRecently": [],
+          "playlistRecently": []
+        },
+        {
+          "playlistUser": []
+        }
+      ]
     },
     {
-      "userName": "abc",
+      "id": 6534,
+      "userName": "3conheo",
+      "password": "654321",
+      "account": "user",
+      "createAt": "Tuesday, Nov 15, 2022",
+      "info": {
+        "fullname": "",
+        "gender": "",
+        "email": "",
+        "address": "",
+        "phone": ""
+      },
+      "personallist": [
+        {
+          "songFavorites": [],
+          "videoFavorites": [],
+          "playlist": []
+        },
+        {
+          "songRecently": [],
+          "videoRecently": [],
+          "playlistRecently": []
+        },
+        {
+          "playlistUser": []
+        }
+      ]
+    },
+    {
+      "id": 831,
+      "userName": "anhbakhia",
+      "password": "abcde",
+      "account": "user",
+      "createAt": "Tuesday, Nov 15, 2022",
+      "info": {
+        "fullname": "",
+        "gender": "",
+        "email": "",
+        "address": "",
+        "phone": ""
+      },
+      "personallist": [
+        {
+          "songFavorites": [],
+          "videoFavorites": [],
+          "playlist": []
+        },
+        {
+          "songRecently": [],
+          "videoRecently": [],
+          "playlistRecently": []
+        },
+        {
+          "playlistUser": []
+        }
+      ]
+    },
+    {
+      "id": 9006,
+      "userName": "testuser",
       "password": "123",
-      "id": "gjmUeaz"
+      "account": "user",
+      "createAt": "Tuesday, Nov 15, 2022",
+      "info": {
+        "fullname": "",
+        "gender": "",
+        "email": "",
+        "address": "",
+        "phone": ""
+      },
+      "personallist": [
+        {
+          "songFavorites": [],
+          "videoFavorites": [],
+          "playlist": []
+        },
+        {
+          "songRecently": [],
+          "videoRecently": [],
+          "playlistRecently": []
+        },
+        {
+          "playlistUser": []
+        }
+      ]
     },
     {
-      "id": 3536,
-      "userName": "anhhieu",
-      "password": "123"
+      "id": 9689,
+      "userName": "testuser134",
+      "password": "123",
+      "account": "user",
+      "createAt": "Tuesday, Nov 15, 2022",
+      "info": {
+        "fullname": "",
+        "gender": "",
+        "email": "",
+        "address": "",
+        "phone": ""
+      },
+      "personallist": [
+        {
+          "songFavorites": [],
+          "videoFavorites": [],
+          "playlist": []
+        },
+        {
+          "songRecently": [],
+          "videoRecently": [],
+          "playlistRecently": []
+        },
+        {
+          "playlistUser": []
+        }
+      ]
     }
   ]
 }

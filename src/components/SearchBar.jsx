@@ -35,7 +35,7 @@ function SearchBar() {
               </span>
               <div className="w-7 h-7 rounded-full overflow-hidden">
                 <img
-                  src="https://www.kri8thm.in/html/listen/theme/demo/images/users/thumb.jpg"
+                  src={user?.avatar || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQwWMJbZoZ26ZyYB8M-1e7OLBVUWXRLNSO6A&usqp=CAU"}
                   alt=""
                 />
               </div>
@@ -59,23 +59,23 @@ function SearchBar() {
                 </button>
                 {isShow && (
                   <div className="absolute right-0 z-40 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800">
-                    <a
-                      href="#"
-                      className="block px-4 py-3 text-xs text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+                    <Link
+                      to={`/users/${user?.id}`}
+                      className="block px-4 py-3 text-sm  text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                     >
                       {" "}
                       Thông tin{" "}
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-3 text-xs text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+                    </Link>
+                    <Link
+                      to="/user/doi-mat-khau"
+                      className="block px-4 py-3 text-sm  text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                     >
                       {" "}
                       Đổi mật khẩu{" "}
-                    </a>
+                    </Link>
 
                     <p
-                      className="block px-4 py-3 text-xs text-gray-600 capitalize transition-colors duration-300 transform cursor-pointer dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+                      className="block px-4 py-3 text-sm  text-gray-600 capitalize transition-colors duration-300 transform cursor-pointer dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                       onClick={handleLogout}
                     >
                       {" "}

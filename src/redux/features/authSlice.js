@@ -4,8 +4,6 @@ import { userApi } from '../services/userApi';
 
     
 const initialState = {
-    isAuth: false,
-    isAdmin: false,
     user: JSON.parse(localStorage.getItem("user")) || {
     } ,
     listUser:[]
@@ -29,10 +27,16 @@ const userSlice = createSlice({
             state.listUser = action.payload
           })
          builder.addMatcher(userApi.endpoints.addUser.matchFulfilled, (state, action) => {
-            console.log(action.payload)
+            
             state.listUser.push(action.payload)
           })
+        builder.addMatcher(userApi.endpoints.removeUser.matchFulfilled, (state, action) => {
+            let index = state.listUser.findIndex(user => user.id === action.payload)
+                state.listUser.splice(index, 1)
+        })
+       
     }
+    
 })
 
  export const {login, logout} = userSlice.actions;

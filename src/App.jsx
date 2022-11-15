@@ -18,10 +18,12 @@ import PlaylistUser from "./pages/PlaylistUser";
 import PlaylistUserDetails from "./pages/PlaylistUserDetails";
 import Login from "./components/Login";
 import Register from "./components/Register";
-
+import ListUser from "./pages/User/ListUser";
+import AddUser from "./pages/User/AddUser";
+import Profile from "./pages/User/Profile";
+import ChangePassword from "./pages/User/ChangePassword";
 
 function App() {
-  
   return (
     <div className="relative min-h-screen">
       <Routes>
@@ -39,12 +41,18 @@ function App() {
           <Route path="/nghe-sy/:artistId" element={<ArtistDetails />} />
           <Route path="/songs/:songId" element={<SongDetails />} />
           <Route path="/playlist-user" element={<PlaylistUser />} />
-          <Route path="/playlist-user/:idUser" element={<PlaylistUserDetails />} />
+          <Route
+            path="/playlist-user/:idUser"
+            element={<PlaylistUserDetails />}
+          />
           <Route path="/login" element={<Login />} />
+          <Route path="/users/:userId" element={<Profile />} />
+          <Route path="/user/doi-mat-khau" element={<ChangePassword />} />
+          <Route path="/admin/danh-sach-user" element={<ListUser />} />
+          <Route path="/admin/them-user" element={<AddUser />} />
           <Route path="/register" element={<Register />} />
         </Route>
       </Routes>
-      
     </div>
   );
 }

@@ -72,7 +72,7 @@ function PlaylistModal() {
   );
 
   return (
-    <div className={`fixed top-0  bottom-20 z-50 bg-gradient-to-br bg-[#97b8eb] backdrop-blur-lg w-80 overflow-hidden duration-500
+    <div className={`fixed top-0  bottom-20 z-50 bg-gradient-to-br bg-[#97b8eb] backdrop-blur-lg w-80 overflow-hidden duration-300
       ${isShowPlaylist ? "right-0" : "-right-80"}
     `}>
       <div className="border-b border-gray-400 flex justify-between items-center">

@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import {NavLink, Link} from 'react-router-dom'
 import {logomusic} from '../assets/index'
 function Sidebar() {
-  const [isAdmin, setIsAdmin] = useState(false)
   const {user} = useSelector((state) => state.user)
  
   return (
@@ -57,13 +56,13 @@ function Sidebar() {
         <div>
            <p className="text-sm text-slate-400 px-6 py-[10px]">Admin</p>
            <div className="flex flex-col text-sm font-medium">
-           <NavLink to="/danh-sach-user">
+           <NavLink to="/admin/danh-sach-user">
             <div className="nav-item w-full flex items-center py-[10px] px-6">
               <i className="ri-list-settings-line text-xl pr-3"></i>
               <p>Danh sách user</p>
             </div>
             </NavLink>
-            <NavLink to="/them-user">
+            <NavLink to="/admin/them-user">
             <div className="nav-item w-full flex items-center py-[10px] px-6">
               <i className="ri-user-add-line text-xl pr-3"></i>
               <p>Tạo user</p>
