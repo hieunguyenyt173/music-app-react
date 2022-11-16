@@ -34,6 +34,10 @@ const userSlice = createSlice({
             let index = state.listUser.findIndex(user => user.id === action.payload)
                 state.listUser.splice(index, 1)
         })
+        builder.addMatcher(userApi.endpoints.updateUser.matchFulfilled, (state, action) => {
+            let index = state.listUser.findIndex(user => user.id === action.payload.id)
+            state.listUser[index] = action.payload
+        })
        
     }
     

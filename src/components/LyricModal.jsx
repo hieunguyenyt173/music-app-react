@@ -6,12 +6,9 @@ function LyricModal() {
     const {  activeSong, isShowLyric } = useSelector(
         (state) => state.player
       );
-      const [lyric, setLyric] = useState("")
      
       const {data} = useGetLyricQuery(activeSong?.encodeId)
-     
-      
-      const lyricTitle = lyric?.lyric?.lyric
+      const lyricTitle = data?.data?.sentences
       
       return (
         <div className={`fixed top-0  bottom-20 z-50 bg-gradient-to-br bg-[#97b8eb] backdrop-blur-lg w-[500px] overflow-hidden duration-300
@@ -50,7 +47,15 @@ function LyricModal() {
           <div className="p-3 ">
            
             <div className="overflow-y-auto h-[360px] px-5">
-             <p>{!lyricTitle ?  "Không có lời bài hát" : lyricTitle.replaceAll("<br />", "\r")}</p>
+             {
+              lyricTitle && lyricTitle.map((line, i) => (
+                <p key={i}>
+                  {line.words.map((word, i) => (
+                     word.data + " "
+                  ))}
+                </p>
+              ))
+             }
             </div>
           </div>
         </div>

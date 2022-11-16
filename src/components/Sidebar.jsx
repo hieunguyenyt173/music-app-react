@@ -77,7 +77,7 @@ function Sidebar() {
           <div>
           <p className="text-sm text-slate-400 px-6 py-[10px]">Cá nhân</p>
           <div className="flex flex-col text-sm font-medium">
-            <NavLink to="favorites">
+            <NavLink to={`favorites/${user.id}`}>
             <div className="nav-item w-full flex items-center py-[10px] px-6">
               <i className="ri-heart-line text-xl pr-3"></i>
               <p>Yêu thích</p>

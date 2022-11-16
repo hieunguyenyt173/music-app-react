@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import SongItem from '../components/SongItem'
-import { likeList, playPause, removeLikePlaylist, setActiveSong, setLikePlaylist, setplaylistRecently } from "../redux/features/playerSlice";
+import SongItem from "../../components/SongItem";
+
+import { likeList, playPause, removeLikePlaylist, setActiveSong, setLikePlaylist, setplaylistRecently } from "../../redux/features/playerSlice";
 function PlaylistUserDetails() {
   const dispatch = useDispatch()
   const {isPlaying, activeSong} = useSelector((state) => state.player)

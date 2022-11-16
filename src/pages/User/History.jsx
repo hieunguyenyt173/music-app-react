@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getTime } from '../components/MusicPlayer/Seekbar';
-import PlayPause from '../components/PlayPause';
-import { playPause, removeLike, setActiveSong } from '../redux/features/playerSlice';
-import { TopAlbumItem } from './TopAlbums';
-import { VideoItem } from './TopMV';
+import { getTime } from '../../components/MusicPlayer/Seekbar';
+import PlayPause from '../../components/PlayPause';
+import { playPause, removeHistory, removeSongRecently, setActiveSong } from '../../redux/features/playerSlice';
+import { TopAlbumItem } from '../TopAlbums';
+import { VideoItem } from '../TopMV';
 
-export const SongItemFavorite = ({ activeSong, isPlaying, i, data, song }) => {
+
+export const SongItemRecently = ({ activeSong, isPlaying, i, data, song }) => {
   const dispatch = useDispatch();
-  const listFavorites = JSON.parse(localStorage.getItem("listFavorite"))
+  const  songRecently = JSON.parse(localStorage.getItem("songRecently"))
   const handlePause = () => {
     dispatch(playPause(false));
     
@@ -20,15 +21,16 @@ export const SongItemFavorite = ({ activeSong, isPlaying, i, data, song }) => {
     dispatch(playPause(true));
   };
 
-   const handleRemoveLike = () => {
-    if(listFavorites) {
-      listFavorites.length > 0 && listFavorites.map((songFavor,index) => {
+   const handleRemove = (i) => {
+    if(songRecently) {
+      songRecently.length > 0 && songRecently.map((songFavor,index) => {
         if(songFavor.title === song.title) {
-          dispatch(removeLike(index))
+          dispatch(removeSongRecently(index))
         }
       })
     }
    }
+
   return (
     <div className="song-item flex items-center justify-between hover:bg-[#f5f7fa] px-3 py-2 rounded-r-lg">
     <div className="flex items-center">
@@ -77,83 +79,79 @@ export const SongItemFavorite = ({ activeSong, isPlaying, i, data, song }) => {
       </div>
     </div>
     <div className="flex items-center">
-       <i className="ri-heart-fill text-2xl text-red-600"></i>
+
       <p className="text-sm px-3">{song.duration ? getTime(song.duration) : ""}</p>
       <i className="ri-more-fill text-2xl"></i>
-      <i className="ri-close-circle-line text-2xl text-red-600 ml-3 cursor-pointer" onClick={() => handleRemoveLike(i)}></i>
+      <i className="ri-close-circle-line text-red-600 text-2xl ml-3 cursor-pointer" onClick={() => handleRemove(i)}></i>
     </div>
   </div>
   )
 }
 
-function Favorites() {
+function History() {
+
   const {isPlaying, activeSong} = useSelector((state) => state.player)
-  const listFavorites = JSON.parse(localStorage.getItem("listFavorite"))
-  const listPlaylistLike = JSON.parse(localStorage.getItem("listPlaylistLike"))
-  const listVideoLike = JSON.parse(localStorage.getItem("listVideoLike"))
+  const  songRecently = JSON.parse(localStorage.getItem("songRecently"))
+  const  videoRecently = JSON.parse(localStorage.getItem("videoRecently"))
+  const  playlistRecently = JSON.parse(localStorage.getItem("playlistRecently"))
   return (
     <div className='lg:container mx-auto px-12 mb-10'>
        <p className="heading text-[32px] font-bold text-sky-600 pb-3">
-           Nhạc yêu thích
+           Bài hát gần đây
           </p>
           
           <div>
         {
-        !listFavorites || listFavorites.length === 0 ? 
-        <p>Chưa có bài hát yêu thích</p> 
-        :
-        listFavorites.map((song, i) => (
-          <SongItemFavorite 
+        songRecently ? 
+        songRecently.map((song, i) => (
+          <SongItemRecently
           key={i}
           song={song}
-          data={listFavorites}
+          data={songRecently}
           isPlaying={isPlaying}
           activeSong={activeSong}
           i ={i}
           />
         ))  
-        
-
+        :
+        <p>Chưa có bài hát nào</p> 
         }
           </div>
           
         
         <div className='mt-7'>
         <p className="heading text-[32px] font-bold text-sky-600 pb-3">
-           Video yêu thích
+           Video gần đây
           </p>
           <div className="grid grid-cols-3 gap-5">
               {
-              !listVideoLike || listVideoLike.length === 0 ? 
+              !videoRecently || videoRecently.length === 0 ? 
               <p>Chưa có album yêu thích</p> 
               :
             
-              listVideoLike.map((video, i) => (
+              videoRecently.map((video, i) => (
                   <VideoItem key={i} i={i} video={video} />
                 ))}
             </div>
         </div>
         <div className='mt-7'>
         <p className="heading text-[32px] font-bold text-sky-600 pb-3">
-           Album yêu thích
+           Album gần đây
           </p>
-          <div className="flex">
-          <div className="">
-            <div className="grid grid-cols-5 gap-5">
+          <div className="grid grid-cols-5 gap-5">
               {
-              !listPlaylistLike || listPlaylistLike.length === 0 ? 
+              !playlistRecently || playlistRecently.length === 0 ? 
               <p>Chưa có album yêu thích</p> 
               :
             
-              listPlaylistLike.map((playlist, i) => (
+              playlistRecently.map((playlist, i) => (
                   <TopAlbumItem key={i} i={i} playlist={playlist} />
                 ))}
             </div>
-          </div>
-        </div>
         </div>
     </div>
   )
+  
 }
 
-export default Favorites
+export default History

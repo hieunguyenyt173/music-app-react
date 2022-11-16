@@ -7,73 +7,71 @@ function AddUser() {
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-    const [validationMsg,setValidationMsg] = useState({})
-    const navigate = useNavigate()
-    const [addUser] = useAddUserMutation()
+  const [validationMsg, setValidationMsg] = useState({});
+  const navigate = useNavigate();
+  const [addUser] = useAddUserMutation();
   const validate = () => {
-    const msg = {}
-    if(isEmpty(userName)) {
-      msg.userName = "Vui lòng nhập tên đăng nhập"
+    const msg = {};
+    if (isEmpty(userName)) {
+      msg.userName = "Vui lòng nhập tên đăng nhập";
     }
-    if(isEmpty(password)) {
-      msg.password = "Vui lòng nhập mật khẩu"
+    if (isEmpty(password)) {
+      msg.password = "Vui lòng nhập mật khẩu";
     }
-    if(isEmpty(confirmPassword)) {
-        msg.confirmPassword = "Vui lòng xác nhận mật khẩu"
-      }
-    else if(password !== confirmPassword)
-    {
-        msg.confirmPassword = "Xác nhận mật khẩu chưa chính xác"
+    if (isEmpty(confirmPassword)) {
+      msg.confirmPassword = "Vui lòng xác nhận mật khẩu";
+    } else if (password !== confirmPassword) {
+      msg.confirmPassword = "Xác nhận mật khẩu chưa chính xác";
     }
-   
-    setValidationMsg(msg);
-    if(Object.keys(msg).length > 0) return false;
-    return true;
-  }
-  const onSubmit = () => {
-      const isValid = validate();
-      if(!isValid) return;
-      const data = {
-        id: Math.floor(Math.random() * 10000),
-        userName,
-        password,
-        account : "user",
-        createAt: new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}),
-        info : {
-          fullname : "",
-          gender : "",
-          email : "",
-          address : "",
-          phone : ""
 
-        },
-        personallist : [
-          {
-            songFavorites : [],
-            videoFavorites : [],
-            playlist : []
-          },
-          {
-            songRecently : [],
-            videoRecently : [],
-            playlistRecently : []
-          },
-          {
-            playlistUser : []
-          }
-        ]
-      }
-      alert("Đăng kí thành công")
-      setUsername("")
-      setPassword("")
-      setConfirmPassword("")
-      addUser(data)
-      // navigate("/")
-  }
+    setValidationMsg(msg);
+    if (Object.keys(msg).length > 0) return false;
+    return true;
+  };
+  const onSubmit = () => {
+    const isValid = validate();
+    if (!isValid) return;
+    const data = {
+      id: Math.floor(Math.random() * 10000),
+      userName,
+      password,
+      account: "user",
+      createAt: new Date().toLocaleDateString("en-us", {
+        weekday: "long",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }),
+      info: {
+        fullname: "",
+        gender: "",
+        email: "",
+        address: "",
+        phone: "",
+      },
+
+      songFavorites: [],
+      videoFavorites: [],
+      playlist: [],
+      songRecently: [],
+      videoRecently: [],
+      playlistRecently: [],
+      playlistUser: [],
+    };
+    alert("Đăng kí thành công");
+    setUsername("");
+    setPassword("");
+    setConfirmPassword("");
+    addUser(data);
+    navigate("/")
+  };
   return (
-    <div className='lg:container mx-auto px-12 mb-10'>
-        <div className=" p-8 rounded-md w-full max-w-xl mx-auto">
-        <h1 className="text-3xl font-semibold text-center heading  text-sky-600"> Tạo user</h1>
+    <div className="lg:container mx-auto px-12 mb-10">
+      <div className=" p-8 rounded-md w-full max-w-xl mx-auto">
+        <h1 className="text-3xl font-semibold text-center heading  text-sky-600">
+          {" "}
+          Tạo user
+        </h1>
         <form className="mt-6">
           <div>
             <label
@@ -88,9 +86,11 @@ function AddUser() {
               value={userName}
               onChange={(e) => setUsername(e.target.value)}
             />
-            <p className="text-xs text-red-400 italic">{validationMsg.userName}</p>
+            <p className="text-xs text-red-400 italic">
+              {validationMsg.userName}
+            </p>
           </div>
-          
+
           <div className="mt-4">
             <div className="flex items-center justify-between">
               <label
@@ -107,7 +107,9 @@ function AddUser() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <p className="text-xs text-red-400 italic">{validationMsg.password}</p>
+            <p className="text-xs text-red-400 italic">
+              {validationMsg.password}
+            </p>
           </div>
           <div className="mt-4">
             <div className="flex items-center justify-between">
@@ -125,23 +127,24 @@ function AddUser() {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            <p className="text-xs text-red-400 italic">{validationMsg.confirmPassword}</p>
-
+            <p className="text-xs text-red-400 italic">
+              {validationMsg.confirmPassword}
+            </p>
           </div>
 
           <div className="mt-6">
-            <button 
-            type="button"
-            className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
-            onClick={onSubmit}
+            <button
+              type="button"
+              className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+              onClick={onSubmit}
             >
-             Tạo user
+              Tạo user
             </button>
           </div>
         </form>
-        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default AddUser
+export default AddUser;

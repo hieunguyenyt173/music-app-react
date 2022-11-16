@@ -5,8 +5,8 @@ import Discover from "./pages/Discover";
 import NewSongs from "./pages/NewSongs";
 import ArtistDetails from "./pages/ArtistDetails";
 import SongDetails from "./pages/SongDetails";
-import Favorites from "./pages/Favorites";
-import History from "./pages/History";
+import Favorites from "./pages/User/Favorites";
+import History from "./pages/User/History";
 import Genres from "./pages/Genres";
 import TopicDetails from "./pages/TopicDetails";
 
@@ -14,8 +14,8 @@ import TopMV from "./pages/TopMV";
 import PlaylistDetails from "./pages/PlaylistDetails";
 import TopAlbums from "./pages/TopAlbums";
 import MvDetails from "./pages/MvDetails";
-import PlaylistUser from "./pages/PlaylistUser";
-import PlaylistUserDetails from "./pages/PlaylistUserDetails";
+import PlaylistUser from "./pages/User/PlaylistUser";
+import PlaylistUserDetails from "./pages/User/PlaylistUserDetails";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import ListUser from "./pages/User/ListUser";
@@ -34,7 +34,7 @@ function App() {
           <Route path="/the-loai/:idTopic" element={<TopicDetails />} />
           <Route path="/top-albums" element={<TopAlbums />} />
           <Route path="/mv" element={<TopMV />} />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/favorites/:userId" element={<Favorites />} />
           <Route path="/playlists/:idPlaylist" element={<PlaylistDetails />} />
           <Route path="/videos/:videoId" element={<MvDetails />} />
           <Route path="/history" element={<History />} />

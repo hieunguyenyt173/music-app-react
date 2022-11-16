@@ -12,7 +12,7 @@ function Login() {
     const {data} = useGetUserQuery() 
     const dispatch = useDispatch()
     const { user } = useSelector((state) => state.user)
-    console.log(user)
+    
     const validate = () => {
       const msg = {}
       if(isEmpty(userName)) {

@@ -25,10 +25,6 @@ function Homepage() {
   const { activeSong, isPlaying, listFavorites } = useSelector(
     (state) => state.player
   );
-  const [dataHome, setDataHome] = useState();
-  const [dataArtistList, setDataArtistList] = useState();
-  const [dataPlaylist, setDataPlaylist] = useState();
-  // const NhacCuaTui = require("nhaccuatui-api-full");
   const { data, isFetching, isError } = useGetChartHomeQuery();
   const { data: chartpage } = useGetChartQuery();
   const {data: top100} = useGetTop100Query();
@@ -39,7 +35,7 @@ function Homepage() {
   if (isError) {
     return <Error />;
   }
-  console.log(mv);
+  
 
   
   const newRelease = data?.data?.newRelease;
@@ -50,7 +46,7 @@ function Homepage() {
   const videoHot = mv?.data?.items;
   const relatedSong = chartpage?.data?.items[3]?.items?.others
   const top100Home = top100?.data[0]?.items.slice(0,6)
-  console.log(top100)
+  
   return (
     <div className="lg:container mx-auto px-12 mb-10">
       <Banner data={banner} />
