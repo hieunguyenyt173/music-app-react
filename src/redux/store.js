@@ -12,11 +12,9 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({
-    thunk: {
-      extraArgument: zingApi,
-    },
+    immutableCheck: false,
     serializableCheck: false,
-  }),
-  middleware : (getDefaultMiddleware) => getDefaultMiddleware().concat(userApi.middleware)
+  }).concat(zingApi.middleware),
+  
   
 });

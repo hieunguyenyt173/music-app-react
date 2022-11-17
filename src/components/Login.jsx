@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import isEmpty from 'validator/lib/isEmpty'
 import { useGetUserQuery } from "../redux/services/userApi";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../redux/features/authSlice";
 function Login() {
     const [userName, setUsername] = useState("")
     const [password, setPassword] =  useState("")
     const [validationMsg, setValidationMsg] = useState({})
     const navigate = useNavigate()
-    const {data} = useGetUserQuery() 
+    const { data } = useGetUserQuery() 
     const dispatch = useDispatch()
-    const { user } = useSelector((state) => state.user)
+    
     
     const validate = () => {
       const msg = {}

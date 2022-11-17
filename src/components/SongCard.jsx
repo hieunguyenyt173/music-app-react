@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setActiveSong, playPause, setSongRecently } from "../redux/features/playerSlice";
 import PlayPause from "./PlayPause";
 import { useGetUserQuery, useUpdateUserMutation } from "../redux/services/userApi";
-import { likeSong } from "../redux/features/authSlice";
+import { likeSong, removeSongLike } from "../redux/features/authSlice";
 
 function SongCard({ song, isPlaying, activeSong, data, i}) {
   const songRecently = JSON.parse(localStorage.getItem("songRecently"))
   const { user } = useSelector((state) => state.user)
   const [updateUser] = useUpdateUserMutation()
-  
+ 
   const listFavorites = user.songFavorites
-  console.log(user)
+  
   const dispatch = useDispatch();
   const handlePauseClick = () => {
     dispatch(playPause(false))
@@ -33,33 +33,23 @@ function SongCard({ song, isPlaying, activeSong, data, i}) {
     }
       
   };
-  const handleLike = (song) => {
+  const handleLike = () => {
+    dispatch(likeSong(song))
+    const newUpdate = {...user, songFavorites: [...user.songFavorites, song]}
     
-    const newUpdate = {...user, songFavorites : [...user.songFavorites, song]}
-    likeSong(song)
-    console.log(newUpdate)
-    // updateUser(newUpdate)
-   
+    updateUser(newUpdate)
   }
   const handleRemoveLike = () => {
-   
+    const newUpdate = {...user, songFavorites : [...user.songFavorites].filter((s) => s.title !== song.title)}
       listFavorites.map((songFavor, index) => {
         if(songFavor.title === song.title) {
-          
-         
+         dispatch(removeSongLike(index))
+         updateUser(newUpdate)
         }
       })
     
-    // if(listFavorites) {
-    //   listFavorites.length > 0 && listFavorites.map((songFavor,index) => {
-    //     if(songFavor.title === song.title) {
-    //       const newUpdate = {...userLike, songFavorites: [...userLike.songFavorites].splice(index,1)}
-    //       console.log(newUpdate)
-    //     }
-    //   })
-    // }
-    
   }
+  
   return (
     <>
       <div className="song-card max-w-[240px group">
@@ -71,9 +61,9 @@ function SongCard({ song, isPlaying, activeSong, data, i}) {
             alt="song-img"
           />
           <span className="like-icon absolute top-4 left-4 hover:scale-125 hover:text-red-600">
-            { !listFavorites || !listFavorites.find((item) => item.title === song.title) ? <i className="ri-heart-fill  text-2xl   text-slate-100 opacity-75" onClick={(e) => handleLike(song)}></i>
+            { !listFavorites || !listFavorites.find((item) => item.title === song.title) ? <i className="ri-heart-fill  text-2xl   text-slate-100 opacity-75" onClick={handleLike}></i>
             :
-            <i className="ri-heart-fill  text-2xl  text-red-600 block" onClick={(e) => handleRemoveLike(song)}></i>
+            <i className="ri-heart-fill  text-2xl  text-red-600 block" onClick={handleRemoveLike}></i>
             }
             
             

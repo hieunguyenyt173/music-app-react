@@ -13,37 +13,71 @@
         "address": "Hà Đông, Hà Nội",
         "phone": "012345678"
       },
+      "songFavorites": [],
+      "videoFavorites": [],
+      "playlist": [],
+      "songRecently": [],
+      "videoRecently": [],
+      "playlistRecently": [],
+      "playlistUser": [
+        {
+          "title": "abc",
+          "thumbnailB": "https://photo-zmp3.zmdcdn.me/album_default.png",
+          "songs": [],
+          "key": 5554
+        },
+        {
+          "title": "abcd",
+          "thumbnailB": "https://photo-zmp3.zmdcdn.me/album_default.png",
+          "songs": [],
+          "key": 1477
+        }
+      ]
+    },
+    {
+      "id": 7529,
+      "userName": "test123",
+      "password": "123",
+      "account": "user",
+      "createAt": "Wednesday, Nov 16, 2022",
+      "info": {
+        "fullname": "",
+        "gender": "",
+        "email": "",
+        "address": "",
+        "phone": ""
+      },
       "songFavorites": [
         {
-          "encodeId": "Z6O70OBE",
-          "title": "Mỗi Khi Anh Nhìn Em",
-          "alias": "Moi-Khi-Anh-Nhin-Em-My-Anh",
+          "encodeId": "Z6OZW0A9",
+          "title": "Hoa Dại",
+          "alias": "Hoa-Dai-Phuong-My-Chi",
           "isOffical": true,
           "username": "",
-          "artistsNames": "Mỹ Anh",
+          "artistsNames": "Phương Mỹ Chi",
           "artists": [
             {
-              "id": "IWZAEAC0",
-              "name": "Mỹ Anh",
-              "link": "/My-Anh-Singer",
+              "id": "IWZ9EWB6",
+              "name": "Phương Mỹ Chi",
+              "link": "/Phuong-My-Chi",
               "spotlight": false,
-              "alias": "My-Anh-Singer",
-              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/7/8/6/2/78620213b8e0e54ae89b2bba895446f6.jpg",
-              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/7/8/6/2/78620213b8e0e54ae89b2bba895446f6.jpg",
+              "alias": "Phuong-My-Chi",
+              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/c/c/7/c/cc7c910344b4df0d33bc28dee910fc20.jpg",
+              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/c/c/7/c/cc7c910344b4df0d33bc28dee910fc20.jpg",
               "isOA": true,
               "isOABrand": false,
-              "playlistId": "Z6BUII6Z"
+              "playlistId": "Z6BOEAI0"
             }
           ],
           "isWorldWide": true,
-          "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/0/6/9/a/069a232f9fdd635bd6a49d5636b43099.jpg",
-          "link": "/bai-hat/Moi-Khi-Anh-Nhin-Em-My-Anh/Z6O70OBE.html",
-          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/0/6/9/a/069a232f9fdd635bd6a49d5636b43099.jpg",
-          "duration": 192,
+          "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/4/a/8/4/4a84d047b65c86cd994a6ee2fad8b0b1.jpg",
+          "link": "/bai-hat/Hoa-Dai-Phuong-My-Chi/Z6OZW0A9.html",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/4/a/8/4/4a84d047b65c86cd994a6ee2fad8b0b1.jpg",
+          "duration": 220,
           "zingChoice": false,
           "isPrivate": false,
           "preRelease": false,
-          "releaseDate": 1668517204,
+          "releaseDate": 1668603604,
           "genreIds": [
             "IWZ9Z08I",
             "IWZ97FCD"
@@ -52,6 +86,59 @@
           "isIndie": false,
           "streamingStatus": 1,
           "allowAudioAds": true,
+          "hasLyric": true
+        },
+        {
+          "encodeId": "Z6OA8FO6",
+          "title": "Xe Đạp Ơi (25th Làn Sóng Xanh)",
+          "alias": "Xe-Dap-Oi-25th-Lan-Song-Xanh-Juky-San-Hoang-Duyen",
+          "isOffical": true,
+          "username": "",
+          "artistsNames": "Juky San, Hoàng Duyên",
+          "artists": [
+            {
+              "id": "IW6UZW08",
+              "name": "Juky San",
+              "link": "/Juky-San",
+              "spotlight": false,
+              "alias": "Juky-San",
+              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/3/9/6/5/396532a35b396003e9047a63e2f04419.jpg",
+              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/3/9/6/5/396532a35b396003e9047a63e2f04419.jpg",
+              "isOA": true,
+              "isOABrand": false,
+              "playlistId": "Z6BUI09Z"
+            },
+            {
+              "id": "IW68E9FA",
+              "name": "Hoàng Duyên",
+              "link": "/Hoang-Duyen",
+              "spotlight": false,
+              "alias": "Hoang-Duyen",
+              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/6/1/9/6/619672078f62a2d9e5bec3d6318e42eb.jpg",
+              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/6/1/9/6/619672078f62a2d9e5bec3d6318e42eb.jpg",
+              "isOA": true,
+              "isOABrand": false,
+              "playlistId": "SAED698B"
+            }
+          ],
+          "isWorldWide": false,
+          "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/9/8/e/0/98e0c0bb1deb37757044fc42eb5af072.jpg",
+          "link": "/bai-hat/Xe-Dap-Oi-25th-Lan-Song-Xanh-Juky-San-Hoang-Duyen/Z6OA8FO6.html",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/9/8/e/0/98e0c0bb1deb37757044fc42eb5af072.jpg",
+          "duration": 256,
+          "zingChoice": false,
+          "isPrivate": false,
+          "preRelease": false,
+          "releaseDate": 1668531605,
+          "genreIds": [
+            "IWZ9Z08I",
+            "IWZ9Z088",
+            "IWZ97FCD"
+          ],
+          "indicators": [],
+          "isIndie": false,
+          "streamingStatus": 1,
+          "allowAudioAds": false,
           "hasLyric": true
         },
         {
@@ -83,7 +170,7 @@
           "zingChoice": false,
           "isPrivate": false,
           "preRelease": false,
-          "releaseDate": 1668531600,
+          "releaseDate": 1668531603,
           "genreIds": [
             "IWZ9Z08I",
             "IWZ97FCD"
@@ -92,47 +179,6 @@
           "isIndie": false,
           "streamingStatus": 1,
           "allowAudioAds": false,
-          "hasLyric": true
-        },
-        {
-          "encodeId": "Z6O8DEAU",
-          "title": "Hồi Kết",
-          "alias": "Hoi-Ket-Ha-Nhi",
-          "isOffical": true,
-          "username": "",
-          "artistsNames": "Hà Nhi",
-          "artists": [
-            {
-              "id": "IWZA6806",
-              "name": "Hà Nhi",
-              "link": "/Ha-Nhi",
-              "spotlight": false,
-              "alias": "Ha-Nhi",
-              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/c/5/d/b/c5dbc8fad12e47094496041efa689f21.jpg",
-              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/c/5/d/b/c5dbc8fad12e47094496041efa689f21.jpg",
-              "isOA": true,
-              "isOABrand": false,
-              "playlistId": "Z6BOEFUU"
-            }
-          ],
-          "isWorldWide": false,
-          "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/9/f/5/e/9f5e1ba38b5636d4ebfe53b7c8044229.jpg",
-          "link": "/bai-hat/Hoi-Ket-Ha-Nhi/Z6O8DEAU.html",
-          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/9/f/5/e/9f5e1ba38b5636d4ebfe53b7c8044229.jpg",
-          "duration": 274,
-          "zingChoice": false,
-          "isPrivate": false,
-          "preRelease": false,
-          "releaseDate": 1668445204,
-          "genreIds": [
-            "IWZ9Z08I",
-            "IWZ9Z088",
-            "IWZ97FCD"
-          ],
-          "indicators": [],
-          "isIndie": false,
-          "streamingStatus": 2,
-          "allowAudioAds": true,
           "hasLyric": true
         }
       ],
@@ -144,11 +190,11 @@
       "playlistUser": []
     },
     {
-      "id": 7529,
-      "userName": "test123",
-      "password": "123",
+      "id": 7578,
+      "userName": "testuser",
+      "password": "test123",
       "account": "user",
-      "createAt": "Wednesday, Nov 16, 2022",
+      "createAt": "Thursday, Nov 17, 2022",
       "info": {
         "fullname": "",
         "gender": "",

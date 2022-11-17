@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setActiveSong, playPause, likeList, setSongRecently, removeLike, addSongUser } from "../redux/features/playerSlice";
+import { setActiveSong, playPause, setSongRecently } from "../redux/features/playerSlice";
 import PlayPause from "./PlayPause";
 import { getTime } from "./MusicPlayer/Seekbar";
+import { useUpdateUserMutation } from "../redux/services/userApi";
+import { addSongUser, likeSong, removeSongLike } from "../redux/features/authSlice";
 
 function SongItem({ activeSong, isPlaying, i, data, song }) {
-  const listFavorites = JSON.parse(localStorage.getItem("listFavorite"))
+  
   const dispatch = useDispatch();
   const songRecently = JSON.parse(localStorage.getItem("songRecently"))
-  const {playlistUser} = useSelector((state) => state.player)
+  
   const [isShow,setIsShow] = useState(false)
-
+  const { user } = useSelector((state) => state.user)
+  const [updateUser] = useUpdateUserMutation()
+  const listFavorites = user.songFavorites
+  const playlistUser = user?.playlistUser
   const handlePause = () => {
     dispatch(playPause(false));
     
   };
+  
   const handlePlay = () => {
    
     dispatch(setActiveSong({ song, data, i }));
@@ -33,17 +39,20 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
   };
 
   const handleLike = () => {
-    dispatch(likeList(song))
+    dispatch(likeSong(song))
+    const newUpdate = {...user, songFavorites: [...user.songFavorites, song]}
+    
+    updateUser(newUpdate)
   }
 
   const handleRemoveLike = () => {
-    if(listFavorites) {
-      listFavorites.length > 0 && listFavorites.map((songFavor,index) => {
+    const newUpdate = {...user, songFavorites : [...user.songFavorites].filter((s) => s.title !== song.title)}
+      listFavorites.map((songFavor, index) => {
         if(songFavor.title === song.title) {
-          dispatch(removeLike(index))
+         dispatch(removeSongLike(index))
+         updateUser(newUpdate)
         }
       })
-    }
     
   }
 
@@ -52,7 +61,16 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
   }
   const handleAdd = (playlist, song) => {
     setIsShow(false)
-    dispatch(addSongUser({playlist, song}))
+    
+    // dispatch(addSongUser({playlist, song}))
+    playlistUser.map((p) => {
+      if(p.key === playlist.key) {
+       
+      }
+    })
+    
+    alert("Thêm vào playlist thành công !")
+    
   }
   return (
     <div className="song-item flex items-center justify-between hover:bg-[#f5f7fa] px-3 py-2 rounded-r-lg">

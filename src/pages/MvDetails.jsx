@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, {useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom'
-import { playPause, removeLikeVideo, setLikeVideo } from '../redux/features/playerSlice';
+import { likeVideo, removeVideoLike } from '../redux/features/authSlice';
+import { playPause, } from '../redux/features/playerSlice';
+import { useUpdateUserMutation } from '../redux/services/userApi';
 import { useGetMvDetailsQuery } from '../redux/services/zingApi';
 
 
@@ -9,7 +11,7 @@ import { useGetMvDetailsQuery } from '../redux/services/zingApi';
 export const VideoListItem = () => {
     return (
         <div className='flex items-center'>
-
+          
         </div>
     )
 }
@@ -19,32 +21,38 @@ export const VideoListItem = () => {
 function MvDetails() {
   const {videoId} = useParams()
   const {data , isFetching} = useGetMvDetailsQuery(videoId)
-    console.log(data)
-    const [video, setVideo] = useState()
+    
+    const video = data?. data
     const dispatch = useDispatch();
     const {isPlaying} = useSelector((state) => state.player)
-    const listVideoLike = JSON.parse(localStorage.getItem("listVideoLike"))
+    const { user } = useSelector((state) => state.user)
+    const [updateUser] = useUpdateUserMutation()
+   
+    const listVideoLike = user.videoFavorites
+    
     if(isPlaying) {
         dispatch(playPause(false))
     }
-    console.log(data?.data?.streaming?.mp4?.["720p"])
+    console.log(video)
     const ref = useRef(null)
     // if(ref) {
     //   ref.current.play();
     //  }
 
     const handleLike = () => {
-    
-      dispatch(setLikeVideo(video))
+      dispatch(likeVideo(video))
+      const newUpdate = {...user, videoFavorites: [...user.videoFavorites, video]}
+      
+      updateUser(newUpdate)
     }
     const handleRemoveLike = () => {
-      if(listVideoLike) {
-        listVideoLike.length > 0 && listVideoLike.map((songFavor,index) => {
-          if(songFavor.title === video.title) {
-            dispatch(removeLikeVideo(index))
-          }
-        })
-      }
+      const newUpdate = {...user, videoFavorites : [...user.videoFavorites].filter((s) => s.title !== video.title)}
+      listVideoLike.map((songFavor, index) => {
+        if(songFavor.title === video.title) {
+         dispatch(removeVideoLike(index))
+         updateUser(newUpdate)
+        }
+      })
       
     }
   return (

@@ -1,16 +1,27 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addPlaylistUser, removeUserPlaylist } from '../../redux/features/playerSlice';
+import { addPlaylistUser, removeUserPlaylist } from '../../redux/features/authSlice';
+
+import { useUpdateUserMutation } from '../../redux/services/userApi';
 
 
 export const  PlaylistUserItem = ({playlist,i}) => {
-  const dispatch = useDispatch()
+  const { user } = useSelector((state) => state.user)
+  const [updateUser] = useUpdateUserMutation()
+  const  playlistUser = user?.playlistUser
+    const dispatch = useDispatch()
  const handleRemoveUserPlaylist = () => {
        
-        dispatch(removeUserPlaylist( i))
+        const newUpdate = {...user, playlistUser : [...user.playlistUser].filter((s) => s.title !== playlist.title)}
+      playlistUser.map((songFavor, index) => {
+        if(songFavor.title === playlist.title) {
+         dispatch(removeUserPlaylist(index))
+         updateUser(newUpdate)
+        }
+      })
    }
-  console.log(playlist?.songs[0].thumbnailM)
+  
   return (
     <div className="playlist-card group">
         <div className="w-full rounded-xl overflow-hidden relative">
@@ -35,7 +46,10 @@ export const  PlaylistUserItem = ({playlist,i}) => {
 function PlaylistUser() {
     const [isShowModal, setIsShowModal] = useState(false)
     const [value,setValue] = useState()
-    const {playlistUser} = useSelector((state) => state.player)
+    
+    const { user } = useSelector((state) => state.user)
+  const [updateUser] = useUpdateUserMutation()
+  const  playlistUser = user?.playlistUser
     const dispatch = useDispatch()
     const handleShowPlaylist = () => {
         setIsShowModal(true)
@@ -49,6 +63,9 @@ function PlaylistUser() {
     }
     dispatch(addPlaylistUser(newPlaylist))
     setIsShowModal(false)
+    setValue("")
+    const newUpdate = {...user, playlistUser : [...user.playlistUser, newPlaylist]}
+    updateUser(newUpdate)
    }
    
   

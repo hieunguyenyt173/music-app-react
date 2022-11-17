@@ -8,19 +8,16 @@ import { likeList, playPause, removeLikePlaylist, setActiveSong, setLikePlaylist
 function PlaylistUserDetails() {
   const dispatch = useDispatch()
   const {isPlaying, activeSong} = useSelector((state) => state.player)
-
-  const { idUser } = useParams();
+  const { user } = useSelector((state) => state.user)
+  const { idPlaylist } = useParams();
   const [play,setPlay] = useState(false)
  
   const listPlaylistLike = JSON.parse(localStorage.getItem("listPlaylistLike"))
   const  playlistRecently = JSON.parse(localStorage.getItem("songRecently"))
-  const  playlistUser = JSON.parse(localStorage.getItem("playlistUser"))
-  const  playlist =  playlistUser.find((playlist) => playlist?.key === +idUser)
+  const  playlistUser = user?.playlistUser
+  const  playlist =  playlistUser.find((playlist) => playlist?.key === +idPlaylist)
   const listSong = playlist?.songs
-  console.log(playlist)
-  console.log(playlistUser)
-  console.log(listSong)
-  console.log(playlist.thumbnailB)
+  
   const handlePlayPlaylist = () => {
     if(listSong.length > 0) {
       dispatch(playPause(true))
@@ -47,19 +44,7 @@ function PlaylistUserDetails() {
     setPlay(false)
   }
 
-  const handleLike = () => {
-    dispatch(setLikePlaylist(playlist))
-    
-  }
-  const handleRemoveLike = () => {
-    if(listPlaylistLike) {
-      listPlaylistLike.length > 0 && listPlaylistLike.map((playlistF,index) => {
-        if(playlistF?.title === playlist?.title) {
-          dispatch(removeLikePlaylist(index))
-        }
-      })
-    }
-  }
+  
   
   return (
     <div className="lg:container mx-auto px-12 mb-10">
@@ -81,14 +66,7 @@ function PlaylistUserDetails() {
             <i className="ri-play-line text-xl px-2"></i>
           </div>
           }
-         <div className="flex my-3 justify-center">
-         { !listPlaylistLike || !listPlaylistLike.find((item) => item?.title === playlist?.title) ? <i className="ri-heart-line  text-2xl " onClick={handleLike}></i>
-            :
-            <i className="ri-heart-fill  text-2xl  text-red-600 block cursor-pointer" onClick={handleRemoveLike}></i>
-          }
-            
-            
-         </div>
+         
         </div>
         <div className="ml-8 w-full">
           

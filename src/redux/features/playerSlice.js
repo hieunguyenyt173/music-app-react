@@ -9,17 +9,12 @@ const initialState = {
   activeSong: {},
   isShowPlaylist: false,
   isShowLyric:false,
-  listFavorites :  {
-    songFavorites: JSON.parse(localStorage.getItem("listFavorite")) || [],
-    videoFavorites: JSON.parse(localStorage.getItem("listVideoLike")) || [],
-    playlist: JSON.parse(localStorage.getItem("listPlaylistLike")) || []
-  }  ,
   recentlyList : {
     songRecently: JSON.parse(localStorage.getItem("songRecently")) || [],
     videoRecently: JSON.parse(localStorage.getItem("videoRecently")) || [],
     playlistRecently: JSON.parse(localStorage.getItem("playlistRecently")) || [],
   },
-  playlistUser : JSON.parse(localStorage.getItem("playlistUser")) || [],
+  
 
 };
 

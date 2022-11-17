@@ -18,10 +18,11 @@ export const zingApi = createApi({
       getPlaylistDetail : builder.query({ query : (playlistId) => `/api/detailplaylist?id=${playlistId}`}),
       getArtistDetail : builder.query({ query : (alias) => `/api/artist?name=${alias}`}),
       getMvDetails : builder.query({ query : (id) =>  `/api/video?id=${id}`}),
+      search : builder.query({ query : (keyword) =>  `/api/search?keyword=${keyword}`}),
     }),
   
     
   });
-  export const { useGetChartHomeQuery, useGetChartQuery,useGetMvDetailsQuery, useGetSongQuery, useGetTop100Query, useGetLyricQuery, useGetNewReleaseChartQuery, useGetListMvHomeQuery,useGetPlaylistDetailQuery, useGetArtistDetailQuery } = zingApi;
+  export const { useGetChartHomeQuery, useGetChartQuery,useGetMvDetailsQuery, useGetSongQuery, useGetTop100Query, useGetLyricQuery, useGetNewReleaseChartQuery, useGetListMvHomeQuery,useGetPlaylistDetailQuery, useGetArtistDetailQuery , useSearchQuery} = zingApi;
   
    

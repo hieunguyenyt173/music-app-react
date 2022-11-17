@@ -7,9 +7,6 @@ import ArtistDetails from "./pages/ArtistDetails";
 import SongDetails from "./pages/SongDetails";
 import Favorites from "./pages/User/Favorites";
 import History from "./pages/User/History";
-import Genres from "./pages/Genres";
-import TopicDetails from "./pages/TopicDetails";
-
 import TopMV from "./pages/TopMV";
 import PlaylistDetails from "./pages/PlaylistDetails";
 import TopAlbums from "./pages/TopAlbums";
@@ -22,6 +19,7 @@ import ListUser from "./pages/User/ListUser";
 import AddUser from "./pages/User/AddUser";
 import Profile from "./pages/User/Profile";
 import ChangePassword from "./pages/User/ChangePassword";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -30,8 +28,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Discover />} />
           <Route path="/nhac-moi" element={<NewSongs />} />
-          <Route path="/the-loai" element={<Genres />} />
-          <Route path="/the-loai/:idTopic" element={<TopicDetails />} />
+          <Route path="/tim-kiem/:keyword" element={<Search />} />
           <Route path="/top-albums" element={<TopAlbums />} />
           <Route path="/mv" element={<TopMV />} />
           <Route path="/favorites/:userId" element={<Favorites />} />
@@ -42,7 +39,7 @@ function App() {
           <Route path="/songs/:songId" element={<SongDetails />} />
           <Route path="/playlist-user" element={<PlaylistUser />} />
           <Route
-            path="/playlist-user/:idUser"
+            path="/playlist-user/:idPlaylist"
             element={<PlaylistUserDetails />}
           />
           <Route path="/login" element={<Login />} />

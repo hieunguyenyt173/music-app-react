@@ -32,12 +32,7 @@ function Sidebar() {
             <p>Nhạc mới</p>
           </div>
           </NavLink>
-          <NavLink to="the-loai">
-          <div className="nav-item w-full flex items-center py-[10px] px-6">
-            <i className="ri-album-line text-xl pr-3"></i>
-            <p>Thể loại</p>
-          </div>
-          </NavLink>
+         
           <NavLink to="top-albums">
           <div className="nav-item w-full flex items-center py-[10px] px-6">
             <i className="ri-mic-line text-xl pr-3"></i>

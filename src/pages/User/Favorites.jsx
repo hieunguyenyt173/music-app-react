@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getTime } from '../../components/MusicPlayer/Seekbar';
 import PlayPause from '../../components/PlayPause';
+import { removeSongLike } from '../../redux/features/authSlice';
 
 
 import { playPause, removeLike, setActiveSong } from '../../redux/features/playerSlice';
-import { useGetUserQuery } from '../../redux/services/userApi';
+import { useGetUserQuery, useUpdateUserMutation } from '../../redux/services/userApi';
 import { TopAlbumItem } from '../TopAlbums';
 import { VideoItem } from '../TopMV';
 
@@ -14,7 +15,10 @@ import { VideoItem } from '../TopMV';
 
 export const SongItemFavorite = ({ activeSong, isPlaying, i, data, song }) => {
   const dispatch = useDispatch();
-  const listFavorites = JSON.parse(localStorage.getItem("listFavorite"))
+  const { user } = useSelector((state) => state.user)
+  const [updateUser] = useUpdateUserMutation()
+ 
+  const listFavorites = user.songFavorites
   const handlePause = () => {
     dispatch(playPause(false));
     
@@ -26,13 +30,13 @@ export const SongItemFavorite = ({ activeSong, isPlaying, i, data, song }) => {
   };
 
    const handleRemoveLike = () => {
-    if(listFavorites) {
-      listFavorites.length > 0 && listFavorites.map((songFavor,index) => {
+    const newUpdate = {...user, songFavorites : [...user.songFavorites].filter((s) => s.title !== song.title)}
+      listFavorites.map((songFavor, index) => {
         if(songFavor.title === song.title) {
-          dispatch(removeLike(index))
+         dispatch(removeSongLike(index))
+         updateUser(newUpdate)
         }
       })
-    }
    }
   return (
     <div className="song-item flex items-center justify-between hover:bg-[#f5f7fa] px-3 py-2 rounded-r-lg">
@@ -94,10 +98,9 @@ export const SongItemFavorite = ({ activeSong, isPlaying, i, data, song }) => {
 function Favorites() {
   const {isPlaying, activeSong} = useSelector((state) => state.player)
   const {userId} = useParams();
-  const { data , isFetching} = useGetUserQuery()
-  const user = data?.find((user) => user.id === +userId)
-  console.log(user)
-  console.log(data)
+  const { user } = useSelector((state) => state.user)
+  
+  
   
   const listFavorites = user?.songFavorites
   const listPlaylistLike = user?.playlist

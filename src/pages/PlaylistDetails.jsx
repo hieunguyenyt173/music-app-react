@@ -4,7 +4,9 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import SongItem from '../components/SongItem'
-import { likeList, playPause, removeLikePlaylist, setActiveSong, setLikePlaylist, setplaylistRecently } from "../redux/features/playerSlice";
+import { likePlaylist, removeLikePlaylist } from "../redux/features/authSlice";
+import { playPause, setActiveSong, setLikePlaylist, setplaylistRecently } from "../redux/features/playerSlice";
+import { useUpdateUserMutation } from "../redux/services/userApi";
 import { useGetPlaylistDetailQuery } from "../redux/services/zingApi";
 function PlaylistDetails() {
   
@@ -13,16 +15,19 @@ function PlaylistDetails() {
 
   const { idPlaylist } = useParams();
   const [play,setPlay] = useState(false)
-  const listPlaylistLike = JSON.parse(localStorage.getItem("listPlaylistLike"))
+  
   const  playlistRecently = JSON.parse(localStorage.getItem("songRecently"))
-  const  playlistUser = JSON.parse(localStorage.getItem("playlistUser"))
  
+  const { user } = useSelector((state) => state.user)
+  const [updateUser] = useUpdateUserMutation()
+ 
+  const listPlaylistLike = user.playlist
 
   
   const {data,isFetching} = useGetPlaylistDetailQuery(idPlaylist)
   const listSong = data?.data?.song?.items
   const playlist = data?.data
-  console.log(playlist)
+  if(isFetching) return <Loader title="Loading ... " />
   const handlePlayPlaylist = () => {
     if(listSong) {
       dispatch(playPause(true))
@@ -50,17 +55,19 @@ function PlaylistDetails() {
   }
 
   const handleLike = () => {
-    dispatch(setLikePlaylist(playlist))
+    dispatch(likePlaylist(playlist))
+    const newUpdate = {...user, playlist: [...user.playlist, playlist]}
     
+    updateUser(newUpdate)
   }
   const handleRemoveLike = () => {
-    if(listPlaylistLike) {
-      listPlaylistLike.length > 0 && listPlaylistLike.map((playlistF,index) => {
-        if(playlistF?.title === playlist?.title) {
-          dispatch(removeLikePlaylist(index))
+    const newUpdate = {...user, playlist : [...user.playlist].filter((s) => s.title !== playlist.title)}
+    listPlaylistLike.map((songFavor, index) => {
+        if(songFavor.title === playlist.title) {
+         dispatch(removeLikePlaylist(index))
+         updateUser(newUpdate)
         }
       })
-    }
   }
   return (
     <div className="lg:container mx-auto px-12 mb-10">

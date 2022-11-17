@@ -7,7 +7,14 @@ function SearchBar() {
   const {user} = useSelector((state) => state.user)
   const dispatch = useDispatch();
   const navigate = useNavigate()
-  
+  const [keyword, setKeyword] = useState("")
+  const key = keyword.replaceAll(" ", "%20")
+  const handleSearch = () => {
+    if(key){
+      navigate(`/tim-kiem/${key}`)
+    }
+    
+  }
   const handleLogout = () => {
     dispatch(logout());
     navigate("/")
@@ -19,9 +26,11 @@ function SearchBar() {
         <div className="absolute z-30 top-3 left-12 right-12 z-20 flex justify-between items-center nimate-slideup bg-gradient-to-br from-white/10 to-[#196eed] backdrop-blur-lg rounded-md text-slate-100">
           <form action="" className="py-2 px-5 flex items-center w-2/3">
             <label htmlFor="searchInput">
-              <i className="ri-search-2-line text-xl pr-2"></i>
+              <i className="ri-search-2-line text-xl pr-2" onClick={handleSearch}></i>
             </label>
             <input
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
               type="text"
               id="searchInput"
               className="py-2 px-5 bg-transparent text-inherit placeholder:text-slate-100 placeholder:italic w-full focus:outline-none"
