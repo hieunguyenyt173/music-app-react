@@ -15,76 +15,35 @@
       },
       "songFavorites": [
         {
-          "encodeId": "Z6O8DEAU",
-          "title": "Hồi Kết",
-          "alias": "Hoi-Ket-Ha-Nhi",
+          "encodeId": "Z6O70OBE",
+          "title": "Mỗi Khi Anh Nhìn Em",
+          "alias": "Moi-Khi-Anh-Nhin-Em-My-Anh",
           "isOffical": true,
           "username": "",
-          "artistsNames": "Hà Nhi",
+          "artistsNames": "Mỹ Anh",
           "artists": [
             {
-              "id": "IWZA6806",
-              "name": "Hà Nhi",
-              "link": "/Ha-Nhi",
+              "id": "IWZAEAC0",
+              "name": "Mỹ Anh",
+              "link": "/My-Anh-Singer",
               "spotlight": false,
-              "alias": "Ha-Nhi",
-              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/c/5/d/b/c5dbc8fad12e47094496041efa689f21.jpg",
-              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/c/5/d/b/c5dbc8fad12e47094496041efa689f21.jpg",
+              "alias": "My-Anh-Singer",
+              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/7/8/6/2/78620213b8e0e54ae89b2bba895446f6.jpg",
+              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/7/8/6/2/78620213b8e0e54ae89b2bba895446f6.jpg",
               "isOA": true,
               "isOABrand": false,
-              "playlistId": "Z6BOEFUU"
-            }
-          ],
-          "isWorldWide": false,
-          "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/9/f/5/e/9f5e1ba38b5636d4ebfe53b7c8044229.jpg",
-          "link": "/bai-hat/Hoi-Ket-Ha-Nhi/Z6O8DEAU.html",
-          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/9/f/5/e/9f5e1ba38b5636d4ebfe53b7c8044229.jpg",
-          "duration": 274,
-          "zingChoice": false,
-          "isPrivate": false,
-          "preRelease": false,
-          "releaseDate": 1668445204,
-          "genreIds": [
-            "IWZ9Z08I",
-            "IWZ9Z088",
-            "IWZ97FCD"
-          ],
-          "indicators": [],
-          "isIndie": false,
-          "streamingStatus": 2,
-          "allowAudioAds": true,
-          "hasLyric": true
-        },
-        {
-          "encodeId": "Z6OZW0A9",
-          "title": "Hoa Dại",
-          "alias": "Hoa-Dai-Phuong-My-Chi",
-          "isOffical": true,
-          "username": "",
-          "artistsNames": "Phương Mỹ Chi",
-          "artists": [
-            {
-              "id": "IWZ9EWB6",
-              "name": "Phương Mỹ Chi",
-              "link": "/Phuong-My-Chi",
-              "spotlight": false,
-              "alias": "Phuong-My-Chi",
-              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/c/c/7/c/cc7c910344b4df0d33bc28dee910fc20.jpg",
-              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/c/c/7/c/cc7c910344b4df0d33bc28dee910fc20.jpg",
-              "isOA": true,
-              "isOABrand": false,
-              "playlistId": "Z6BOEAI0"
+              "playlistId": "Z6BUII6Z"
             }
           ],
           "isWorldWide": true,
-          "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/4/a/8/4/4a84d047b65c86cd994a6ee2fad8b0b1.jpg",
-          "link": "/bai-hat/Hoa-Dai-Phuong-My-Chi/Z6OZW0A9.html",
-          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/4/a/8/4/4a84d047b65c86cd994a6ee2fad8b0b1.jpg",
-          "duration": 220,
+          "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/0/6/9/a/069a232f9fdd635bd6a49d5636b43099.jpg",
+          "link": "/bai-hat/Moi-Khi-Anh-Nhin-Em-My-Anh/Z6O70OBE.html",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/0/6/9/a/069a232f9fdd635bd6a49d5636b43099.jpg",
+          "duration": 192,
           "zingChoice": false,
           "isPrivate": false,
           "preRelease": false,
-          "releaseDate": 1668603600,
+          "releaseDate": 1668517204,
           "genreIds": [
             "IWZ9Z08I",
             "IWZ97FCD"
@@ -94,265 +53,6 @@
           "streamingStatus": 1,
           "allowAudioAds": true,
           "hasLyric": true
-        },
-        {
-          "encodeId": "Z6O6F7BB",
-          "title": "Quên Hay Tha Thứ",
-          "alias": "Quen-Hay-Tha-Thu-Duong-Hoang-Yen-Trung-Quan-Idol",
-          "isOffical": true,
-          "username": "",
-          "artistsNames": "Dương Hoàng Yến, Trung Quân Idol",
-          "artists": [
-            {
-              "id": "IWZ97WAZ",
-              "name": "Dương Hoàng Yến",
-              "link": "/Duong-Hoang-Yen",
-              "spotlight": false,
-              "alias": "Duong-Hoang-Yen",
-              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/a/8/9/8/a8988e6c8769a88dab1533cd5ba5b8a5.jpg",
-              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/a/8/9/8/a8988e6c8769a88dab1533cd5ba5b8a5.jpg",
-              "isOA": true,
-              "isOABrand": false,
-              "playlistId": "Z6BOEZZU"
-            },
-            {
-              "id": "IWZ96C8Z",
-              "name": "Trung Quân Idol",
-              "link": "/Trung-Quan-Idol",
-              "spotlight": false,
-              "alias": "Trung-Quan-Idol",
-              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/2/1/8/7/218770ba575b50250cb2867b74b85e1e.jpg",
-              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/2/1/8/7/218770ba575b50250cb2867b74b85e1e.jpg",
-              "isOA": true,
-              "isOABrand": false,
-              "playlistId": "Z6BOE6WZ"
-            }
-          ],
-          "isWorldWide": true,
-          "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/f/7/e/7/f7e7768eec641b47071d7453999a63d1.jpg",
-          "link": "/bai-hat/Quen-Hay-Tha-Thu-Duong-Hoang-Yen-Trung-Quan-Idol/Z6O6F7BB.html",
-          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/f/7/e/7/f7e7768eec641b47071d7453999a63d1.jpg",
-          "duration": 258,
-          "zingChoice": false,
-          "isPrivate": false,
-          "preRelease": false,
-          "releaseDate": 1668168000,
-          "genreIds": [
-            "IWZ9Z08I",
-            "IWZ97FCD"
-          ],
-          "album": {
-            "encodeId": "6B70IB6W",
-            "title": "Quên Hay Tha Thứ (Single)",
-            "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_jpeg/cover/f/7/e/7/f7e7768eec641b47071d7453999a63d1.jpg",
-            "isoffical": true,
-            "link": "/album/Quen-Hay-Tha-Thu-Single-Duong-Hoang-Yen-Trung-Quan-Idol/6B70IB6W.html",
-            "isIndie": false,
-            "releaseDate": "11/11/2022",
-            "sortDescription": "",
-            "genreIds": [
-              "IWZ9Z08I",
-              "IWZ97FCD"
-            ],
-            "PR": false,
-            "artists": [
-              {
-                "id": "IWZ97WAZ",
-                "name": "Dương Hoàng Yến",
-                "link": "/Duong-Hoang-Yen",
-                "spotlight": false,
-                "alias": "Duong-Hoang-Yen",
-                "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/a/8/9/8/a8988e6c8769a88dab1533cd5ba5b8a5.jpg",
-                "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/a/8/9/8/a8988e6c8769a88dab1533cd5ba5b8a5.jpg",
-                "isOA": true,
-                "isOABrand": false,
-                "playlistId": "Z6BOEZZU",
-                "totalFollow": 83178
-              },
-              {
-                "id": "IWZ96C8Z",
-                "name": "Trung Quân Idol",
-                "link": "/Trung-Quan-Idol",
-                "spotlight": false,
-                "alias": "Trung-Quan-Idol",
-                "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/2/1/8/7/218770ba575b50250cb2867b74b85e1e.jpg",
-                "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/2/1/8/7/218770ba575b50250cb2867b74b85e1e.jpg",
-                "isOA": true,
-                "isOABrand": false,
-                "playlistId": "Z6BOE6WZ",
-                "totalFollow": 154797
-              }
-            ],
-            "artistsNames": "Dương Hoàng Yến, Trung Quân Idol"
-          },
-          "indicators": [],
-          "isIndie": false,
-          "streamingStatus": 1,
-          "allowAudioAds": true,
-          "hasLyric": true,
-          "rakingStatus": 0,
-          "score": 12248,
-          "totalTopZing": 0,
-          "artist": {
-            "id": "IWZ97WAZ",
-            "name": "Dương Hoàng Yến",
-            "link": "/nghe-si/Duong-Hoang-Yen",
-            "spotlight": false,
-            "alias": "Duong-Hoang-Yen",
-            "playlistId": "Z6BOEZZU",
-            "cover": "https://photo-zmp3.zmdcdn.me/cover_artist/4/a/a/b/4aabfa5c2a0fb1665ae754841769cf81.jpg",
-            "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/a/8/9/8/a8988e6c8769a88dab1533cd5ba5b8a5.jpg"
-          }
-        },
-        {
-          "encodeId": "Z6O99BB8",
-          "title": "Cái Kết",
-          "alias": "Cai-Ket-Changmie",
-          "isOffical": true,
-          "username": "",
-          "artistsNames": "Changmie",
-          "artists": [
-            {
-              "id": "IW6Z8WIF",
-              "name": "Changmie",
-              "link": "/nghe-si/Changmie",
-              "spotlight": false,
-              "alias": "Changmie",
-              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/1/d/d/8/1dd86089406f32d39506a2e1812bc155.jpg",
-              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/1/d/d/8/1dd86089406f32d39506a2e1812bc155.jpg",
-              "isOA": false,
-              "isOABrand": false,
-              "playlistId": "60U6WE6F"
-            }
-          ],
-          "isWorldWide": false,
-          "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/3/2/0/6/32060b2e3494dc6ace1a3006e3aae484.jpg",
-          "link": "/bai-hat/Cai-Ket-Changmie/Z6O99BB8.html",
-          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/3/2/0/6/32060b2e3494dc6ace1a3006e3aae484.jpg",
-          "duration": 226,
-          "zingChoice": false,
-          "isPrivate": false,
-          "preRelease": false,
-          "releaseDate": 1668445200,
-          "genreIds": [
-            "IWZ9Z08I",
-            "IWZ9Z088",
-            "IWZ97FCD"
-          ],
-          "indicators": [],
-          "isIndie": false,
-          "streamingStatus": 1,
-          "allowAudioAds": false,
-          "hasLyric": true
-        },
-        {
-          "encodeId": "Z6O68A67",
-          "title": "Hạnh Phúc Chẳng Phải Em",
-          "alias": "Hanh-Phuc-Chang-Phai-Em-Huong-Ly-LY-M",
-          "isOffical": true,
-          "username": "",
-          "artistsNames": "Hương Ly, LY.M",
-          "artists": [
-            {
-              "id": "IW6ZO9UB",
-              "name": "Hương Ly",
-              "link": "/Nguyen-Huong-Ly",
-              "spotlight": false,
-              "alias": "Nguyen-Huong-Ly",
-              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/e/f/8/4/ef84f25bebe0bb917735de836a3e417f.jpg",
-              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/e/f/8/4/ef84f25bebe0bb917735de836a3e417f.jpg",
-              "isOA": true,
-              "isOABrand": false,
-              "playlistId": "Z6BOE8EZ"
-            },
-            {
-              "id": "IW7AOFZ0",
-              "name": "LY.M",
-              "link": "/nghe-si/LY-M",
-              "spotlight": false,
-              "alias": "LY-M",
-              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/e/d/1/c/ed1c0d109e71858e54753e69c7ad68ce.jpg",
-              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/e/d/1/c/ed1c0d109e71858e54753e69c7ad68ce.jpg",
-              "isOA": false,
-              "isOABrand": false,
-              "playlistId": "6BZEU6ZU"
-            }
-          ],
-          "isWorldWide": true,
-          "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/8/e/b/0/8eb04bac0be297e2472d1fadf86f3aa4.jpg",
-          "link": "/bai-hat/Hanh-Phuc-Chang-Phai-Em-Huong-Ly-LY-M/Z6O68A67.html",
-          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/8/e/b/0/8eb04bac0be297e2472d1fadf86f3aa4.jpg",
-          "duration": 292,
-          "zingChoice": false,
-          "isPrivate": false,
-          "preRelease": false,
-          "releaseDate": 1668169800,
-          "genreIds": [
-            "IWZ9Z08I",
-            "IWZ97FCD"
-          ],
-          "album": {
-            "encodeId": "SB6FCDB0",
-            "title": "Hạnh Phúc Chẳng Phải Em (Single)",
-            "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_jpeg/cover/8/e/b/0/8eb04bac0be297e2472d1fadf86f3aa4.jpg",
-            "isoffical": true,
-            "link": "/album/Hanh-Phuc-Chang-Phai-Em-Single-Huong-Ly-LY-M/SB6FCDB0.html",
-            "isIndie": false,
-            "releaseDate": "11/11/2022",
-            "sortDescription": "",
-            "genreIds": [
-              "IWZ9Z08I",
-              "IWZ97FCD"
-            ],
-            "PR": false,
-            "artists": [
-              {
-                "id": "IW6ZO9UB",
-                "name": "Hương Ly",
-                "link": "/Nguyen-Huong-Ly",
-                "spotlight": false,
-                "alias": "Nguyen-Huong-Ly",
-                "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/e/f/8/4/ef84f25bebe0bb917735de836a3e417f.jpg",
-                "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/e/f/8/4/ef84f25bebe0bb917735de836a3e417f.jpg",
-                "isOA": true,
-                "isOABrand": false,
-                "playlistId": "Z6BOE8EZ",
-                "totalFollow": 678379
-              },
-              {
-                "id": "IW7AOFZ0",
-                "name": "LY.M",
-                "link": "/nghe-si/LY-M",
-                "spotlight": false,
-                "alias": "LY-M",
-                "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/e/d/1/c/ed1c0d109e71858e54753e69c7ad68ce.jpg",
-                "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/e/d/1/c/ed1c0d109e71858e54753e69c7ad68ce.jpg",
-                "isOA": false,
-                "isOABrand": false,
-                "playlistId": "6BZEU6ZU",
-                "totalFollow": 730
-              }
-            ],
-            "artistsNames": "Hương Ly, LY.M"
-          },
-          "indicators": [],
-          "isIndie": false,
-          "streamingStatus": 1,
-          "allowAudioAds": true,
-          "hasLyric": true,
-          "rakingStatus": 0,
-          "score": 13743,
-          "totalTopZing": 0,
-          "artist": {
-            "id": "IW6ZO9UB",
-            "name": "Hương Ly",
-            "link": "/nghe-si/Nguyen-Huong-Ly",
-            "spotlight": false,
-            "alias": "Nguyen-Huong-Ly",
-            "playlistId": "Z6BOE8EZ",
-            "cover": "https://zmp3-static.zmdcdn.me/skins/zmp3-v5.2/images/default_cover.png",
-            "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/4/c/b/3/4cb3cc5a19be786f0771ba8e2c530828.jpg"
-          }
         },
         {
           "encodeId": "Z6OAOZCW",
@@ -395,128 +95,45 @@
           "hasLyric": true
         },
         {
-          "encodeId": "Z6O70OBE",
-          "title": "Mỗi Khi Anh Nhìn Em",
-          "alias": "Moi-Khi-Anh-Nhin-Em-My-Anh",
+          "encodeId": "Z6O8DEAU",
+          "title": "Hồi Kết",
+          "alias": "Hoi-Ket-Ha-Nhi",
           "isOffical": true,
           "username": "",
-          "artistsNames": "Mỹ Anh",
+          "artistsNames": "Hà Nhi",
           "artists": [
             {
-              "id": "IWZAEAC0",
-              "name": "Mỹ Anh",
-              "link": "/My-Anh-Singer",
+              "id": "IWZA6806",
+              "name": "Hà Nhi",
+              "link": "/Ha-Nhi",
               "spotlight": false,
-              "alias": "My-Anh-Singer",
-              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/7/8/6/2/78620213b8e0e54ae89b2bba895446f6.jpg",
-              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/7/8/6/2/78620213b8e0e54ae89b2bba895446f6.jpg",
+              "alias": "Ha-Nhi",
+              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/c/5/d/b/c5dbc8fad12e47094496041efa689f21.jpg",
+              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/c/5/d/b/c5dbc8fad12e47094496041efa689f21.jpg",
               "isOA": true,
               "isOABrand": false,
-              "playlistId": "Z6BUII6Z"
+              "playlistId": "Z6BOEFUU"
             }
           ],
-          "isWorldWide": true,
-          "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/0/6/9/a/069a232f9fdd635bd6a49d5636b43099.jpg",
-          "link": "/bai-hat/Moi-Khi-Anh-Nhin-Em-My-Anh/Z6O70OBE.html",
-          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/0/6/9/a/069a232f9fdd635bd6a49d5636b43099.jpg",
-          "duration": 192,
+          "isWorldWide": false,
+          "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/9/f/5/e/9f5e1ba38b5636d4ebfe53b7c8044229.jpg",
+          "link": "/bai-hat/Hoi-Ket-Ha-Nhi/Z6O8DEAU.html",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/9/f/5/e/9f5e1ba38b5636d4ebfe53b7c8044229.jpg",
+          "duration": 274,
           "zingChoice": false,
           "isPrivate": false,
           "preRelease": false,
-          "releaseDate": 1668517204,
+          "releaseDate": 1668445204,
           "genreIds": [
             "IWZ9Z08I",
+            "IWZ9Z088",
             "IWZ97FCD"
           ],
           "indicators": [],
           "isIndie": false,
-          "streamingStatus": 1,
+          "streamingStatus": 2,
           "allowAudioAds": true,
           "hasLyric": true
-        },
-        {
-          "encodeId": "Z6WZD78I",
-          "title": "Sao Cũng Được",
-          "alias": "Sao-Cung-Duoc-Thanh-Dat",
-          "isOffical": true,
-          "username": "",
-          "artistsNames": "Thành Đạt",
-          "artists": [
-            {
-              "id": "IW6BZA76",
-              "name": "Thành Đạt",
-              "link": "/nghe-si/Thanh-Dat",
-              "spotlight": false,
-              "alias": "Thanh-Dat",
-              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/e/3/7/0/e370a2f50b59de96c97cf5d0e29899bc.jpg",
-              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/e/3/7/0/e370a2f50b59de96c97cf5d0e29899bc.jpg",
-              "isOA": false,
-              "isOABrand": false,
-              "playlistId": "6BU00808"
-            }
-          ],
-          "isWorldWide": true,
-          "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/a/6/5/5/a65573e6905dc4f29f59c49ea04866cf.jpg",
-          "link": "/bai-hat/Sao-Cung-Duoc-Thanh-Dat/Z6WZD78I.html",
-          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/a/6/5/5/a65573e6905dc4f29f59c49ea04866cf.jpg",
-          "duration": 319,
-          "zingChoice": false,
-          "isPrivate": false,
-          "preRelease": false,
-          "releaseDate": 1665748800,
-          "genreIds": [
-            "IWZ9Z08I",
-            "IWZ97FCD"
-          ],
-          "album": {
-            "encodeId": "6B66FB8I",
-            "title": "Sao Cũng Được (Single)",
-            "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_jpeg/cover/a/6/5/5/a65573e6905dc4f29f59c49ea04866cf.jpg",
-            "isoffical": true,
-            "link": "/album/Sao-Cung-Duoc-Single-Thanh-Dat/6B66FB8I.html",
-            "isIndie": false,
-            "releaseDate": "14/10/2022",
-            "sortDescription": "",
-            "genreIds": [
-              "IWZ9Z08I",
-              "IWZ97FCD"
-            ],
-            "PR": false,
-            "artists": [
-              {
-                "id": "IW6BZA76",
-                "name": "Thành Đạt",
-                "link": "/nghe-si/Thanh-Dat",
-                "spotlight": false,
-                "alias": "Thanh-Dat",
-                "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/e/3/7/0/e370a2f50b59de96c97cf5d0e29899bc.jpg",
-                "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/e/3/7/0/e370a2f50b59de96c97cf5d0e29899bc.jpg",
-                "isOA": false,
-                "isOABrand": false,
-                "playlistId": "6BU00808",
-                "totalFollow": 4111
-              }
-            ],
-            "artistsNames": "Thành Đạt"
-          },
-          "indicators": [],
-          "isIndie": false,
-          "streamingStatus": 1,
-          "allowAudioAds": true,
-          "hasLyric": true,
-          "rakingStatus": 0,
-          "score": 14683,
-          "totalTopZing": 0,
-          "artist": {
-            "id": "IW6BZA76",
-            "name": "Thành Đạt",
-            "link": "/nghe-si/Thanh-Dat",
-            "spotlight": false,
-            "alias": "Thanh-Dat",
-            "playlistId": "6BU00808",
-            "cover": "https://zmp3-static.zmdcdn.me/skins/zmp3-v5.2/images/default_cover.png",
-            "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/e/3/7/0/e370a2f50b59de96c97cf5d0e29899bc.jpg"
-          }
         }
       ],
       "videoFavorites": [],

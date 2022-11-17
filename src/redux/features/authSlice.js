@@ -6,7 +6,8 @@ import { userApi } from '../services/userApi';
 const initialState = {
     user: JSON.parse(localStorage.getItem("user")) || {
     } ,
-    listUser:[]
+    listUser:[],
+    
 };
 
 const userSlice = createSlice({
@@ -20,6 +21,13 @@ const userSlice = createSlice({
         logout: ((state , action) => {
             state.user = {};
             localStorage.setItem("user", JSON.stringify(state.user))
+        }),
+        likeSong : ((state , action) => {
+            state.user.songFavorites.push(action.payload)
+            localStorage.setItem("user", JSON.stringify(state.user))
+        }),
+        removeSongLike : ((state , action) => {
+            state.songFavorites.splice(action.payload, 1)
         })
     },
     extraReducers : (builder) => {
@@ -43,5 +51,5 @@ const userSlice = createSlice({
     
 })
 
- export const {login, logout} = userSlice.actions;
+ export const {login, logout, removeSongLike, likeSong} = userSlice.actions;
 export default userSlice.reducer; 

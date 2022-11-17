@@ -5,14 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { setActiveSong, playPause, setSongRecently } from "../redux/features/playerSlice";
 import PlayPause from "./PlayPause";
 import { useGetUserQuery, useUpdateUserMutation } from "../redux/services/userApi";
+import { likeSong } from "../redux/features/authSlice";
+
 function SongCard({ song, isPlaying, activeSong, data, i}) {
   const songRecently = JSON.parse(localStorage.getItem("songRecently"))
-  const { data :dataUser } = useGetUserQuery()
-  const { user, listUser } = useSelector((state) => state.user)
+  const { user } = useSelector((state) => state.user)
   const [updateUser] = useUpdateUserMutation()
-  const userLike = dataUser?.find((e) => e.id === user.id)
-  const listFavorites = userLike?.songFavorites
   
+  const listFavorites = user.songFavorites
+  console.log(user)
   const dispatch = useDispatch();
   const handlePauseClick = () => {
     dispatch(playPause(false))
@@ -30,24 +31,25 @@ function SongCard({ song, isPlaying, activeSong, data, i}) {
     else {
       return;
     }
-     
-     
       
   };
   const handleLike = (song) => {
-    const newUpdate = {...userLike, songFavorites: [...userLike.songFavorites, song]}
-    updateUser(newUpdate)
-    console.log(userLike)
+    
+    const newUpdate = {...user, songFavorites : [...user.songFavorites, song]}
+    likeSong(song)
+    console.log(newUpdate)
+    // updateUser(newUpdate)
+   
   }
   const handleRemoveLike = () => {
-    if(listFavorites.length > 0) {
+   
       listFavorites.map((songFavor, index) => {
         if(songFavor.title === song.title) {
-          const newUpdateRemove = {...userLike}
-          console.log(newUpdateRemove)
+          
+         
         }
       })
-    }
+    
     // if(listFavorites) {
     //   listFavorites.length > 0 && listFavorites.map((songFavor,index) => {
     //     if(songFavor.title === song.title) {
