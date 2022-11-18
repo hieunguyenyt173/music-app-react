@@ -25,7 +25,7 @@ function MvDetails() {
     const video = data?. data
     const dispatch = useDispatch();
     const {isPlaying} = useSelector((state) => state.player)
-    const { user } = useSelector((state) => state.user)
+    const { user, auth } = useSelector((state) => state.user)
     const [updateUser] = useUpdateUserMutation()
    
     const listVideoLike = user.videoFavorites
@@ -40,6 +40,10 @@ function MvDetails() {
     //  }
 
     const handleLike = () => {
+      if(!auth) {
+        alert("Vui lòng đăng nhập để sử dụng chức năng này")
+        return;
+      }
       dispatch(likeVideo(video))
       const newUpdate = {...user, videoFavorites: [...user.videoFavorites, video]}
       

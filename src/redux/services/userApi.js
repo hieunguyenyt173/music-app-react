@@ -30,13 +30,7 @@ export const userApi = createApi({
             method: "DELETE",
           })
     }),
-    addSongPlaylist: builder.mutation({
-          query: (data) => ({
-            url: `/users/${data.id}`,
-            method : "PUT",
-            body: data,
-          })
-    }),
+    
     
     transformResponse: (arg) => {
       return arg
@@ -46,4 +40,4 @@ export const userApi = createApi({
   
 });
 
-export const { useGetUserQuery, useAddUserMutation, useRemoveUserMutation, useUpdateUserMutation, useAddSongPlaylistMutation} = userApi;
+export const { useGetUserQuery, useAddUserMutation, useRemoveUserMutation, useUpdateUserMutation} = userApi;

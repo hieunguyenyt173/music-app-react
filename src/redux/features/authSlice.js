@@ -6,6 +6,7 @@ import { userApi } from '../services/userApi';
 const initialState = {
     user: JSON.parse(localStorage.getItem("user")) || {
     } ,
+    auth: false,
     listUser:[],
     
 };
@@ -17,9 +18,11 @@ const userSlice = createSlice({
         login: ((state, action) => {
             state.user = action.payload
             localStorage.setItem("user", JSON.stringify(state.user))
+            state.auth = true
         }),
         logout: ((state , action) => {
             state.user = {};
+            state.auth = false
             localStorage.setItem("user", JSON.stringify(state.user))
             localStorage.setItem("songRecently", JSON.stringify([]))
             localStorage.setItem("videoRecently", JSON.stringify([]))
@@ -84,17 +87,7 @@ const userSlice = createSlice({
             let index = state.listUser.findIndex(user => user.id === action.payload.id)
             state.listUser[index] = action.payload
         })
-        builder.addMatcher(userApi.endpoints.addSongPlaylist.matchFulfilled, (state, action) => {
-           
-            // let index = state.listUser.findIndex(user => user.id === action.payload.user.id)
-            // state.listUser[index].playlistUser.map((playl, i) => {
-            //     if(playl.key === action.payload.playlist.key) {
-            //         state.listUser[index].playlistUser[i].songs.push(action.payload.song)
-                    
-            //       }
-            // })
-            
-        })
+        
        
     }
     

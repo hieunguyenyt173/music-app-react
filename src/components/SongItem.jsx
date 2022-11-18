@@ -12,11 +12,11 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
   const dispatch = useDispatch();
   const songRecently = JSON.parse(localStorage.getItem("songRecently"))
   const [isShow,setIsShow] = useState(false)
-  const { user } = useSelector((state) => state.user)
+  const { user, auth } = useSelector((state) => state.user)
   const [updateUser] = useUpdateUserMutation()
   const listFavorites = user.songFavorites
   const playlistUser = user?.playlistUser
-  const [addSongPlaylist] = useAddSongPlaylistMutation()
+  
   const handlePause = () => {
     dispatch(playPause(false));
     
@@ -39,6 +39,10 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
   };
 
   const handleLike = () => {
+    if(!auth) {
+      alert("Vui lòng đăng nhập để sử dụng chức năng này")
+      return;
+    }
     dispatch(likeSong(song))
     
     const newUpdate = {...user, songFavorites: [...user.songFavorites, song]}
@@ -58,16 +62,26 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
   }
 
   const handleAddToPlaylistUser = () => {
+    if(!auth) {
+      alert("Vui lòng đăng nhập để sử dụng chức năng này")
+      return;
+    }
     setIsShow((prev) => !prev)
   }
   const handleAdd = (playlist, song) => {
     setIsShow(false)
-    
-    dispatch(addSongUser({playlist, song}))
-    
+    const isExist = playlist.songs.find((s) => song.encodeId === s.encodeId)
+    if(isExist) {
+      alert("Bài hát đã có trong playlist")
+      return;
+    }
+    else {
+      dispatch(addSongUser({playlist, song}))
     updateUser(user)
    
     alert("Thêm vào playlist thành công !")
+    }
+    
     
   }
   
@@ -118,7 +132,7 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
           </div>
         </div>
       </div>
-      <div className="flex items-center relative">
+      <div className="flex items-center relative w-28">
       { !listFavorites || !listFavorites.find((item) => item.title === song.title) ? <i className="ri-heart-line  text-2xl cursor-pointer" onClick={handleLike}></i>
             :
             <i className="ri-heart-fill  text-2xl cursor-pointer text-red-600 block" onClick={handleRemoveLike}></i>

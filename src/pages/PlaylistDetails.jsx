@@ -18,7 +18,7 @@ function PlaylistDetails() {
   
   const  playlistRecently = JSON.parse(localStorage.getItem("songRecently"))
  
-  const { user } = useSelector((state) => state.user)
+  const { user, auth } = useSelector((state) => state.user)
   const [updateUser] = useUpdateUserMutation()
  
   const listPlaylistLike = user.playlist
@@ -55,6 +55,10 @@ function PlaylistDetails() {
   }
 
   const handleLike = () => {
+    if(!auth) {
+      alert("Vui lòng đăng nhập để sử dụng chức năng này")
+      return;
+    }
     dispatch(likePlaylist(playlist))
     const newUpdate = {...user, playlist: [...user.playlist, playlist]}
     

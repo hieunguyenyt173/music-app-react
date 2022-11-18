@@ -9,7 +9,7 @@ import { likeSong, removeSongLike } from "../redux/features/authSlice";
 
 function SongCard({ song, isPlaying, activeSong, data, i}) {
   const songRecently = JSON.parse(localStorage.getItem("songRecently"))
-  const { user } = useSelector((state) => state.user)
+  const { user, auth } = useSelector((state) => state.user)
   const [updateUser] = useUpdateUserMutation()
  
   const listFavorites = user.songFavorites
@@ -35,10 +35,10 @@ function SongCard({ song, isPlaying, activeSong, data, i}) {
   };
   const handleLike = () => {
     
-    // if(user === {} || user === null) {
-    //   alert("Vui lòng đăng nhập để sử dụng chức năng này")
-    //   return;
-    // }
+    if(!auth) {
+      alert("Vui lòng đăng nhập để sử dụng chức năng này")
+      return;
+    }
     dispatch(likeSong(song))
     const newUpdate = {...user, songFavorites: [...user.songFavorites, song]}
     
