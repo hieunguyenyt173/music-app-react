@@ -4,19 +4,19 @@ import { Link } from "react-router-dom";
 import { setActiveSong, playPause, setSongRecently } from "../redux/features/playerSlice";
 import PlayPause from "./PlayPause";
 import { getTime } from "./MusicPlayer/Seekbar";
-import { useUpdateUserMutation } from "../redux/services/userApi";
+import { useAddSongPlaylistMutation, useUpdateUserMutation } from "../redux/services/userApi";
 import { addSongUser, likeSong, removeSongLike } from "../redux/features/authSlice";
 
 function SongItem({ activeSong, isPlaying, i, data, song }) {
   
   const dispatch = useDispatch();
   const songRecently = JSON.parse(localStorage.getItem("songRecently"))
-  
   const [isShow,setIsShow] = useState(false)
   const { user } = useSelector((state) => state.user)
   const [updateUser] = useUpdateUserMutation()
   const listFavorites = user.songFavorites
   const playlistUser = user?.playlistUser
+  const [addSongPlaylist] = useAddSongPlaylistMutation()
   const handlePause = () => {
     dispatch(playPause(false));
     
@@ -40,6 +40,7 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
 
   const handleLike = () => {
     dispatch(likeSong(song))
+    
     const newUpdate = {...user, songFavorites: [...user.songFavorites, song]}
     
     updateUser(newUpdate)
@@ -62,16 +63,14 @@ function SongItem({ activeSong, isPlaying, i, data, song }) {
   const handleAdd = (playlist, song) => {
     setIsShow(false)
     
-    // dispatch(addSongUser({playlist, song}))
-    playlistUser.map((p) => {
-      if(p.key === playlist.key) {
-       
-      }
-    })
+    dispatch(addSongUser({playlist, song}))
     
+    updateUser(user)
+   
     alert("Thêm vào playlist thành công !")
     
   }
+  
   return (
     <div className="song-item flex items-center justify-between hover:bg-[#f5f7fa] px-3 py-2 rounded-r-lg">
       <div className="flex items-center">

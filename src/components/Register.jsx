@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import isEmpty from "validator/lib/isEmpty";
-import { useAddUserMutation } from "../redux/services/userApi";
+import { useAddUserMutation, useGetUserQuery } from "../redux/services/userApi";
 
 function Register() {
   const [userName, setUsername] = useState("");
@@ -10,11 +10,16 @@ function Register() {
     const [validationMsg,setValidationMsg] = useState({})
     const navigate = useNavigate()
     const [addUser] = useAddUserMutation()
+    const {data} = useGetUserQuery()
   const validate = () => {
     const msg = {}
     if(isEmpty(userName)) {
       msg.userName = "Vui lòng nhập tên đăng nhập"
     }
+    const userNameAuth = data?.find((user) => user.userName === userName)
+      if(userNameAuth) {
+        msg.userName = "Tên đăng nhập đã tồn tại"
+      }
     if(isEmpty(password)) {
       msg.password = "Vui lòng nhập mật khẩu"
     }
@@ -66,7 +71,7 @@ function Register() {
       alert("Đăng kí thành công")
       
       addUser(data)
-      // navigate("/")
+      navigate("/login")
   }
   return (
     <div className="min-h-[600px] flex items-center">

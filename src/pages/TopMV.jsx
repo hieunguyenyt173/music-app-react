@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import Loader from "../components/Loader";
 import { getTime } from "../components/MusicPlayer/Seekbar";
 import { setvideoRecently } from "../redux/features/playerSlice";
 import { useGetListMvHomeQuery } from "../redux/services/zingApi";
@@ -66,7 +67,7 @@ export const VideoItem = ({ video }) => {
 
 function TopMV() {
   const [type, setType] = useState(0);
-  const {data:vn} = useGetListMvHomeQuery('IWZ9Z08I',"1", "20")
+  const {data:vn, isFetching} = useGetListMvHomeQuery('IWZ9Z08I',"1", "20")
   const {data: us} = useGetListMvHomeQuery('IWZ9Z08O',"1", "20")
   const {data: korea} = useGetListMvHomeQuery('IWZ9Z08W',"1", "20")
   const [listVideo, setListVideo] = useState([]);
@@ -80,7 +81,7 @@ function TopMV() {
     setListVideo(tabs[type]?.key)
   },[type])
   
-  console.log(listVideo)
+  if(isFetching) return <Loader title="Loading ..." />
   return (
     <div className="lg:container mx-auto px-12 mb-10">
       <div>
@@ -92,7 +93,7 @@ function TopMV() {
             <div
               className={`text-md  px-3 py-2 cursor-pointer duration-300 ${
                 tabs[type].title === tab.title
-                  ? "border-b-2 border-blue-700"
+                  ? "border-b-2 border-blue-700 -mb-px"
                   : ""
               }`}
               key={index}

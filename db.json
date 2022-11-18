@@ -3,7 +3,7 @@
     {
       "id": 1997,
       "userName": "admin",
-      "password": "admin123",
+      "password": "admin",
       "account": "admin",
       "createAt": "20/10/2022",
       "info": {
@@ -29,7 +29,166 @@
         {
           "title": "abcd",
           "thumbnailB": "https://photo-zmp3.zmdcdn.me/album_default.png",
-          "songs": [],
+          "songs": [
+            {
+              "encodeId": "Z6WZD78I",
+              "title": "Sao Cũng Được",
+              "alias": "Sao-Cung-Duoc-Thanh-Dat",
+              "isOffical": true,
+              "username": "",
+              "artistsNames": "Thành Đạt",
+              "artists": [
+                {
+                  "id": "IW6BZA76",
+                  "name": "Thành Đạt",
+                  "link": "/nghe-si/Thanh-Dat",
+                  "spotlight": false,
+                  "alias": "Thanh-Dat",
+                  "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/e/3/7/0/e370a2f50b59de96c97cf5d0e29899bc.jpg",
+                  "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/e/3/7/0/e370a2f50b59de96c97cf5d0e29899bc.jpg",
+                  "isOA": false,
+                  "isOABrand": false,
+                  "playlistId": "6BU00808"
+                }
+              ],
+              "isWorldWide": true,
+              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/a/6/5/5/a65573e6905dc4f29f59c49ea04866cf.jpg",
+              "link": "/bai-hat/Sao-Cung-Duoc-Thanh-Dat/Z6WZD78I.html",
+              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/a/6/5/5/a65573e6905dc4f29f59c49ea04866cf.jpg",
+              "duration": 319,
+              "zingChoice": false,
+              "isPrivate": false,
+              "preRelease": false,
+              "releaseDate": 1665748800,
+              "genreIds": [
+                "IWZ9Z08I",
+                "IWZ97FCD"
+              ],
+              "album": {
+                "encodeId": "6B66FB8I",
+                "title": "Sao Cũng Được (Single)",
+                "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_jpeg/cover/a/6/5/5/a65573e6905dc4f29f59c49ea04866cf.jpg",
+                "isoffical": true,
+                "link": "/album/Sao-Cung-Duoc-Single-Thanh-Dat/6B66FB8I.html",
+                "isIndie": false,
+                "releaseDate": "14/10/2022",
+                "sortDescription": "",
+                "genreIds": [
+                  "IWZ9Z08I",
+                  "IWZ97FCD"
+                ],
+                "PR": false,
+                "artists": [
+                  {
+                    "id": "IW6BZA76",
+                    "name": "Thành Đạt",
+                    "link": "/nghe-si/Thanh-Dat",
+                    "spotlight": false,
+                    "alias": "Thanh-Dat",
+                    "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/e/3/7/0/e370a2f50b59de96c97cf5d0e29899bc.jpg",
+                    "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/e/3/7/0/e370a2f50b59de96c97cf5d0e29899bc.jpg",
+                    "isOA": false,
+                    "isOABrand": false,
+                    "playlistId": "6BU00808",
+                    "totalFollow": 4164
+                  }
+                ],
+                "artistsNames": "Thành Đạt"
+              },
+              "indicators": [],
+              "isIndie": false,
+              "streamingStatus": 1,
+              "allowAudioAds": true,
+              "hasLyric": true,
+              "rakingStatus": 0,
+              "score": 2724
+            },
+            {
+              "encodeId": "Z6O06D0F",
+              "title": "Anh Không Thể Ngờ",
+              "alias": "Anh-Khong-The-Ngo-Dinh-Tung-Huy-ACV",
+              "isOffical": true,
+              "username": "",
+              "artistsNames": "Đinh Tùng Huy, ACV",
+              "artists": [
+                {
+                  "id": "IWZA6F8I",
+                  "name": "Đinh Tùng Huy",
+                  "link": "/Dinh-Tung-Huy",
+                  "spotlight": false,
+                  "alias": "Dinh-Tung-Huy",
+                  "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/5/d/a/9/5da92b54155ac844f9dac366057cbcde.jpg",
+                  "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/5/d/a/9/5da92b54155ac844f9dac366057cbcde.jpg",
+                  "isOA": true,
+                  "isOABrand": false,
+                  "playlistId": "Z6BU0CC9"
+                },
+                {
+                  "id": "IW6ZAAB8",
+                  "name": "ACV",
+                  "link": "/nghe-si/ACV-Music",
+                  "spotlight": false,
+                  "alias": "ACV-Music",
+                  "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/5/e/0/6/5e06d48fb79175a096e059ecf3d8b1e8.jpg",
+                  "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/5/e/0/6/5e06d48fb79175a096e059ecf3d8b1e8.jpg",
+                  "isOA": false,
+                  "isOABrand": false,
+                  "playlistId": "60U6OOWD"
+                }
+              ],
+              "isWorldWide": true,
+              "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/e/0/4/e/e04e88d3a818636c21c45685be6413c0.jpg",
+              "link": "/bai-hat/Anh-Khong-The-Ngo-Dinh-Tung-Huy-ACV/Z6O06D0F.html",
+              "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/e/0/4/e/e04e88d3a818636c21c45685be6413c0.jpg",
+              "duration": 259,
+              "zingChoice": false,
+              "isPrivate": false,
+              "preRelease": false,
+              "releaseDate": 1667307300,
+              "genreIds": [
+                "IWZ9Z08I",
+                "IWZ97FCD"
+              ],
+              "album": {
+                "encodeId": "SB6CB7BC",
+                "title": "Anh Không Thể Ngờ (Single)",
+                "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_jpeg/cover/e/0/4/e/e04e88d3a818636c21c45685be6413c0.jpg",
+                "isoffical": true,
+                "link": "/album/Anh-Khong-The-Ngo-Single-Dinh-Tung-Huy/SB6CB7BC.html",
+                "isIndie": false,
+                "releaseDate": "01/11/2022",
+                "sortDescription": "",
+                "genreIds": [
+                  "IWZ9Z08I",
+                  "IWZ97FCD"
+                ],
+                "PR": false,
+                "artists": [
+                  {
+                    "id": "IWZA6F8I",
+                    "name": "Đinh Tùng Huy",
+                    "link": "/Dinh-Tung-Huy",
+                    "spotlight": false,
+                    "alias": "Dinh-Tung-Huy",
+                    "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/5/d/a/9/5da92b54155ac844f9dac366057cbcde.jpg",
+                    "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/5/d/a/9/5da92b54155ac844f9dac366057cbcde.jpg",
+                    "isOA": true,
+                    "isOABrand": false,
+                    "playlistId": "Z6BU0CC9",
+                    "totalFollow": 92623
+                  }
+                ],
+                "artistsNames": "Đinh Tùng Huy"
+              },
+              "indicators": [],
+              "isIndie": false,
+              "streamingStatus": 1,
+              "allowAudioAds": true,
+              "hasLyric": true,
+              "rakingStatus": 0,
+              "score": 2283
+            }
+          ],
           "key": 1477
         }
       ]
@@ -182,27 +341,6 @@
           "hasLyric": true
         }
       ],
-      "videoFavorites": [],
-      "playlist": [],
-      "songRecently": [],
-      "videoRecently": [],
-      "playlistRecently": [],
-      "playlistUser": []
-    },
-    {
-      "id": 7578,
-      "userName": "testuser",
-      "password": "test123",
-      "account": "user",
-      "createAt": "Thursday, Nov 17, 2022",
-      "info": {
-        "fullname": "",
-        "gender": "",
-        "email": "",
-        "address": "",
-        "phone": ""
-      },
-      "songFavorites": [],
       "videoFavorites": [],
       "playlist": [],
       "songRecently": [],

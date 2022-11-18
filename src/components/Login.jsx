@@ -18,6 +18,7 @@ function Login() {
       if(isEmpty(userName)) {
         msg.userName = "Vui lòng nhập tên đăng nhập"
       }
+      
       if(isEmpty(password)) {
         msg.password = "Vui lòng nhập mật khẩu"
       }

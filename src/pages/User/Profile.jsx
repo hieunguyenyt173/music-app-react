@@ -5,18 +5,22 @@ import { useUpdateUserMutation } from '../../redux/services/userApi'
 function Profile() {
   const [updateUser] = useUpdateUserMutation()
     const {listUser} = useSelector((state) => state.user)
-    const [fullname,setFullName] = useState("")
-    const [address,setAddress] = useState("")
-    const [phone,setPhone] = useState("")
-    const [email,setEmail] = useState("")
-   const {userId} = useParams()
-   const userProfile = listUser?.find((user) => user.id === +userId)
+    const {userId} = useParams()
+    const userProfile = listUser?.find((user) => user.id === +userId)
+    const [fullname,setFullName] = useState(userProfile?.info?.fullname)
+    const [address,setAddress] = useState(userProfile?.info?.address)
+    const [phone,setPhone] = useState(userProfile?.info?.phone)
+    const [email,setEmail] = useState(userProfile?.info?.email)
    
   const handleUpdateUser = () => {
       const newUpdate = {...userProfile, info: {
         fullname, address, phone, email
       }}
       updateUser(newUpdate)
+      alert("Cập nhật thông tin thành công")
+  }
+  const handleChangeInfo = () => {
+
   }
   return (
     <div className='lg:container mx-auto px-12 mb-10'>
@@ -38,7 +42,7 @@ function Profile() {
             <input
               type="text"
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              value={userProfile?.info?.fullname || fullname}
+              value={fullname}
               onChange={(e) => setFullName(e.target.value)}
             />
             
@@ -57,7 +61,7 @@ function Profile() {
             <input
               type="email"
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              value={userProfile?.info?.email || email}
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
            
@@ -75,7 +79,7 @@ function Profile() {
             <input
               type="text"
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              value={userProfile?.info?.address || address}
+              value={address}
               onChange={(e) => setAddress(e.target.value)}
             />
             
@@ -94,19 +98,26 @@ function Profile() {
             <input
               type="phone"
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              value={userProfile?.info?.phone || phone}
+              value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
             
 
           </div>
-          <div className="mt-6">
+          <div className="mt-6 flex justify-center">
             <button 
             type="button"
-            className="p-3 rounded-lg hover:bg-sky-700 text-slate-100 bg-sky-600"
+            className="p-3 rounded-lg hover:bg-sky-700 text-slate-100 bg-sky-600 mx-3"
             onClick={handleUpdateUser}
             >
              Cập nhật thông tin
+            </button>
+            <button 
+            type="button"
+            className="p-3 rounded-lg hover:bg-sky-700 text-slate-100 bg-sky-600 mx-3"
+            onClick={handleChangeInfo}
+            >
+             Thay đổi thông tin
             </button>
           </div>
           </form>

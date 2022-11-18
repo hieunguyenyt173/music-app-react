@@ -14,7 +14,7 @@ export const store = configureStore({
   getDefaultMiddleware({
     immutableCheck: false,
     serializableCheck: false,
-  }).concat(zingApi.middleware),
+  }).concat(zingApi.middleware).concat(userApi.middleware),
   
   
 });

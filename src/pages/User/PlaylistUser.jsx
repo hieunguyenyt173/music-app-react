@@ -45,7 +45,7 @@ export const  PlaylistUserItem = ({playlist,i}) => {
 }
 function PlaylistUser() {
     const [isShowModal, setIsShowModal] = useState(false)
-    const [value,setValue] = useState()
+    const [value,setValue] = useState("")
     
     const { user } = useSelector((state) => state.user)
   const [updateUser] = useUpdateUserMutation()

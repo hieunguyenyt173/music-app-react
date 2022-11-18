@@ -56,32 +56,7 @@ const playerSlice = createSlice({
     showLyric:(state, action) => {
       state.isShowLyric = action.payload
     },
-    likeList: (state, action) => {
-      
-      state.listFavorites.songFavorites.push(action.payload)
-      localStorage.setItem("listFavorite", JSON.stringify(state.listFavorites.songFavorites))
-    },
-    removeLike : (state, action) => {
-      state.listFavorites.songFavorites.splice(action.payload, 1)
-      localStorage.setItem("listFavorite", JSON.stringify(state.listFavorites.songFavorites))
-    },
-    setLikePlaylist: (state, action) => {
-      state.listFavorites.playlist.push(action.payload)
-      localStorage.setItem("listPlaylistLike", JSON.stringify(state.listFavorites.playlist))
-    },
-    removeLikePlaylist : (state, action) => {
-      state.listFavorites.playlist.splice(action.payload, 1)
-      localStorage.setItem("listPlaylistLike", JSON.stringify(state.listFavorites.playlist))
-    },
-    setLikeVideo: (state,action) => {
-      state.listFavorites.videoFavorites.push(action.payload)
-      localStorage.setItem("listVideoLike", JSON.stringify(state.listFavorites.videoFavorites))
-    },
-    removeLikeVideo: (state, action) => {
-      state.listFavorites.videoFavorites.splice(action.payload, 1)
-      localStorage.setItem("listVideoLike", JSON.stringify(state.listFavorites.videoFavorites))
-    },
-
+    
     setSongRecently: (state, action) => {
       
         state.recentlyList.songRecently.push(action.payload)
@@ -102,29 +77,11 @@ const playerSlice = createSlice({
       state.recentlyList.playlistRecently.push(action.payload)
       localStorage.setItem("playlistRecently", JSON.stringify(state.recentlyList.playlistRecently))
     },
-    addPlaylistUser : (state, action) => {
-      state.playlistUser.push(action.payload)
-      localStorage.setItem("playlistUser", JSON.stringify(state.playlistUser))
-    },
-    addSongUser : (state, action) => {
-     
-      state.playlistUser.map((playlistUser) => {
-        if(playlistUser.title === action.payload.playlist.title) {
-          playlistUser.songs.push(action.payload.song)
-          
-        }
-      })
-      localStorage.setItem("playlistUser", JSON.stringify(state.playlistUser))
-    },
-    removeUserPlaylist : (state, action) => {
-      state.playlistUser.splice(action.payload.i,1)
-      localStorage.setItem("playlistUser", JSON.stringify(state.playlistUser))
-    }
+    
   },
 });
 
 
-export const { setActiveSong, nextSong, prevSong, playPause, selectGenreListId, showPlaylist, showLyric, likeList, removeLike, setLikeIcon , setRecentlyList, removeHistory,setLikePlaylist,
-  removeLikePlaylist, setLikeVideo,removeLikeVideo , setSongRecently, removeSongRecently, setvideoRecently, setplaylistRecently, addPlaylistUser, addSongUser, removeUserPlaylist} = playerSlice.actions;
+export const { setActiveSong, nextSong, prevSong, playPause, showPlaylist, showLyric , setRecentlyList, removeHistory,  setSongRecently, removeSongRecently, setvideoRecently, setplaylistRecently} = playerSlice.actions;
 
 export default playerSlice.reducer;

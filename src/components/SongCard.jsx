@@ -34,6 +34,11 @@ function SongCard({ song, isPlaying, activeSong, data, i}) {
       
   };
   const handleLike = () => {
+    
+    // if(user === {} || user === null) {
+    //   alert("Vui lòng đăng nhập để sử dụng chức năng này")
+    //   return;
+    // }
     dispatch(likeSong(song))
     const newUpdate = {...user, songFavorites: [...user.songFavorites, song]}
     
@@ -60,6 +65,7 @@ function SongCard({ song, isPlaying, activeSong, data, i}) {
             }
             alt="song-img"
           />
+          
           <span className="like-icon absolute top-4 left-4 hover:scale-125 hover:text-red-600">
             { !listFavorites || !listFavorites.find((item) => item.title === song.title) ? <i className="ri-heart-fill  text-2xl   text-slate-100 opacity-75" onClick={handleLike}></i>
             :
@@ -70,7 +76,7 @@ function SongCard({ song, isPlaying, activeSong, data, i}) {
           </span>
           <div
             className={`play-button  hover:scale-110 w-12 h-12 rounded-full overflow-hidden bg-slate-100 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] ${isPlaying &&
-              activeSong?.title === song?.title ? "block" : "hidden"
+              activeSong?.encodeId === song?.encodeId ? "block" : "hidden"
             }`}
           >
             <PlayPause 

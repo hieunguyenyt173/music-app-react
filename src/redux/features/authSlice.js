@@ -21,6 +21,9 @@ const userSlice = createSlice({
         logout: ((state , action) => {
             state.user = {};
             localStorage.setItem("user", JSON.stringify(state.user))
+            localStorage.setItem("songRecently", JSON.stringify([]))
+            localStorage.setItem("videoRecently", JSON.stringify([]))
+            localStorage.setItem("playlistRecently", JSON.stringify([]))
         }),
         likeSong : ((state , action) => {
             state.user.songFavorites.push(action.payload)
@@ -80,6 +83,17 @@ const userSlice = createSlice({
         builder.addMatcher(userApi.endpoints.updateUser.matchFulfilled, (state, action) => {
             let index = state.listUser.findIndex(user => user.id === action.payload.id)
             state.listUser[index] = action.payload
+        })
+        builder.addMatcher(userApi.endpoints.addSongPlaylist.matchFulfilled, (state, action) => {
+           
+            // let index = state.listUser.findIndex(user => user.id === action.payload.user.id)
+            // state.listUser[index].playlistUser.map((playl, i) => {
+            //     if(playl.key === action.payload.playlist.key) {
+            //         state.listUser[index].playlistUser[i].songs.push(action.payload.song)
+                    
+            //       }
+            // })
+            
         })
        
     }

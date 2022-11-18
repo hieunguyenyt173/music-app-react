@@ -58,7 +58,7 @@ const TopAlbums = () => {
             <div
               className={`text-md  px-3 py-2 cursor-pointer duration-300 ${
                 tabs[type].title === tab.title
-                  ? "border-b-2 border-blue-700"
+                  ? "border-b-2 border-blue-700 -mb-px"
                   : ""
               }`}
               key={index}
