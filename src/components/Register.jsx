@@ -11,7 +11,7 @@ function Register() {
   const navigate = useNavigate();
   const [addUser] = useAddUserMutation();
   const { data } = useGetUserQuery();
-  const [getUser] = useGetUserQuery()
+  
   const validate = () => {
     const msg = {};
     if (isEmpty(userName)) {
@@ -65,7 +65,7 @@ function Register() {
       playlistUser: [],
     };
     alert("Đăng kí thành công");
-    getUser()
+   
     addUser(data);
     navigate("/login");
   };
