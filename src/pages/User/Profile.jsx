@@ -19,9 +19,7 @@ function Profile() {
       updateUser(newUpdate)
       alert("Cập nhật thông tin thành công")
   }
-  const handleChangeInfo = () => {
-
-  }
+ 
   return (
     <div className='lg:container mx-auto px-12 mb-10'>
     <div className=" p-8 rounded-md w-full max-w-3xl mx-auto">
@@ -112,13 +110,7 @@ function Profile() {
             >
              Cập nhật thông tin
             </button>
-            <button 
-            type="button"
-            className="p-3 rounded-lg hover:bg-sky-700 text-slate-100 bg-sky-600 mx-3"
-            onClick={handleChangeInfo}
-            >
-             Thay đổi thông tin
-            </button>
+            
           </div>
           </form>
              

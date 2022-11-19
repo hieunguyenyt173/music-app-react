@@ -24,7 +24,7 @@ function ArtistDetails() {
   
   
   const hotSong = data?.data?.sections[0]?.items?.slice(0, 5);
-  console.log(data)
+  
   
   return (
     <div className="lg:container mx-auto px-12 mb-10">
