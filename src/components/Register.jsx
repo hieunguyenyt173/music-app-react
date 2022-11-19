@@ -7,72 +7,67 @@ function Register() {
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-    const [validationMsg,setValidationMsg] = useState({})
-    const navigate = useNavigate()
-    const [addUser] = useAddUserMutation()
-    const {data} = useGetUserQuery()
+  const [validationMsg, setValidationMsg] = useState({});
+  const navigate = useNavigate();
+  const [addUser] = useAddUserMutation();
+  const { data } = useGetUserQuery();
   const validate = () => {
-    const msg = {}
-    if(isEmpty(userName)) {
-      msg.userName = "Vui lòng nhập tên đăng nhập"
+    const msg = {};
+    if (isEmpty(userName)) {
+      msg.userName = "Vui lòng nhập tên đăng nhập";
     }
-    const userNameAuth = data?.find((user) => user.userName === userName)
-      if(userNameAuth) {
-        msg.userName = "Tên đăng nhập đã tồn tại"
-      }
-    if(isEmpty(password)) {
-      msg.password = "Vui lòng nhập mật khẩu"
+    const userNameAuth = data?.find((user) => user.userName === userName);
+    if (userNameAuth) {
+      msg.userName = "Tên đăng nhập đã tồn tại";
     }
-    if(isEmpty(confirmPassword)) {
-        msg.confirmPassword = "Vui lòng xác nhận mật khẩu"
-      }
-    else if(password !== confirmPassword)
-    {
-        msg.confirmPassword = "Xác nhận mật khẩu chưa chính xác"
+    if (isEmpty(password)) {
+      msg.password = "Vui lòng nhập mật khẩu";
     }
-   
-    setValidationMsg(msg);
-    if(Object.keys(msg).length > 0) return false;
-    return true;
-  }
-  const onSubmit = () => {
-      const isValid = validate();
-      if(!isValid) return;
-      const data = {
-        id: Math.floor(Math.random() * 10000),
-        userName,
-        password,
-        account : "user",
-        createAt: new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}),
-        info : {
-          fullname : "",
-          gender : "",
-          email : "",
-          address : "",
-          phone : ""
+    if (isEmpty(confirmPassword)) {
+      msg.confirmPassword = "Vui lòng xác nhận mật khẩu";
+    } else if (password !== confirmPassword) {
+      msg.confirmPassword = "Xác nhận mật khẩu chưa chính xác";
+    }
 
-        },
-        personallist : [
-          {
-            songFavorites : [],
-            videoFavorites : [],
-            playlist : []
-          },
-          {
-            songRecently : [],
-            videoRecently : [],
-            playlistRecently : []
-          },
-          {
-            playlistUser : []
-          }
-        ]
-      }
-      alert("Đăng kí thành công")
-      
-      addUser(data)
-      navigate("/login")
-  }
+    setValidationMsg(msg);
+    if (Object.keys(msg).length > 0) return false;
+    return true;
+  };
+  const onSubmit = () => {
+    const isValid = validate();
+    if (!isValid) return;
+    const data = {
+      id: Math.floor(Math.random() * 10000),
+      userName,
+      password,
+      account: "user",
+      createAt: new Date().toLocaleDateString("en-us", {
+        weekday: "long",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }),
+      info: {
+        fullname: "",
+        gender: "",
+        email: "",
+        address: "",
+        phone: "",
+      },
+
+      songFavorites: [],
+      videoFavorites: [],
+      playlist: [],
+      songRecently: [],
+      videoRecently: [],
+      playlistRecently: [],
+      playlistUser: [],
+    };
+    alert("Đăng kí thành công");
+
+    addUser(data);
+    navigate("/login");
+  };
   return (
     <div className="min-h-[600px] flex items-center">
       <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
@@ -94,7 +89,9 @@ function Register() {
               value={userName}
               onChange={(e) => setUsername(e.target.value)}
             />
-            <p className="text-xs text-red-400 italic">{validationMsg.userName}</p>
+            <p className="text-xs text-red-400 italic">
+              {validationMsg.userName}
+            </p>
           </div>
 
           <div className="mt-4">
@@ -113,7 +110,9 @@ function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <p className="text-xs text-red-400 italic">{validationMsg.password}</p>
+            <p className="text-xs text-red-400 italic">
+              {validationMsg.password}
+            </p>
           </div>
           <div className="mt-4">
             <div className="flex items-center justify-between">
@@ -131,15 +130,16 @@ function Register() {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            <p className="text-xs text-red-400 italic">{validationMsg.confirmPassword}</p>
-
+            <p className="text-xs text-red-400 italic">
+              {validationMsg.confirmPassword}
+            </p>
           </div>
 
           <div className="mt-6">
-            <button 
-            type="button"
-            className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
-            onClick={onSubmit}
+            <button
+              type="button"
+              className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+              onClick={onSubmit}
             >
               Đăng ký
             </button>
